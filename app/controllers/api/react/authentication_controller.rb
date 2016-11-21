@@ -1,5 +1,5 @@
-class API::React::AuthenticationController < ApplicationController
-
+class API::React::AuthenticationController < API::React::ApiController
+  
   # # POST /api/v1/authentication/sign_in_with_email
   # def sign_in_with_email
   #   # Email is required for Sign In

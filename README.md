@@ -1,4 +1,4 @@
-# Backend API for React frontend for [AppDevAcademy](https://www.appdev.academy) website
+# Ruby on Rails backend for https://www.appdev.academy
 
 Ruby and Rails versions:
 

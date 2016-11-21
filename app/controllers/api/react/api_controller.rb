@@ -1,8 +1,5 @@
 class API::React::ApiController < ApplicationController
-  before_action :authenticate
-  
-  # TODO: Check if code below works without this `helper_method`s
-  # helper_method :current_user, :current_device, :signed_in?
+  # before_action :authenticate
   
   def current_user
     @current_user

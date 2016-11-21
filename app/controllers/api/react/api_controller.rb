@@ -1,4 +1,4 @@
-class API::React::ApiController < ApplicationController
+class Api::React::ApiController < ApplicationController
   # before_action :authenticate
   
   def current_user

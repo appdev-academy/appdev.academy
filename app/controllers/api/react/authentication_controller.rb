@@ -1,4 +1,4 @@
-class API::React::AuthenticationController < API::React::ApiController
+class Api::React::AuthenticationController < Api::React::ApiController
   
   # # POST /api/v1/authentication/sign_in_with_email
   # def sign_in_with_email

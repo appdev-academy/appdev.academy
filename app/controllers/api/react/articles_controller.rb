@@ -1,8 +1,8 @@
-class API::React::ArticlesController < API::React::ApiController
+class Api::React::ArticlesController < Api::React::ApiController
   
   # GET api/react/articles
   def index
-    articles = Articles.all
+    articles = Article.all
     articles_json = ActiveModel::Serializer::CollectionSerializer.new(articles, each_serializer: ArticleSerializer).as_json
     render json: { articles: articles_json }, status: :ok
   end

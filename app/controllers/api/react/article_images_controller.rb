@@ -1,4 +1,4 @@
-class Api::React::ArticleImagesController < ApplicationController
+class Api::React::ArticleImagesController < Api::React::ApiController
   
   # GET api/react/article_images
   def index
@@ -32,7 +32,7 @@ class Api::React::ArticleImagesController < ApplicationController
       article_image_json = ArticleImageSerializer.new(article_image).attributes.as_json
       render json: article_image_json, status: :ok
     else
-      render json: { errors: article.errors.full_messages }, status: :bad_request
+      render json: { errors: article_image.errors.full_messages }, status: :bad_request
     end
   end
   
@@ -46,6 +46,6 @@ class Api::React::ArticleImagesController < ApplicationController
   private
   
     def article_images_params
-      params.require(:article).permit(:image)
+      params.require(:article_images).permit(:image)
     end
 end

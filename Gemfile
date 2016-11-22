@@ -16,6 +16,11 @@ gem 'active_model_serializers', '0.10.2'
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
 
+# File uploading
+gem 'carrierwave'
+# Image processor for uploaded images with Carrierwave
+gem 'mini_magick'
+
 group :development do
   gem 'listen'
 end

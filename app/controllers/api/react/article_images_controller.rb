@@ -46,6 +46,6 @@ class Api::React::ArticleImagesController < Api::React::ApiController
   private
   
     def article_images_params
-      params.require(:article_images).permit(:image)
+      params.require(:article_image).permit(:image)
     end
 end

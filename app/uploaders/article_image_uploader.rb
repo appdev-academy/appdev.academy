@@ -7,9 +7,9 @@ class ArticleImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.pluralize.underscore}/#{model.id}"
   end
   
-  # Preview
+  # Preview (should be 160px by 120px, scale to fill)
   version :thumb do
-    process resize_to_limit: [160, 120]
+    process resize_to_fill: [160, 120]
   end
   
   # Image to insert into Articles

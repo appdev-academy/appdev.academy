@@ -2,7 +2,7 @@ class Api::React::ArticlesController < Api::React::ApiController
   
   # GET api/react/articles
   def index
-    articles = Article.all
+    articles = Article.order('id DESC')
     articles_json = ActiveModel::Serializer::CollectionSerializer.new(articles, each_serializer: ArticleSerializer).as_json
     render json: articles_json, status: :ok
   end

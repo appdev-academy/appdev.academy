@@ -2,7 +2,7 @@ class Api::React::ArticleImagesController < Api::React::ApiController
   
   # GET api/react/article_images
   def index
-    article_images = ArticleImage.all
+    article_images = ArticleImage.order('id DESC')
     article_images_json = ActiveModel::Serializer::CollectionSerializer.new(article_images, each_serializer: ArticleImageSerializer).as_json
     render json: article_images_json, status: :ok
   end

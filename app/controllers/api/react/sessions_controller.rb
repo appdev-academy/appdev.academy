@@ -3,8 +3,8 @@ class Api::React::SessionsController < Api::React::ApiController
   
   # POST /api/v1/sessions
   def create
-    user = User.find_by(email: email)
-    if user && user.authenticate(password)
+    user = User.find_by(email: params[:email])
+    if user && user.authenticate(params[:password])
       # User is authorized
       session = Session.new()
       session.user = user
@@ -23,4 +23,10 @@ class Api::React::SessionsController < Api::React::ApiController
     @@current_session.destroy
     render json: {}, status: :ok
   end
+  
+  private
+  
+    def user_params
+      params.require(:user).permit(:email, :password)
+    end
 end

@@ -2,7 +2,7 @@ class Api::React::ApiController < ApplicationController
   before_action :authenticate_user
   
   private
-    def authenticate
+    def authenticate_user
       # Check access_token presence
       access_token = request.headers['X-Access-Token']
       if access_token.nil?

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   # Relationships
-  has_many :devices, class_name: 'Device', foreign_key: 'owner_id', dependent: :destroy
+  has_many :sessions, dependent: :destroy
   
   # Relationships validations
   # Fields validations

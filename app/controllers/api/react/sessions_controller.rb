@@ -8,7 +8,7 @@ class Api::React::SessionsController < Api::React::ApiController
       # User is authorized
       session = Session.new()
       session.user = user
-      session.access_token = Session.access_token
+      session.access_token = Session.new_access_token
       session.save
       session_json = SessionSerializer.new(session).attributes.as_json
       render json: { access_token: session.access_token }, status: :ok

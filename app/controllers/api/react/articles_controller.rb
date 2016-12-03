@@ -4,14 +4,14 @@ class Api::React::ArticlesController < Api::React::ApiController
   # GET api/react/articles
   def index
     articles = Article.order('id DESC')
-    articles_json = ActiveModel::Serializer::CollectionSerializer.new(articles, each_serializer: ArticleSerializer).as_json
+    articles_json = ActiveModel::Serializer::CollectionSerializer.new(articles, each_serializer: ArticleIndexSerializer).as_json
     render json: articles_json, status: :ok
   end
   
   # GET api/react/articles/:id
   def show
     article = Article.find(params[:id])
-    article_json = ArticleSerializer.new(article).attributes.as_json
+    article_json = ArticleShowSerializer.new(article).attributes.as_json
     render json: article_json, status: :ok
   end
   
@@ -19,7 +19,7 @@ class Api::React::ArticlesController < Api::React::ApiController
   def create
     article = Article.new(article_params)
     if article.save
-      article_json = ArticleSerializer.new(article).attributes.as_json
+      article_json = ArticleShowSerializer.new(article).attributes.as_json
       render json: article_json, status: :ok
     else
       render json: { errors: article.errors.full_messages }, status: :bad_request
@@ -30,7 +30,7 @@ class Api::React::ArticlesController < Api::React::ApiController
   def update
     article = Article.find(params[:id])
     if article.update(article_params)
-      article_json = ArticleSerializer.new(article).attributes.as_json
+      article_json = ArticleShowSerializer.new(article).attributes.as_json
       render json: article_json, status: :ok
     else
       render json: { errors: article.errors.full_messages }, status: :bad_request

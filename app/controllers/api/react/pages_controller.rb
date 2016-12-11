@@ -9,13 +9,13 @@ class Api::React::PagesController < Api::React::ApiController
   
   # GET api/react/pages/:id
   def show
-    page = Page.find(params[:id])
+    page = Page.find_by!(slug: params[:slug])
     render json: page, serializer: PageShowSerializer, status: :ok
   end
   
   # PUT/PATCH api/react/pages/:id
   def update
-    page = Page.find(params[:id])
+    page = Page.find_by!(slug: params[:slug])
     if page.update(page_params)
       render json: page, serializer: PageShowSerializer, status: :ok
     else

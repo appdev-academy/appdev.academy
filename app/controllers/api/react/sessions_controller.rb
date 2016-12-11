@@ -10,8 +10,7 @@ class Api::React::SessionsController < Api::React::ApiController
       session.user = user
       session.access_token = Session.new_access_token
       session.save
-      session_json = SessionSerializer.new(session).attributes.as_json
-      render json: { access_token: session.access_token }, status: :ok
+      render json: session, serializer: SessionSerializer, status: :ok
     else
       # Unathorized User
       render json: { errors: ["User with this email doesn't exist or password is wrong"] }, status: :not_found

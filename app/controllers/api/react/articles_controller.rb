@@ -40,6 +40,23 @@ class Api::React::ArticlesController < Api::React::ApiController
     render json: {}, status: :ok
   end
   
+  # POST api/react/articles/:id
+  def publish
+    article = Article.find(params[:id])
+    # Make sure `Article` is not already published
+    if article.published_at
+      render json: { errors: ['Article is already published!'] }, status: :bad_request
+      return
+    end
+    # Publish `Article`
+    article.published_at = Date.current
+    if article.save
+      render json: article, serializer: ArticleShowSerializer, status: :ok
+    else
+      render json: { errors: article.errors.full_messages }, status: :bad_request
+    end
+  end
+  
   private
   
     def article_params

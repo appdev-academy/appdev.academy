@@ -20,8 +20,9 @@ ssh -p $SSH_PORT root@$HOST << SCRIPT
   # Update bundle
   RAILS_ENV=production bundle install
   
-  # Run database migrations
+  # Run migrations and seed database
   RAILS_ENV=production rake db:migrate
+  RAILS_ENV=production rake db:seed
   
   # Start Nginx server
   service nginx start

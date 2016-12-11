@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :react do
       resources :articles, only: [:index, :show, :create, :update, :destroy]
       resources :article_images, only: [:index, :create, :destroy]
-      resources :pages, only: [:index, :update], param: :slug
+      resources :pages, only: [:index, :show, :update]
       resources :sessions, only: [:create] do
         delete 'destroy', on: :collection
       end

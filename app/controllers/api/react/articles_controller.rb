@@ -40,16 +40,29 @@ class Api::React::ArticlesController < Api::React::ApiController
     render json: {}, status: :ok
   end
   
-  # POST api/react/articles/:id
+  # POST api/react/articles/:id/publish
   def publish
     article = Article.find(params[:id])
-    # Make sure `Article` is not already published
-    if article.published_at
-      render json: { errors: ['Article is already published!'] }, status: :bad_request
-      return
-    end
     # Publish `Article`
-    article.published_at = Date.current
+    if article.published_at
+      # If `Article` is already published - change visibility
+      article.is_hidden = false
+    else
+      # `Article` is published for the first time - set published_at date
+      article.published_at = Date.current
+    end
+    if article.save
+      render json: article, serializer: ArticleShowSerializer, status: :ok
+    else
+      render json: { errors: article.errors.full_messages }, status: :bad_request
+    end
+  end
+  
+  # POST api/react/articles/:id/hide
+  def hide
+    article = Article.find(params[:id])
+    # Publish `Article`
+    article.is_hidden = true
     if article.save
       render json: article, serializer: ArticleShowSerializer, status: :ok
     else

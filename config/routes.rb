@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :react do
       resources :articles, only: [:index, :show, :create, :update, :destroy] do
         post :publish, on: :member
+        post :hide, on: :member
       end
       resources :article_images, only: [:index, :create, :destroy]
       resources :pages, only: [:index, :show, :update], param: :slug

@@ -1,5 +1,5 @@
 class ArticleIndexSerializer < ActiveModel::Serializer
-  attributes :id, :published_at, :title, :updated_at
+  attributes :id, :is_hidden, :published_at, :title, :updated_at
   
   def published_at
     if object.published_at

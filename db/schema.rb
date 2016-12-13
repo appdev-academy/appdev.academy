@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213092909) do
+ActiveRecord::Schema.define(version: 20161213094320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20161213092909) do
     t.boolean  "is_hidden",    default: false
     t.text     "preview",      default: "",    null: false
     t.text     "html_preview", default: "",    null: false
+    t.integer  "position",     default: 0
   end
 
   create_table "pages", force: :cascade do |t|

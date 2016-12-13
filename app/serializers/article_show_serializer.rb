@@ -1,5 +1,5 @@
 class ArticleShowSerializer < ActiveModel::Serializer
-  attributes :content, :html_content, :id, :is_hidden, :published_at, :title, :updated_at
+  attributes :content, :html_content, :html_preview, :id, :is_hidden, :preview, :published_at, :title, :updated_at
   
   def published_at
     if object.published_at

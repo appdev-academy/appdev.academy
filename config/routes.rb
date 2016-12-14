@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :articles, only: [:index, :show, :create, :update, :destroy] do
         post :publish, on: :member
         post :hide, on: :member
+        post :sort, on: :collection
       end
       resources :article_images, only: [:index, :create, :destroy]
       resources :pages, only: [:index, :show, :update], param: :slug

@@ -3,7 +3,7 @@ class Api::React::ArticlesController < Api::React::ApiController
   
   # GET api/react/articles
   def index
-    articles = Article.order('id DESC')
+    articles = Article.order('position DESC')
     render json: articles, each_serializer: ArticleIndexSerializer, status: :ok
   end
   
@@ -68,6 +68,14 @@ class Api::React::ArticlesController < Api::React::ApiController
     else
       render json: { errors: article.errors.full_messages }, status: :bad_request
     end
+  end
+  
+  # POST api/react/articles/sort
+  def sort
+    params[:article_ids].reverse.each_with_index do |id, index|
+      Article.where(id: id).update_all(position: index + 1)
+    end
+    render json: {}, status: :ok
   end
   
   private

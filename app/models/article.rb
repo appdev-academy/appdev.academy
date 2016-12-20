@@ -1,6 +1,10 @@
 class Article < ApplicationRecord
   # Relationships
+  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
+  
   # Relationships validations
+  validates :author, presence: true
+  
   # Fields validations
   validates :title, presence: true, uniqueness: true
   validates :content, presence: true

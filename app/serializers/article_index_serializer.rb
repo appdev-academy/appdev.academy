@@ -1,5 +1,9 @@
 class ArticleIndexSerializer < ActiveModel::Serializer
-  attributes :html_preview, :id, :is_hidden, :published_at, :title, :updated_at
+  attributes :author, :html_preview, :id, :is_hidden, :position, :published_at, :title, :updated_at
+  
+  def author
+    AuthorSerializer.new(object.author).attributes.as_json
+  end
   
   def published_at
     if object.published_at
@@ -10,10 +14,6 @@ class ArticleIndexSerializer < ActiveModel::Serializer
   end
   
   def updated_at
-    if object.updated_at
-      object.updated_at.strftime('%B %d, %Y')
-    else
-      nil
-    end
+    object.updated_at.strftime('%B %d, %Y')
   end
 end

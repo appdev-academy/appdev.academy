@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  before_create :set_default_position
+  
   # Relationships
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
   
@@ -11,9 +13,6 @@ class Article < ApplicationRecord
   validates :html_content, presence: true
   validates :preview, presence: true
   validates :html_preview, presence: true
-  
-  # Set position to be the last in the list
-  before_create :set_default_position
   
   private
     def set_default_position

@@ -14,10 +14,6 @@ class ArticleShowSerializer < ActiveModel::Serializer
   end
   
   def updated_at
-    if object.updated_at
-      object.updated_at.strftime('%B %d, %Y')
-    else
-      nil
-    end
+    object.updated_at.strftime('%B %d, %Y')
   end
 end

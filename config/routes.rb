@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       end
       resources :article_images, only: [:index, :create, :destroy]
       resources :pages, only: [:index, :show, :update], param: :slug
+      resources :projects, only: [:index, :create, :update, :destroy] do
+        post :sort, on: :collection
+      end
       resources :sessions, only: [:create] do
         delete 'destroy', on: :collection
       end

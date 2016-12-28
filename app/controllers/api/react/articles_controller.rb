@@ -16,7 +16,7 @@ class Api::React::ArticlesController < Api::React::ApiController
   # POST api/react/articles
   def create
     article = Article.new(article_params)
-    article.author = current_user
+    article.author = @current_user
     if article.save
       render json: article, serializer: ArticleShowSerializer, status: :ok
     else

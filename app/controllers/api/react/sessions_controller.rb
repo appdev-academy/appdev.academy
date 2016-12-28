@@ -19,7 +19,7 @@ class Api::React::SessionsController < Api::React::ApiController
   
   # DELETE /api/v1/sessions/destroy
   def destroy
-    @@current_session.destroy
+    @current_session.destroy
     render json: {}, status: :ok
   end
   

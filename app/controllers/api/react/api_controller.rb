@@ -11,12 +11,12 @@ class Api::React::ApiController < ApplicationController
       end
       
       # Check if Session with this access_token exists
-      @@current_session = Session.find_by(access_token: access_token)
-      if @@current_session.nil?
+      @current_session = Session.find_by(access_token: access_token)
+      if @current_session.nil?
         render json: { errors: ['Session with this access token not found'] }, status: :unauthorized
         return
       end
       
-      @@current_user = @@current_session.user
+      @current_user = @current_session.user
     end
 end

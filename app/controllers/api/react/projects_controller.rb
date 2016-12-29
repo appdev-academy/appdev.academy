@@ -33,6 +33,30 @@ class Api::React::ProjectsController < Api::React::ApiController
     render json: {}, status: :ok
   end
   
+  # POST api/react/projects/:id/publish
+  def publish
+    project = Project.find(params[:id])
+    # Publish `Project`
+    project.is_hidden = false
+    if project.save
+      render json: project, serializer: ProjectSerializer, status: :ok
+    else
+      render json: { errors: project.errors.full_messages }, status: :bad_request
+    end
+  end
+  
+  # POST api/react/projects/:id/hide
+  def hide
+    project = Project.find(params[:id])
+    # Publish `Project`
+    project.is_hidden = true
+    if project.save
+      render json: project, serializer: ProjectSerializer, status: :ok
+    else
+      render json: { errors: project.errors.full_messages }, status: :bad_request
+    end
+  end
+  
   # POST api/react/projects/sort
   def sort
     params[:project_ids].reverse.each_with_index do |id, index|
@@ -42,7 +66,6 @@ class Api::React::ProjectsController < Api::React::ApiController
   end
   
   private
-  
     def project_params
       params.require(:project).permit(:description, :html_description, :title)
     end

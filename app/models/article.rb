@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  # Callbacks
   before_create :set_default_position
   
   # Relationships

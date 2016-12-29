@@ -5,5 +5,7 @@ FactoryGirl.define do
     html_content { "<p>#{content}</p>" }
     preview { Faker::Lorem.paragraph }
     html_preview { "<p>#{preview}</p>" }
+    is_hidden { false }
+    published_at { nil }
   end
 end

@@ -24,7 +24,6 @@ class Api::React::SessionsController < Api::React::ApiController
   end
   
   private
-  
     def user_params
       params.require(:user).permit(:email, :password)
     end

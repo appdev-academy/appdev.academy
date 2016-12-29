@@ -80,7 +80,6 @@ class Api::React::ArticlesController < Api::React::ApiController
   end
   
   private
-  
     def article_params
       params.require(:article).permit(:content, :html_content, :html_preview, :preview, :title)
     end

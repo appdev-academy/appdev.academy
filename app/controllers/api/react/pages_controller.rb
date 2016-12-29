@@ -24,7 +24,6 @@ class Api::React::PagesController < Api::React::ApiController
   end
   
   private
-  
     def page_params
       params.require(:page).permit(:content, :html_content)
     end

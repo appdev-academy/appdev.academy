@@ -27,4 +27,17 @@ RSpec.describe Article, type: :model do
       it { should validate_presence_of(:html_preview) }
     end
   end
+  
+  context 'set default position on create' do
+    it 'should set position to be last' do
+      Article.destroy_all
+      article1 = FactoryGirl.create(:article, author: @author)
+      article2 = FactoryGirl.create(:article, author: @author)
+      article3 = FactoryGirl.create(:article, author: @author)
+      
+      expect(article1.position).to eq(1)
+      expect(article2.position).to eq(2)
+      expect(article3.position).to eq(3)
+    end
+  end
 end

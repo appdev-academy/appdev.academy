@@ -3,14 +3,14 @@ class Api::React::ProjectsController < Api::React::ApiController
   # GET api/react/projects
   def index
     projects = Project.order('position DESC')
-    render json: projects, each_serializer: ProjectSerializer, status: :ok
+    render json: projects, each_serializer: ProjectIndexSerializer, status: :ok
   end
   
   # POST api/react/projects
   def create
     project = Project.new(project_params)
     if project.save
-      render json: project, serializer: ProjectSerializer, status: :ok
+      render json: project, serializer: ProjectShowSerializer, status: :ok
     else
       render json: { errors: project.errors.full_messages }, status: :bad_request
     end
@@ -20,7 +20,7 @@ class Api::React::ProjectsController < Api::React::ApiController
   def update
     project = Project.find(params[:id])
     if project.update(project_params)
-      render json: project, serializer: ProjectSerializer, status: :ok
+      render json: project, serializer: ProjectShowSerializer, status: :ok
     else
       render json: { errors: project.errors.full_messages }, status: :bad_request
     end
@@ -39,7 +39,7 @@ class Api::React::ProjectsController < Api::React::ApiController
     # Publish `Project`
     project.is_hidden = false
     if project.save
-      render json: project, serializer: ProjectSerializer, status: :ok
+      render json: project, serializer: ProjectShowSerializer, status: :ok
     else
       render json: { errors: project.errors.full_messages }, status: :bad_request
     end
@@ -51,7 +51,7 @@ class Api::React::ProjectsController < Api::React::ApiController
     # Publish `Project`
     project.is_hidden = true
     if project.save
-      render json: project, serializer: ProjectSerializer, status: :ok
+      render json: project, serializer: ProjectShowSerializer, status: :ok
     else
       render json: { errors: project.errors.full_messages }, status: :bad_request
     end
@@ -67,6 +67,6 @@ class Api::React::ProjectsController < Api::React::ApiController
   
   private
     def project_params
-      params.require(:project).permit(:description, :html_description, :title)
+      params.require(:project).permit(:content, :html_content, :html_preview, :preview, :title)
     end
 end

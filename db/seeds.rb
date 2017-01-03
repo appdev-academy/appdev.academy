@@ -23,3 +23,11 @@ if home_page.nil?
     html_content: '<h1>Home Page</h1> '
   )
 end
+portfolio_page = Page.find_by(slug: 'portfolio')
+if portfolio_page.nil?
+  Page.create(
+    slug: 'portfolio',
+    content: '# Portfolio Page',
+    html_content: '<h1>Portfolio Page</h1>'
+  )
+end

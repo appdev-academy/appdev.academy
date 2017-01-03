@@ -1,5 +1,9 @@
 class ArticleImageSerializer < ActiveModel::Serializer
-  attributes :id, :regular, :thumb
+  attributes :id, :original, :regular, :thumb
+  
+  def original
+    object.image.url
+  end
   
   def regular
     object.image.regular.url

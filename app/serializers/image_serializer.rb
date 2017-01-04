@@ -1,4 +1,4 @@
-class ArticleImageSerializer < ActiveModel::Serializer
+class ImageSerializer < ActiveModel::Serializer
   attributes :id, :original, :regular, :thumb
   
   def original

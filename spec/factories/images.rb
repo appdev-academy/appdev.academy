@@ -1,4 +1,4 @@
 FactoryGirl.define do
-  factory :article_image do
+  factory :image do
   end
 end

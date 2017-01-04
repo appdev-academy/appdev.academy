@@ -6,6 +6,12 @@ class Api::React::ProjectsController < Api::React::ApiController
     render json: projects, each_serializer: ProjectIndexSerializer, status: :ok
   end
   
+  # GET api/react/projects/:id
+  def show
+    project = Project.find(params[:id])
+    render json: project, serializer: ProjectShowSerializer, status: :ok
+  end
+  
   # POST api/react/projects
   def create
     project = Project.new(project_params)

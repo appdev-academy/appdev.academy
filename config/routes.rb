@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       end
       resources :article_images, only: [:index, :create, :destroy]
       resources :pages, only: [:index, :show, :update], param: :slug
-      resources :projects, only: [:index, :create, :update, :destroy] do
+      resources :projects, only: [:index, :show, :create, :update, :destroy] do
         post :publish, on: :member
         post :hide, on: :member
         post :sort, on: :collection

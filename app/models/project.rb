@@ -5,9 +5,11 @@ class Project < ApplicationRecord
   # Relationships
   # Relationships validations
   # Fields validations
+  validates :content, presence: true
+  validates :html_content, presence: true
+  validates :html_preview, presence: true
+  validates :preview, presence: true
   validates :title, presence: true, uniqueness: true
-  validates :description, presence: true
-  validates :html_description, presence: true
   
   private
     def set_default_position

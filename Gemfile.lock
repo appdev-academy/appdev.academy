@@ -106,6 +106,9 @@ GEM
     puma (3.6.2)
     rack (2.0.1)
     rack-cors (0.4.0)
+    rack-google-analytics (1.2.0)
+      actionpack
+      activesupport
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.1)
@@ -210,6 +213,7 @@ DEPENDENCIES
   pg
   puma
   rack-cors
+  rack-google-analytics
   rails (= 5.0.1)
   rspec-expectations
   rspec-rails

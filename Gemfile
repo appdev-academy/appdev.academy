@@ -25,6 +25,9 @@ gem 'rack-cors'
 # Social media sharing
 gem 'social-share-button'
 
+# Google Analytics
+gem 'rack-google-analytics'
+
 # JSON serializers for ActiveRecord objects
 gem 'active_model_serializers', '0.10.2'
 

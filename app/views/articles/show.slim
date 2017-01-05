@@ -1,5 +1,5 @@
-- twitter_meta_params = {'card': 'summary_large_image', 'site': '@AppDev_Academy', 'creator': '@MaksymSkliarov', 'title': @article.title}
-- og_meta_params = { 'url': article_url(@article), 'type': 'article', 'title': @article.title }
+- twitter_meta_params = {'card': 'summary_large_image', 'site': '@AppDev_Academy', 'creator': '@MaksymSkliarov', 'title': @article.title, 'description': "#{@article.title} | App Dev Academy | Article"}
+- og_meta_params = {'url': article_url(@article), 'type': 'article', 'title': @article.title, 'description': "#{@article.title} | App Dev Academy | Article"}
 - if @article.image_url
   - twitter_meta_params['image'] = @article.image_url
   - og_meta_params['image'] = @article.image_url

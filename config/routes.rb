@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
+  # Static pages
+  root 'pages#home'
+  get '/about', to: 'pages#about'
+  get '/contacts', to: 'pages#contacts'
+  
+  # Blog
   resources :articles, only: [:index, :show], param: :slug
   
+  # Portfolio with projects
+  namespace :portfolio do
+    root to: 'projects#index'
+    resources :projects, only: [:show], param: :slug
+  end
+  
+  # JSON API
   namespace :api, constraints: { format: :json } do
     namespace :react do
       resources :articles, only: [:index, :show, :create, :update, :destroy] do

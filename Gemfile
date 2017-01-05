@@ -7,14 +7,32 @@ gem 'pg'
 # Use Puma as the app server
 gem 'puma'
 
+# Use jQuery as main JavaScript library
+gem 'jquery-rails'
+
+# Compress JavaScript files with uglifier
+gem 'uglifier'
+
+# Use SCSS for generating CSS
+gem 'sass-rails'
+
+# Use Slim as template language for HTML
+gem 'slim-rails'
+
 # Allow cross-origin requests
 gem 'rack-cors'
 
-# Serializers for ActiveRecord objects
+# Social media sharing
+gem 'social-share-button'
+
+# JSON serializers for ActiveRecord objects
 gem 'active_model_serializers', '0.10.2'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
+
+# Add meta tags to pages
+gem 'meta-tags'
 
 # File uploading
 gem 'carrierwave'

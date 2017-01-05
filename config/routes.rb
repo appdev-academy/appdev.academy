@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :articles, only: [:index, :show], param: :slug
+  
   namespace :api, constraints: { format: :json } do
     namespace :react do
       resources :articles, only: [:index, :show, :create, :update, :destroy] do

@@ -1,0 +1,15 @@
+- twitter_meta_params = {'card': 'summary_large_image', 'site': '@AppDev_Academy', 'creator': '@MaksymSkliarov', 'title': @article.title}
+- og_meta_params = { 'url': article_url(@article), 'type': 'article', 'title': @article.title }
+- if @article.image_url
+  - twitter_meta_params['image'] = @article.image_url
+  - og_meta_params['image'] = @article.image_url
+  - set_meta_tags title: @article.title, twitter: twitter_meta_params, og: og_meta_params, image_src: @article.image_url
+- else
+  - set_meta_tags title: @article.title, twitter: twitter_meta_params, og: og_meta_params
+
+.article-container
+  h2.center #{@article.title}
+  div Published by #{@article.author.full_name} on #{@article.published_at.strftime('%B %d, %Y')}
+  div last update on #{@article.updated_at.strftime('%B %d, %Y')}
+  div #{@article.html_content.html_safe}
+  = social_share_button_tag(@article.title)

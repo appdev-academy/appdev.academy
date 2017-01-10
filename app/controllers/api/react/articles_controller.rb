@@ -81,6 +81,6 @@ class Api::React::ArticlesController < Api::React::ApiController
   
   private
     def article_params
-      params.require(:article).permit(:content, :html_content, :html_preview, :image_url, :preview, :title)
+      params.require(:article).permit(:content, :html_content, :html_preview, :image_url, :preview, :short_description, :title)
     end
 end

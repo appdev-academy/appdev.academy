@@ -1,5 +1,5 @@
 class ArticleShowSerializer < ActiveModel::Serializer
-  attributes :author, :content, :html_content, :html_preview, :id, :image_url, :is_hidden, :preview, :published_at, :title, :updated_at
+  attributes :author, :content, :html_content, :html_preview, :id, :image_url, :is_hidden, :preview, :published_at, :short_description, :title, :updated_at
   
   def author
     AuthorSerializer.new(object.author).attributes.as_json

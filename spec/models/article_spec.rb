@@ -25,6 +25,7 @@ RSpec.describe Article, type: :model do
       it { should validate_presence_of(:html_content) }
       it { should validate_presence_of(:preview) }
       it { should validate_presence_of(:html_preview) }
+      it { should validate_presence_of(:short_description) }
     end
   end
   

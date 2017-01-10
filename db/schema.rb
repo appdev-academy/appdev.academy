@@ -10,25 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170105102551) do
+ActiveRecord::Schema.define(version: 20170110124835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title",                        null: false
-    t.text     "content",      default: "",    null: false
-    t.text     "html_content", default: "",    null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "title",                             null: false
+    t.text     "content",           default: "",    null: false
+    t.text     "html_content",      default: "",    null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.date     "published_at"
-    t.boolean  "is_hidden",    default: false
-    t.text     "preview",      default: "",    null: false
-    t.text     "html_preview", default: "",    null: false
-    t.integer  "position",     default: 0
-    t.integer  "author_id",                    null: false
+    t.boolean  "is_hidden",         default: false
+    t.text     "preview",           default: "",    null: false
+    t.text     "html_preview",      default: "",    null: false
+    t.integer  "position",          default: 0
+    t.integer  "author_id",                         null: false
     t.string   "image_url"
     t.string   "slug"
+    t.string   "short_description", default: "",    null: false
     t.index ["author_id"], name: "index_articles_on_author_id", using: :btree
   end
 

@@ -15,5 +15,7 @@ html
         = link_to 'About', about_path, class: ((params[:controller] == 'pages' && params[:action] == 'about') ? 'active' : '')
         = link_to 'Portfolio', portfolio_root_path, class: ((params[:controller] == 'portfolio/projects') ? 'active' : '')
         = link_to 'Contacts', contacts_path, class: ((params[:controller] == 'pages' && params[:action] == 'contacts') ? 'active' : '')
+        = link_to 'Guides', guides_path, class: ((params[:controller] == 'pages' && params[:action] == 'guides') ? 'active' : '')
+        = link_to 'Open Source', open_source_path, class: ((params[:controller] == 'pages' && params[:action] == 'open_source') ? 'active' : '')
         
       = yield

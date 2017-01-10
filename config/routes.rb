@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'pages#home'
   get '/about', to: 'pages#about'
   get '/contacts', to: 'pages#contacts'
+  get '/guides', to: 'pages#guides'
+  get '/open-source', to: 'pages#open_source'
   
   # Blog
   resources :articles, only: [:index, :show], param: :slug

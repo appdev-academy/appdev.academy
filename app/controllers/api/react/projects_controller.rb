@@ -1,5 +1,4 @@
 class Api::React::ProjectsController < Api::React::ApiController
-  
   # GET api/react/projects
   def index
     projects = Project.order('position DESC')

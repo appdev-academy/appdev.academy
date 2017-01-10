@@ -23,6 +23,9 @@ Rails.application.routes.draw do
         post :hide, on: :member
         post :sort, on: :collection
       end
+      resources :dashboards, only: [] do
+        get :main, on: :collection
+      end
       resources :images, only: [:index, :create, :destroy]
       resources :pages, only: [:index, :show, :update], param: :slug
       resources :projects, only: [:index, :show, :create, :update, :destroy] do

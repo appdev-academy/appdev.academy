@@ -1,5 +1,4 @@
 class Api::React::ImagesController < Api::React::ApiController
-  
   # GET api/react/images
   def index
     images = Image.order('id DESC')

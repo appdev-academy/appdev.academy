@@ -1,6 +1,4 @@
 class Api::React::PagesController < Api::React::ApiController
-  skip_before_action :authenticate_user, only: [:index, :show]
-  
   # GET api/react/pages
   def index
     pages = Page.order('id DESC')

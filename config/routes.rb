@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   # Blog
   resources :articles, only: [:index, :show], param: :slug
   
+  # RSS feed
+  get '/feed', to: 'articles#feed', defaults: { format: 'rss' }
+  
   # Portfolio with projects
   namespace :portfolio do
     root to: 'projects#index'

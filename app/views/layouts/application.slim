@@ -3,7 +3,8 @@ html
   head
     = display_meta_tags site: 'App Dev Academy'
     = csrf_meta_tags
-    link rel='stylesheet' type='text/css' href='https://admin.appdev.academy/app.css'
+    = auto_discovery_link_tag :rss, 'https://www.appdev.academy/feed'
+    link rel="stylesheet" type='text/css' href='https://admin.appdev.academy/app.css'
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = render 'layouts/favicons'
@@ -18,5 +19,6 @@ html
         = link_to 'Contacts', contacts_path, class: ((params[:controller] == 'pages' && params[:action] == 'contacts') ? 'active' : '')
         = link_to 'Guides', guides_path, class: ((params[:controller] == 'pages' && params[:action] == 'guides') ? 'active' : '')
         = link_to 'Open Source', open_source_path, class: ((params[:controller] == 'pages' && params[:action] == 'open_source') ? 'active' : '')
+        = link_to 'Feed', feed_path, class: ((params[:controller] == 'articles' && params[:action] == 'feed') ? 'active' : '')
         
       = yield

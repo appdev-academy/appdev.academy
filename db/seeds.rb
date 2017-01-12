@@ -47,3 +47,11 @@ if portfolio_page.nil?
     html_content: '<h2>Portfolio Page</h2>'
   )
 end
+screencasts_page = Page.find_by(slug: 'screencasts')
+if screencasts_page.nil?
+  Page.create(
+    slug: 'screencasts',
+    content: '## Screencasts Page',
+    html_content: '<h2>Screencasts Page</h2>'
+  )
+end

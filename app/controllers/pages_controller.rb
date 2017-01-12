@@ -18,4 +18,8 @@ class PagesController < ApplicationController
   def open_source
     @page = Page.find_by!(slug: 'open-source')
   end
+  
+  def screencasts
+    @page = Page.find_by!(slug: 'screencasts')
+  end
 end

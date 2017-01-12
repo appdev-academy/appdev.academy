@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/contacts', to: 'pages#contacts'
   get '/guides', to: 'pages#guides'
   get '/open-source', to: 'pages#open_source'
+  get '/screencasts', to: 'pages#screencasts'
   
   # Blog
   resources :articles, only: [:index, :show], param: :slug

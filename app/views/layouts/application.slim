@@ -19,6 +19,7 @@ html
       .menu
         = link_to 'Home', root_path, class: ((params[:controller] == 'pages' && params[:action] == 'home') ? 'active' : '')
         = link_to 'Blog', articles_path, class: ((params[:controller] == 'articles') ? 'active' : '')
+        = link_to 'Screencasts', screencasts_path, class: ((params[:controller] == 'pages' && params[:action] == 'screencasts') ? 'active' : '')
         = link_to 'About', about_path, class: ((params[:controller] == 'pages' && params[:action] == 'about') ? 'active' : '')
         = link_to 'Portfolio', portfolio_root_path, class: ((params[:controller] == 'portfolio/projects') ? 'active' : '')
         = link_to 'Contacts', contacts_path, class: ((params[:controller] == 'pages' && params[:action] == 'contacts') ? 'active' : '')

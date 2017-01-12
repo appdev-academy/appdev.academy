@@ -25,6 +25,6 @@ html
         = link_to 'Contacts', contacts_path, class: ((params[:controller] == 'pages' && params[:action] == 'contacts') ? 'active' : '')
         = link_to 'Guides', guides_path, class: ((params[:controller] == 'pages' && params[:action] == 'guides') ? 'active' : '')
         = link_to 'Open Source', open_source_path, class: ((params[:controller] == 'pages' && params[:action] == 'open_source') ? 'active' : '')
-        = link_to 'Feed', feed_path, class: ((params[:controller] == 'articles' && params[:action] == 'feed') ? 'active' : '')
+        = link_to 'RSS', feed_path, class: ((params[:controller] == 'articles' && params[:action] == 'feed') ? 'active' : '')
         
       = yield

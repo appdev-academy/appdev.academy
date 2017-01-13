@@ -1,4 +1,4 @@
 FactoryGirl.define do
-  factory :image do
+  factory :lesson do
   end
 end

@@ -8,6 +8,9 @@
     - @projects.each do |project|
       li
         = link_to project.title, portfolio_project_path(project), class: 'project-title'
-        div
+        
+        .project-container
           = project.html_preview.html_safe
-        = link_to 'More details...', portfolio_project_path(project), class: 'button blue'
+        
+        br
+        = link_to 'Project details...', portfolio_project_path(project), class: 'button blue'

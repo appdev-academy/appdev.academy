@@ -40,6 +40,11 @@ Rails.application.routes.draw do
       resources :sessions, only: [:create] do
         delete 'destroy', on: :collection
       end
+      resources :topics, only: [:index, :show, :create, :update, :destroy] do
+        post :publish, on: :member
+        post :hide, on: :member
+        post :sort, on: :collection
+      end
     end
   end
 end

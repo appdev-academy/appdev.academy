@@ -1,7 +1,7 @@
 class Api::React::SessionsController < Api::React::ApiController
   skip_before_action :authenticate_user, only: [:create]
   
-  # POST /api/v1/sessions
+  # POST /api/react/sessions
   def create
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
@@ -17,7 +17,7 @@ class Api::React::SessionsController < Api::React::ApiController
     end
   end
   
-  # DELETE /api/v1/sessions/destroy
+  # DELETE /api/react/sessions/destroy
   def destroy
     @current_session.destroy
     render json: {}, status: :ok

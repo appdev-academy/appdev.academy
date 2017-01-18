@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113134253) do
+ActiveRecord::Schema.define(version: 20170117144017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,15 +67,15 @@ ActiveRecord::Schema.define(version: 20170113134253) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title",                        null: false
-    t.text     "content",      default: "",    null: false
-    t.text     "html_content", default: "",    null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "title",                       null: false
+    t.text     "content",      default: "",   null: false
+    t.text     "html_content", default: "",   null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "position",     default: 0
-    t.boolean  "is_hidden",    default: false
-    t.text     "preview",      default: "",    null: false
-    t.text     "html_preview", default: "",    null: false
+    t.boolean  "is_hidden",    default: true
+    t.text     "preview",      default: "",   null: false
+    t.text     "html_preview", default: "",   null: false
     t.string   "slug"
     t.index ["slug"], name: "index_projects_on_slug", using: :btree
   end
@@ -106,11 +106,12 @@ ActiveRecord::Schema.define(version: 20170113134253) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string   "title",      default: "", null: false
+    t.string   "title",      default: "",   null: false
     t.string   "slug"
-    t.integer  "position",   default: 0,  null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "position",   default: 0,    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "is_hidden",  default: true
     t.index ["slug"], name: "index_topics_on_slug", using: :btree
   end
 

@@ -27,23 +27,41 @@ Rails.application.routes.draw do
         post :hide, on: :member
         post :sort, on: :collection
       end
+      
       resources :dashboards, only: [] do
         get :main, on: :collection
       end
+      
       resources :images, only: [:index, :create, :destroy]
+      
       resources :pages, only: [:index, :show, :update], param: :slug
+      
       resources :projects, only: [:index, :show, :create, :update, :destroy] do
         post :publish, on: :member
         post :hide, on: :member
         post :sort, on: :collection
       end
+      
       resources :sessions, only: [:create] do
         delete 'destroy', on: :collection
       end
-      resources :topics, only: [:index, :show, :create, :update, :destroy] do
+      
+      resources :topics, only: [:index, :show, :create, :update, :destroy], shallow: true do
         post :publish, on: :member
         post :hide, on: :member
         post :sort, on: :collection
+        
+        resources :screencasts, only: [:index, :show, :create, :update, :destroy] do
+          post :publish, on: :member
+          post :hide, on: :member
+          post :sort, on: :collection
+          
+          resources :lessons, only: [:index, :show, :create, :update, :destroy] do
+            post :publish, on: :member
+            post :hide, on: :member
+            post :sort, on: :collection
+          end
+        end
       end
     end
   end

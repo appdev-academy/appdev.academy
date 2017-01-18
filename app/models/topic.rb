@@ -4,6 +4,8 @@ class Topic < ApplicationRecord
   before_create :set_default_position
   
   # Relationships
+  has_many :screencasts, dependent: :destroy
+  
   # Relationships validations
   
   # Fields validations

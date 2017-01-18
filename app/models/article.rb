@@ -12,12 +12,13 @@ class Article < ApplicationRecord
   validates :author, presence: true
   
   # Fields validations
-  validates :title, presence: true, uniqueness: true
   validates :content, presence: true
   validates :html_content, presence: true
-  validates :preview, presence: true
   validates :html_preview, presence: true
+  validates :image_url, presence: true
+  validates :preview, presence: true
   validates :short_description, presence: true
+  validates :title, presence: true, uniqueness: true
   
   # Make link_to generate URLs with slug, instead of ID
   def to_param

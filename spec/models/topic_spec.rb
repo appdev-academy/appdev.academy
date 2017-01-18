@@ -6,6 +6,7 @@ RSpec.describe Topic, type: :model do
   end
   
   context 'relationships' do
+    it { should have_many(:screencasts).dependent(:destroy) }
   end
   
   context 'validations' do

@@ -19,13 +19,14 @@ RSpec.describe Article, type: :model do
     end
     context 'fields' do
       subject { FactoryGirl.create(:article, author: @author) }
-      it { should validate_presence_of(:title) }
-      it { should validate_uniqueness_of(:title) }
       it { should validate_presence_of(:content) }
       it { should validate_presence_of(:html_content) }
-      it { should validate_presence_of(:preview) }
       it { should validate_presence_of(:html_preview) }
+      it { should validate_presence_of(:image_url) }
+      it { should validate_presence_of(:preview) }
       it { should validate_presence_of(:short_description) }
+      it { should validate_presence_of(:title) }
+      it { should validate_uniqueness_of(:title) }
     end
   end
   

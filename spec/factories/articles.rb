@@ -1,12 +1,13 @@
 FactoryGirl.define do
   factory :article do
-    title { Faker::Lorem.sentence }
     content { Faker::Lorem.paragraphs(5).join('\n') }
     html_content { "<p>#{content}</p>" }
-    preview { Faker::Lorem.paragraph }
     html_preview { "<p>#{preview}</p>" }
-    short_description { Faker::Lorem.sentence }
+    image_url { Faker::Internet.url }
     is_hidden { false }
+    preview { Faker::Lorem.paragraph }
     published_at { nil }
+    short_description { Faker::Lorem.sentence }
+    title { Faker::Lorem.sentence }
   end
 end

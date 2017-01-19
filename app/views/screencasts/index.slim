@@ -1,9 +1,8 @@
 - set_meta_tags title: 'Screencasts'
 
-.article-container
-  = @screencasts_page.html_content.html_safe
-
 .full-width
+  .screencast-container = @screencasts_page.html_content.html_safe
+  
   - @topics.each do |topic|
     h2 = topic.title
     

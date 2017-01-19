@@ -1,9 +1,8 @@
 - set_meta_tags title: 'Portfolio'
 
-.project-container
-  = @portfolio_page.html_content.html_safe
-
 .full-width
+  .project-container = @portfolio_page.html_content.html_safe
+  
   ol.projects
     - @projects.each do |project|
       li

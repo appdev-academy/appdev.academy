@@ -1,0 +1,16 @@
+- set_meta_tags title: @screencast.title
+
+.full-width
+  .screencast-container
+    = @screencast.html_content.html_safe
+    
+  ol.lessons
+    - @screencast.lessons.published.each do |lesson|
+      li
+        h3 = link_to lesson.title, screencast_lesson_path(@screencast, lesson)
+        .screencast-container = lesson.html_preview.html_safe
+        = link_to 'Watch lesson...', screencast_lesson_path(@screencast, lesson), class: 'button blue'
+        
+  br
+  .actions.left
+    = link_to 'Back to Screencasts', screencasts_path, class: 'button blue'

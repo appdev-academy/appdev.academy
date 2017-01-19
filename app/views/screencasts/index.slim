@@ -1,0 +1,15 @@
+- set_meta_tags title: 'Screencasts'
+
+.article-container
+  = @screencasts_page.html_content.html_safe
+
+.full-width
+  - @topics.each do |topic|
+    h2 = topic.title
+    
+    ol.screencasts
+      - topic.screencasts.published.each do |screencast|
+        li
+          h3 = link_to screencast.title, screencast_path(screencast)
+          .article-container = screencast.html_preview.html_safe
+          = link_to 'Watch screencast...', screencast_path(screencast), class: 'button blue'

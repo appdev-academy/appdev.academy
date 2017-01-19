@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get '/contacts', to: 'pages#contacts'
   get '/guides', to: 'pages#guides'
   get '/open-source', to: 'pages#open_source'
-  get '/screencasts', to: 'pages#screencasts'
   
   # Blog
   resources :articles, only: [:index, :show], param: :slug
@@ -17,6 +16,10 @@ Rails.application.routes.draw do
   namespace :portfolio do
     root to: 'projects#index'
     resources :projects, only: [:show], param: :slug
+  end
+  
+  resources :screencasts, only: [:index, :show], param: :slug do
+    resources :lessons, only: [:show], param: :slug
   end
   
   # JSON API

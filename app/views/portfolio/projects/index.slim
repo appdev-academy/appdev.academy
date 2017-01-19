@@ -4,7 +4,7 @@
   = @portfolio_page.html_content.html_safe
 
 .full-width
-  ol.list-of-articles
+  ol.projects
     - @projects.each do |project|
       li
         = link_to project.title, portfolio_project_path(project), class: 'project-title'

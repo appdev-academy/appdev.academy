@@ -1,0 +1,9 @@
+- set_meta_tags title: @lesson.title
+
+.full-width
+  .lesson-container
+    = @lesson.html_content.html_safe
+    
+  .actions.left
+    = link_to 'Back to Lessons', screencast_path(@lesson.screencast), class: 'button blue'
+    = link_to 'Back to Screencasts', screencasts_path(@lesson.screencast), class: 'button blue'

@@ -1,10 +1,8 @@
 - set_meta_tags title: @project.title
 
-.article-container
-  h2.center
-    = @project.title
-  div
-    = @project.html_content.html_safe
+.full-width
+  h2.center = @project.title
+  .project-container = @project.html_content.html_safe
   
   br
   = link_to 'Back to Portfolio', portfolio_root_path, class: 'button blue'

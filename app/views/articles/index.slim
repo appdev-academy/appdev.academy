@@ -1,11 +1,10 @@
 - set_meta_tags title: 'Blog'
 
 .full-width
-  h2.center Articles
-  ol.list-of-articles
+  h2 Articles
+  ol.articles
     - @articles.each do |article|
-      li.article-container
-        div
-          = link_to article.title, article_path(article), class: 'article-title'
-          = article.html_preview.html_safe
-          = link_to 'Read more...', article_path(article), { class: 'button blue' }
+      li
+        = link_to article.title, article_path(article), class: 'article-title'
+        .article-container = article.html_preview.html_safe
+        = link_to 'Read more...', article_path(article), { class: 'button blue' }

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Rails
-gem 'rails', '5.0.1'
+gem 'rails', '5.0.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -29,7 +29,7 @@ gem 'social-share-button'
 gem 'rack-google-analytics'
 
 # JSON serializers for ActiveRecord objects
-gem 'active_model_serializers', '0.10.2'
+gem 'active_model_serializers'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'

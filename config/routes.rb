@@ -49,6 +49,8 @@ Rails.application.routes.draw do
         delete 'destroy', on: :collection
       end
       
+      resources :tags, only: [:index]
+      
       resources :topics, only: [:index, :show, :create, :update, :destroy], shallow: true do
         post :publish, on: :member
         post :hide, on: :member

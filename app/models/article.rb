@@ -1,12 +1,11 @@
 class Article < ApplicationRecord
   # Callbacks
-  # Set default position on create
   before_create :set_default_position
-  # Set slug on create/update
   after_save :set_slug
   
   # Relationships
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
+  has_and_belongs_to_many :tags
   
   # Relationships validations
   validates :author, presence: true

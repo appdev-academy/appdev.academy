@@ -14,6 +14,22 @@ class Api::React::ArticlesController < Api::React::ApiController
   # POST api/react/articles
   def create
     article = Article.new(article_params)
+    
+    # Update tags
+    tags_titles = params[:tags_titles]
+    puts 'tags_titles: ' + tags_titles
+    if tags_titles
+      tags = []
+      tags_titles.split(',').each do |tag_title|
+        tag = Tag.where('lower(title) = lower(?)', tag_title).first
+        if tag.nil?
+          tag = Tag.create(title: tag_title)
+        end
+        tags << tag
+      end
+      article.tags = tags
+    end
+    
     article.author = @current_user
     if article.save
       render json: article, serializer: ArticleShowSerializer, status: :ok
@@ -25,6 +41,22 @@ class Api::React::ArticlesController < Api::React::ApiController
   # PUT/PATCH api/react/articles/:id
   def update
     article = Article.find(params[:id])
+    
+    # Update tags
+    tags_titles = params[:tags_titles]
+    puts 'tags_titles: ' + tags_titles
+    if tags_titles
+      tags = []
+      tags_titles.split(',').each do |tag_title|
+        tag = Tag.where('lower(title) = lower(?)', tag_title).first
+        if tag.nil?
+          tag = Tag.create(title: tag_title)
+        end
+        tags << tag
+      end
+      article.tags = tags
+    end
+    
     if article.update(article_params)
       render json: article, serializer: ArticleShowSerializer, status: :ok
     else

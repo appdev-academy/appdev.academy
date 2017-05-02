@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117144017) do
+ActiveRecord::Schema.define(version: 20170502085959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(version: 20170117144017) do
     t.string   "short_description", default: "",    null: false
     t.index ["author_id"], name: "index_articles_on_author_id", using: :btree
     t.index ["slug"], name: "index_articles_on_slug", using: :btree
+  end
+
+  create_table "articles_tags", id: false, force: :cascade do |t|
+    t.integer "article_id", null: false
+    t.integer "tag_id",     null: false
+    t.index ["article_id", "tag_id"], name: "index_articles_tags_on_article_id_and_tag_id", using: :btree
+    t.index ["tag_id", "article_id"], name: "index_articles_tags_on_tag_id_and_article_id", using: :btree
   end
 
   create_table "images", force: :cascade do |t|
@@ -103,6 +110,13 @@ ActiveRecord::Schema.define(version: 20170117144017) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["user_id"], name: "index_sessions_on_user_id", using: :btree
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_tags_on_title", unique: true, using: :btree
   end
 
   create_table "topics", force: :cascade do |t|

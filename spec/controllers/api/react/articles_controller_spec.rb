@@ -48,7 +48,7 @@ RSpec.describe Api::React::ArticlesController, type: :controller do
           expect(published_article['position']).to eq(@published_article.position)
           expect(published_article['published_at']).to eq(@published_article.published_at.strftime('%B %d, %Y'))
           expect(published_article['title']).to eq(@published_article.title)
-          expect(published_article['updated_at']).to eq(@published_article.updated_at.strftime('%B %d, %Y'))
+          expect(published_article.key?('updated_at')).to eq(false)
         end
         
         it 'should NOT include article fields' do
@@ -73,7 +73,7 @@ RSpec.describe Api::React::ArticlesController, type: :controller do
           expect(article['position']).to eq(@article3.position)
           expect(article['published_at']).to eq(nil)
           expect(article['title']).to eq(@article3.title)
-          expect(article['updated_at']).to eq(@article3.updated_at.strftime('%B %d, %Y'))
+          expect(article.key?('updated_at')).to eq(false)
         end
         
         it 'should NOT include article fields' do

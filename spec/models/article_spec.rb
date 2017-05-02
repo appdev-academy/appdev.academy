@@ -11,6 +11,7 @@ RSpec.describe Article, type: :model do
   
   context 'relationships' do
     it { should belong_to(:author).class_name('User').with_foreign_key('author_id') }
+    it { should have_and_belong_to_many(:tags) }
   end
   
   context 'validations' do

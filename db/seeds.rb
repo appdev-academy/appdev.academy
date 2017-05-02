@@ -1,4 +1,4 @@
-# StaticPages
+# Pages
 pages = [
   { slug: 'about', content: '## About Page', html_content: '<h2>About Page</h2>' },
   { slug: 'contacts', content: '## Contacts Page', html_content: '<h2>Contacts Page</h2>' },

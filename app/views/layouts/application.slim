@@ -9,7 +9,12 @@ html
     
     = auto_discovery_link_tag :rss, 'https://www.appdev.academy/feed'
     
-    link rel='stylesheet' type='text/css' href='https://admin.appdev.academy/app.css'
+    / Stylesheets
+    - if Rails.env.development?
+      link rel='stylesheet' type='text/css' href='http://localhost:3000/app.css'
+    - else
+      link rel='stylesheet' type='text/css' href='https://admin.appdev.academy/app.css'
+    
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = render 'layouts/favicons'

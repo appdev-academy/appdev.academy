@@ -9,7 +9,7 @@ pages = [
   { slug: 'screencasts', content: '## Screencasts Page', html_content: '<h2>Screencasts Page</h2>' }
 ]
 pages.each do |p|
-  page = Page.find_by(slug: p.slug)
+  page = Page.find_by(slug: p[:slug])
   if page.nil?
     Page.create(p)
   end

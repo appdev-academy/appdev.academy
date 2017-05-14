@@ -3,9 +3,9 @@
 - if @article.image_url
   - twitter_meta_params['image'] = @article.image_url
   - og_meta_params['image'] = @article.image_url
-  - set_meta_tags title: @article.title, twitter: twitter_meta_params, og: og_meta_params, image_src: @article.image_url
+  - set_meta_tags title: @article.title, keywords: @article.tags.map(&:title), twitter: twitter_meta_params, og: og_meta_params, image_src: @article.image_url
 - else
-  - set_meta_tags title: @article.title, twitter: twitter_meta_params, og: og_meta_params
+  - set_meta_tags title: @article.title, keywords: @article.tags.map(&:title), twitter: twitter_meta_params, og: og_meta_params
 
 .full-width
   .article-container

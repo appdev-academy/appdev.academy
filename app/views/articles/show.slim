@@ -9,9 +9,12 @@
 
 .full-width
   .article-container
-    h2.center #{@article.title}
-    div Published by #{@article.author.full_name} on #{@article.published_at.strftime('%B %d, %Y')}
-    div last update on #{@article.updated_at.strftime('%B %d, %Y')}
-    div #{@article.html_content.html_safe}
+    h2 #{@article.title}
+    p.author
+      | Published by #{@article.author.full_name} on #{@article.published_at.strftime('%B %d, %Y')}
+      br
+      | last update on #{@article.updated_at.strftime('%B %d, %Y')}
+    = render 'tags', tags: @article.tags
+    .article-container #{@article.html_content.html_safe}
     = social_share_button_tag(@article.title)
     = link_to 'Back to all Articles', articles_path, class: 'button blue'

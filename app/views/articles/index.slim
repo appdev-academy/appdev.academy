@@ -1,10 +1,11 @@
 - set_meta_tags title: 'Blog'
 
 .full-width
-  h2 Articles
   ol.articles
     - @articles.each do |article|
       li
         = link_to article.title, article_path(article), class: 'article-title'
+        p.author Published by #{article.author.full_name} on #{article.published_at.strftime('%B %d, %Y')}
+        = render 'tags', tags: article.tags
         .article-container = article.html_preview.html_safe
         = link_to 'Read more...', article_path(article), { class: 'button blue' }

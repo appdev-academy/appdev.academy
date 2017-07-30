@@ -101,6 +101,7 @@ GEM
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
     pg (0.20.0)
+    photoswipe-rails (4.1.2)
     puma (3.8.2)
     rack (2.0.1)
     rack-cors (0.4.1)
@@ -209,6 +210,7 @@ DEPENDENCIES
   meta-tags
   mini_magick
   pg
+  photoswipe-rails
   puma
   rack-cors
   rack-google-analytics
@@ -223,4 +225,4 @@ DEPENDENCIES
   uglifier
 
 BUNDLED WITH
-   1.14.3
+   1.14.6

@@ -21,7 +21,7 @@ html
     
   body
     .root-container
-      .menu
+      .menu#menu
         = link_to 'Home', root_path, class: ((params[:controller] == 'pages' && params[:action] == 'home') ? 'active' : '')
         = link_to 'Blog', articles_path, class: ((params[:controller] == 'articles') ? 'active' : '')
         = link_to 'Screencasts', screencasts_path, class: ((params[:controller] == 'screencasts') ? 'active' : '')
@@ -31,5 +31,6 @@ html
         = link_to 'Guides', guides_path, class: ((params[:controller] == 'pages' && params[:action] == 'guides') ? 'active' : '')
         = link_to 'Open Source', open_source_path, class: ((params[:controller] == 'pages' && params[:action] == 'open_source') ? 'active' : '')
         = link_to 'RSS', feed_path, class: ((params[:controller] == 'articles' && params[:action] == 'feed') ? 'active' : '')
+        a href="javascript:void(0);" class="hamburger" onclick="toggleMenu()"&#9776;
         
       = yield

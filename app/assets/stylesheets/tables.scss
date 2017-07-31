@@ -1,0 +1,40 @@
+table.admin {
+  width: 100%;
+  
+  thead, td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  thead {
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+  td {
+    border: 1px solid #ddd;
+    
+    img {
+      position: relative;
+      width: 160px;
+      height: 120px;
+      display: block;
+    }
+  }
+  
+  tr.new-article-image {
+    img {
+      cursor: pointer;
+    }
+    
+    img::after {
+      content: '+';
+      font-size: 60px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

@@ -1,0 +1,140 @@
+// Title font
+@font-face {
+  font-family: PlayfairDisplay;
+  font-weight: bold;
+  font-style: normal;
+  src: url('https://admin.appdev.academy/fonts/playfair-display/bold.ttf');
+}
+@font-face {
+  font-family: PlayfairDisplay;
+  font-weight: bold;
+  font-style: italic;
+  src: url('https://admin.appdev.academy/fonts/playfair-display/bold-italic.ttf');
+}
+
+// Text font
+@font-face {
+  font-family: Raleway;
+  font-weight: normal;
+  font-style: normal;
+  src: url('https://admin.appdev.academy/fonts/raleway/regular.ttf');
+}
+@font-face {
+  font-family: Raleway;
+  font-weight: normal;
+  font-style: italic;
+  src: url('https://admin.appdev.academy/fonts/raleway/regular-italic.ttf');
+}
+@font-face {
+  font-family: Raleway;
+  font-weight: bold;
+  font-style: normal;
+  src: url('https://admin.appdev.academy/fonts/raleway/bold.ttf');
+}
+@font-face {
+  font-family: Raleway;
+  font-weight: bold;
+  font-style: italic;
+  src: url('https://admin.appdev.academy/fonts/raleway/bold-italic.ttf');
+}
+
+body {
+  font-family: Raleway;
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: PlayfairDisplay;
+  font-weight: bold;
+  font-style: normal;
+}
+
+h1, h2 {
+  margin: 40px 0;
+}
+
+h3, h4, h5, h6 {
+  margin: 20px 0;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.3em;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+h5 {
+  font-size: 0.8em;
+}
+
+h6 {
+  font-size: 0.7em;
+}
+
+p {
+  margin: 20px 0;
+  
+  code {
+    display: inline-block;
+    background-color: #f0f0f0;
+    border-radius: 2px;
+    border: 1px solid #c0c0c0;
+    padding: 0 5px;
+    margin: 2px 0;
+  }
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+span {
+  &.tag {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+    background-color: $main-color;
+    color: white;
+  }
+}
+
+pre {
+  $padding: 20px;
+  $border-width: 1px;
+  padding: $padding;
+  margin: 20px 0;
+  width: calc(100% - 2*#{$padding} - 2*#{$border-width});
+  border: $border-width dashed #2f6fab;
+  background-color: #f9f9f9;
+  overflow-x: scroll;
+  
+  code {
+    padding-right: 20px;
+  }
+}
+
+code {
+  font-family: monospace;
+}
+
+.center {
+  text-align: center;
+}

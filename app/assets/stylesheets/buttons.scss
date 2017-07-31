@@ -1,0 +1,106 @@
+.button {
+  display: inline-block;
+  padding: 5px 10px;
+  // Border
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  outline: none;
+  // Font
+  font-family: Raleway;
+  font-weight: bold;
+  font-size: 0.75em;
+  line-height: 1.5em;
+  text-decoration: none;
+  color: black;
+  // Background
+  background-color: white;
+  // Cursor
+  cursor: pointer;
+}
+
+.button:hover {
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  transition: all 0.25s;
+}
+
+.button.small {
+  padding: 0px 5px;
+}
+
+.button.blue {
+  border-color: $main-color;
+  color: $main-color;
+}
+
+.button.blue:hover, .button.blue.selected {
+  background-color: $main-color;
+  color: white;
+}
+
+.button.red {
+  border-color: $red-color;
+  color: $red-color;
+}
+
+.button.red:hover, .button.red.selected {
+  background-color: $red-color;
+  color: white;
+}
+
+.button.orange {
+  border-color: $orange-color;
+  color: $orange-color;
+}
+
+.button.orange:hover, .button.orange.selected {
+  background-color: $orange-color;
+  color: white;
+}
+
+.button.green {
+  border-color: $green-color;
+  color: $green-color;
+}
+
+.button.green:hover, .button.green.selected {
+  background-color: $green-color;
+  color: white;
+}
+
+// Fix wrong line-height for submit button in Firefox
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.buttons, .actions {
+  .button {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+.buttons.left, .actions.left {
+  .button {
+    margin-left: 0px;
+    margin-right: 5px;
+  }
+}
+
+.buttons.right, .actions.right {
+  .button {
+    margin-left: 5px;
+    margin-right: 0px;
+  }
+}
+
+.share-buttons {
+  > div {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}

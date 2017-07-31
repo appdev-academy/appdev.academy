@@ -1,0 +1,93 @@
+.column {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.half-width {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+}
+
+.full-width {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.root-container {
+  padding-top: $menu-height;
+  margin: 20px;
+  min-width: 300px;
+}
+
+.article-container,
+.lesson-container,
+.page-container,
+.project-container,
+.screencast-container {
+  ul {
+    list-style-position: inside;
+    
+    li:before {
+      content: "•";
+      padding-right: 5px;
+    }
+  }
+  
+  ol {
+    list-style-position: inside;
+    list-style-type: decimal;
+  }
+}
+
+ol.articles,
+ol.pages,
+ol.projects,
+ol.lessons,
+ol.screencasts {
+  > li {
+    border-bottom: 2px solid $main-color;
+    margin-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+.confirmation-dialog {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: white;
+  
+  &.show {
+    display: block;
+  }
+  
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+ul.errors {
+  list-style-position: inside;
+  
+  padding: 5px;
+  margin-bottom: 20px;
+  border: 2px solid $red-color;
+  border-radius: 5px;
+  
+  li {
+    color: $red-color;
+  }
+  
+  li:before {
+    content: "•";
+    padding-right: 5px;
+  }
+}

@@ -1,5 +1,28 @@
+@import '_reset';
+@import '_variables';
+
+@import 'buttons';
+@import 'containers';
+@import 'forms';
+@import 'links';
+@import 'menus';
+@import 'tables';
+@import 'tags';
+@import 'text';
+@import 'video';
+
+// Share buttons
 @import 'social-share-button';
 @import 'social';
+
+.hidden {
+  display: none;
+}
+
+img {
+  width: 100%;
+}
+
 // @import 'photoswipe';
 
 .menu {

@@ -9,6 +9,10 @@
   background-color: white;
   border-bottom: 2px solid $main-color;
   
+  .hamburger {
+    display: none;
+  }
+  
   a {
     display: inline-block;
     line-height: $menu-height;
@@ -20,6 +24,38 @@
       text-decoration: none;
       color: white;
       background-color: $main-color;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .menu {
+    a {
+      line-height: 44px;
+      
+      &:not(:first-child) {
+        display: none;
+      }
+      
+      &.hamburger {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+    
+    &.responsive {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      
+      a {
+        display: block;
+      }
     }
   }
 }

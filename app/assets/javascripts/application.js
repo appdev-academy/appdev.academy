@@ -36,9 +36,17 @@ var openPhotoSwipe = function() {
 function toggleMenu() {
   var menu = document.getElementById('menu');
   if (menu.className === 'menu') {
-      menu.className += ' responsive';
+    // Show mobile menu
+    menu.className += ' responsive';
+    
+    // Prevent main content sroll
+    $('html').css('overflow', 'hidden');
   } else {
-      menu.className = 'menu';
+    // Hide mobile menu
+    menu.className = 'menu';
+    
+    // Make main content scrollable
+    $('html').css('overflow', 'auto');
   }
 }
 

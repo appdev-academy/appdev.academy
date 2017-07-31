@@ -10,9 +10,6 @@ gem 'puma'
 # Use jQuery as main JavaScript library
 gem 'jquery-rails'
 
-# Lightbox image gallery, used for portfolio projects
-gem 'photoswipe-rails'
-
 # Compress JavaScript files with uglifier
 gem 'uglifier'
 

@@ -1,7 +1,16 @@
 - set_meta_tags title: @project.title
 
+= render 'photoswipe/gallery'
+
 .full-width
   h2.center = @project.title
+  
+  - if @project.gallery_images.any?
+    .image-gallery
+      - @project.gallery_images.each_with_index do |gallery_image, index|
+        a href='#' onClick="openPhotoSwipe(#{@project.id}, #{index});"
+          = image_tag gallery_image.image.thumb.url
+        
   .project-container = @project.html_content.html_safe
   
   br

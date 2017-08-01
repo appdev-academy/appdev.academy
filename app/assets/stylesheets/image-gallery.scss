@@ -1,0 +1,19 @@
+.image-gallery {
+  margin-top: 20px;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: scroll;
+  
+  a {
+    display: inline-block;
+    
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    
+    img {
+      width: auto;
+      height: 240px;
+    }
+  }
+}

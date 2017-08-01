@@ -5,31 +5,17 @@
 //= require social-share-button
 //= require_tree .
 
-var openPhotoSwipe = function() {
+var openPhotoSwipe = function(projectID, index) {
   var pswpElement = document.querySelectorAll('.pswp')[0];
   
-  // Build items array
-  var items = [{
-      src: 'https://www.appdev.academy/uploads/images/31/regular_image.png',
-      w: 800,
-      h: 676
-    }, {
-      src: 'https://www.appdev.academy/uploads/images/32/regular_image.png',
-      w: 800,
-      h: 676
-    }
-  ];
-  
-  // Define options (if needed)
-  var options = {
-    // optionName: 'option value'
-    // for example:
-    index: 0 // start at first slide
-  };
-  
-  // Initializes and opens PhotoSwipe
-  var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-  gallery.init();
+  $.get(`/portfolio/projects/${projectID}.json`, function(data) {
+    var options = {
+      index: index
+    };
+    
+    var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, data, options);
+    gallery.init();
+  });
 }
 
 // Main menu on mobile devices
@@ -49,7 +35,3 @@ function toggleMenu() {
     $('html').css('overflow', 'auto');
   }
 }
-
-$(document).ready(function() {
-  document.getElementById('btn').onclick = openPhotoSwipe;
-});

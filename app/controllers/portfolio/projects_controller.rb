@@ -5,6 +5,20 @@ class Portfolio::ProjectsController < ApplicationController
   end
   
   def show
-    @project = Project.find_by!(slug: params[:slug])
+    # Search by :slug
+    @project = Project.find_by(slug: params[:slug])
+    # Search by :id
+    @project = Project.find(params[:slug]) if @project.nil?
+    
+    respond_to do |format|
+      format.html do
+        render :show
+      end
+      
+      format.json do
+        images = @project.gallery_images.map { |g| { src: g.image.url, w: MiniMagick::Image.open(g.image.path).width, h: MiniMagick::Image.open(g.image.path).height } }
+        render json: images, status: :ok
+      end
+    end
   end
 end

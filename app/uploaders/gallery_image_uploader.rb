@@ -1,15 +1,13 @@
 class GalleryImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
-  storage :file
-  
   def store_dir
     "uploads/#{model.class.to_s.pluralize.underscore}/#{model.id}"
   end
   
-  # Preview (should be fixed height 160px, resize to fill)
+  # Preview (should be fixed height 240px, resize to fill)
   version :thumb do
-    process resize_to_limit: [160, 10000]
+    process resize_to_fit: [240, 10000]
   end
   
   # White list of extensions which are allowed to be uploaded.

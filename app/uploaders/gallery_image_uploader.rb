@@ -1,4 +1,4 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class GalleryImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
   storage :file
@@ -7,14 +7,9 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.pluralize.underscore}/#{model.id}"
   end
   
-  # Preview (should be 160px by 120px, scale to fill)
+  # Preview (should be fixed height 160px, resize to fill)
   version :thumb do
-    process resize_to_fill: [160, 120]
-  end
-  
-  # Image to insert into Articles
-  version :regular do
-    process resize_to_limit: [800, 800]
+    process resize_to_limit: [160, 10000]
   end
   
   # White list of extensions which are allowed to be uploaded.

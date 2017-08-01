@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
   
   # JSON API
-  namespace :api, constraints: { format: :json } do
+  namespace :api, shallow: true, constraints: { format: :json } do
     namespace :react do
       resources :articles, only: [:index, :show, :create, :update, :destroy] do
         post :publish, on: :member
@@ -35,6 +35,12 @@ Rails.application.routes.draw do
         get :main, on: :collection
       end
       
+      resources :gallery_images, only: [:destroy] do
+        collection do
+          post :sort
+        end
+      end
+      
       resources :images, only: [:index, :create, :destroy]
       
       resources :pages, only: [:index, :show, :update], param: :slug
@@ -43,6 +49,8 @@ Rails.application.routes.draw do
         post :publish, on: :member
         post :hide, on: :member
         post :sort, on: :collection
+        
+        resources :gallery_images, only: [:index, :create]
       end
       
       resources :sessions, only: [:create] do
@@ -51,7 +59,7 @@ Rails.application.routes.draw do
       
       resources :tags, only: [:index]
       
-      resources :topics, only: [:index, :show, :create, :update, :destroy], shallow: true do
+      resources :topics, only: [:index, :show, :create, :update, :destroy] do
         post :publish, on: :member
         post :hide, on: :member
         post :sort, on: :collection

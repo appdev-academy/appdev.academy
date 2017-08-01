@@ -5,8 +5,11 @@ class Project < ApplicationRecord
   # Set slug on create/update
   after_save :set_slug
   
-  # Relationships
-  # Relationships validations
+  # Associations
+  has_many :gallery_images, dependent: :destroy
+  
+  # Associations validations
+  
   # Fields validations
   validates :content, presence: true
   validates :html_content, presence: true

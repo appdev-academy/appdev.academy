@@ -10,7 +10,8 @@ var openPhotoSwipe = function(projectID, index) {
   
   $.get(`/portfolio/projects/${projectID}.json`, function(data) {
     var options = {
-      index: index
+      index: index,
+      history: false
     };
     
     var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, data, options);

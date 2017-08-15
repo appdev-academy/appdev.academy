@@ -13,7 +13,7 @@
         - if project.gallery_images.any?
           .image-gallery
             - project.gallery_images.each_with_index do |gallery_image, index|
-              a href='#' onClick="openPhotoSwipe(#{project.id}, #{index});"
+              a href='javascript:void();' onClick="openPhotoSwipe(#{project.id}, #{index});"
                 = image_tag gallery_image.image.thumb.url
                 
         .project-container

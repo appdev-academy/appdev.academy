@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   
   # Blog
   resources :articles, only: [:index, :show], param: :slug
+  get '/articles/tag/:tag_slug', to: 'articles#taged_index', as: 'tag'
   
   # RSS feed
   get '/feed', to: 'articles#feed', defaults: { format: 'rss' }

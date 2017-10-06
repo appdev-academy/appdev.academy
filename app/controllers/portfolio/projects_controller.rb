@@ -9,7 +9,7 @@ class Portfolio::ProjectsController < ApplicationController
       @portfolio_page = Page.find_by!(slug: 'portfolio')
       @projects = Project.joins(:tags).where(tags: { slug: params[:tag_slug] }, is_hidden: false).order('position DESC')
     else
-      render 'index'
+      redirect_to portfolio_root_path
     end
   end
   

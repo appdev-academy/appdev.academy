@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
     if Tag.exists?(slug: params[:tag_slug])
       @articles = Article.joins(:tags).where(tags: { slug: params[:tag_slug] }, is_hidden: false).where.not(published_at: nil).order('position DESC')
     else
-      render 'index'
+      redirect_to articles_path
     end
   end
   

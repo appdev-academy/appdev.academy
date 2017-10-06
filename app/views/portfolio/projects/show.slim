@@ -10,7 +10,8 @@
       - @project.gallery_images.each_with_index do |gallery_image, index|
         a href='javascript:void();' onClick="openPhotoSwipe(#{@project.id}, #{index});"
           = image_tag gallery_image.image.thumb.url
-        
+          
+  = render 'tags', tags: @project.tags
   .project-container = @project.html_content.html_safe
   
   br

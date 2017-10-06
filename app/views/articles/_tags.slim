@@ -1,4 +1,4 @@
 - if tags && tags.count > 0
   p
     - tags.each do |tag|
-      span.tag ##{tag.title}
+      span.tag ##{link_to tag.title, articles_tag_path(tag.slug)}

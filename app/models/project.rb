@@ -7,6 +7,7 @@ class Project < ApplicationRecord
   
   # Associations
   has_many :gallery_images, dependent: :destroy
+  has_and_belongs_to_many :tags
   
   # Associations validations
   

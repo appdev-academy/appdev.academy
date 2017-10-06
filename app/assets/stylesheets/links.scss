@@ -13,3 +13,7 @@ a {
     text-decoration: underline;
   }
 }
+
+span.tag a {
+  color: $tag-text-color;
+}

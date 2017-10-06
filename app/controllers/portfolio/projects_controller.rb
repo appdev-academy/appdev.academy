@@ -4,6 +4,15 @@ class Portfolio::ProjectsController < ApplicationController
     @projects = Project.where(is_hidden: false).order('position DESC')
   end
   
+  def taged_index
+    if Tag.exists?(slug: params[:tag_slug])
+      @portfolio_page = Page.find_by!(slug: 'portfolio')
+      @projects = Project.joins(:tags).where(tags: { slug: params[:tag_slug] }, is_hidden: false).order('position DESC')
+    else
+      render 'index'
+    end
+  end
+  
   def show
     # Search by :slug
     @project = Project.find_by(slug: params[:slug])

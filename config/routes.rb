@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   # Blog
   resources :articles, only: [:index, :show], param: :slug
-  get '/articles/tag/:tag_slug', to: 'articles#taged_index', as: 'tag'
+  get '/articles/tag/:tag_slug', to: 'articles#taged_index', as: 'articles_tag'
   
   # RSS feed
   get '/feed', to: 'articles#feed', defaults: { format: 'rss' }
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     root to: 'projects#index'
     resources :projects, only: [:show], param: :slug
   end
+  get '/portfolio/projects/tags/:tag_slug', to: 'portfolio/projects#taged_index', as: 'projects_tag'
   
   resources :screencasts, only: [:index, :show], param: :slug do
     resources :lessons, only: [:show], param: :slug

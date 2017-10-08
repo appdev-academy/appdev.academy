@@ -16,19 +16,7 @@ class Api::React::ArticlesController < Api::React::ApiController
     article = Article.new(article_params)
     
     # Update tags
-    tags_titles = params[:tags_titles]
-    puts 'tags_titles: ' + tags_titles
-    if tags_titles
-      tags = []
-      tags_titles.split(',').each do |tag_title|
-        tag = Tag.where('lower(title) = lower(?)', tag_title).first
-        if tag.nil?
-          tag = Tag.create(title: tag_title)
-        end
-        tags << tag
-      end
-      article.tags = tags
-    end
+    update_tags_for_article(article)
     
     article.author = @current_user
     if article.save
@@ -43,19 +31,7 @@ class Api::React::ArticlesController < Api::React::ApiController
     article = Article.find(params[:id])
     
     # Update tags
-    tags_titles = params[:tags_titles]
-    puts 'tags_titles: ' + tags_titles
-    if tags_titles
-      tags = []
-      tags_titles.split(',').each do |tag_title|
-        tag = Tag.where('lower(title) = lower(?)', tag_title).first
-        if tag.nil?
-          tag = Tag.create(title: tag_title)
-        end
-        tags << tag
-      end
-      article.tags = tags
-    end
+    update_tags_for_article(article)
     
     if article.update(article_params)
       render json: article, serializer: ArticleShowSerializer, status: :ok
@@ -112,5 +88,21 @@ class Api::React::ArticlesController < Api::React::ApiController
   private
     def article_params
       params.require(:article).permit(:content, :html_content, :html_preview, :image_url, :preview, :short_description, :title)
+    end
+    
+    def update_tags_for_article(article)
+      tags_titles = params[:tags_titles]
+      puts 'tags_titles: ' + tags_titles
+      if tags_titles
+        tags = []
+        tags_titles.split(',').each do |tag_title|
+          tag = Tag.where('lower(title) = lower(?)', tag_title).first
+          if tag.nil?
+            tag = Tag.create(title: tag_title)
+          end
+          tags << tag
+        end
+        article.tags = tags
+      end
     end
 end

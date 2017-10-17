@@ -59,7 +59,7 @@ Rails.application.routes.draw do
         delete 'destroy', on: :collection
       end
       
-      resources :tags, only: [:index, :update]
+      resources :tags, only: [:index, :show, :create, :update, :destroy]
       
       resources :topics, only: [:index, :show, :create, :update, :destroy] do
         post :publish, on: :member

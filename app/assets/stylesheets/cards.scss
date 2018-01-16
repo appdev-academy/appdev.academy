@@ -1,0 +1,48 @@
+.flexbox-cards {
+  // Tricks for all browsers
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  .card {
+    width: 30%;
+    text-align: center;
+    color: #5a5a5a;
+    margin-bottom: 20px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  .image-circle {
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+  }
+  
+  h2 {
+    font-size: 30px;
+    font-weight: normal;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin: 0 10px 10px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .flexbox-cards {
+    flex-direction: column;
+    
+    .card {
+      width: auto;
+    }
+  }
+}

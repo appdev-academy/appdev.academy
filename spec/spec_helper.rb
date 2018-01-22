@@ -96,4 +96,11 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  
+  # Clean uploaded files after each request.
+  config.after(:all) do
+    if Rails.env.test?
+      FileUtils.remove_dir(Rails.root.join('spec', 'support', 'uploads'))
+    end
+  end
 end

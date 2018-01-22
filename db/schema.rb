@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171006092339) do
+ActiveRecord::Schema.define(version: 20180122093002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 20171006092339) do
     t.integer "tag_id",     null: false
     t.index ["article_id", "tag_id"], name: "index_articles_tags_on_article_id_and_tag_id", using: :btree
     t.index ["tag_id", "article_id"], name: "index_articles_tags_on_tag_id_and_article_id", using: :btree
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string   "first_name",                      null: false
+    t.string   "last_name",                       null: false
+    t.integer  "position",        default: 0,     null: false
+    t.string   "profile_picture"
+    t.boolean  "published",       default: false
+    t.string   "title"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "gallery_images", force: :cascade do |t|

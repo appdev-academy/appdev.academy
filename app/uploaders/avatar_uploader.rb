@@ -17,6 +17,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   
   # Override the filename of the uploaded files.
   def filename
-    "image.#{model.image.file.extension}" if original_filename
+    "image.#{model.profile_picture.file.extension}" if original_filename
   end
 end

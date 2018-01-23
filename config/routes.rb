@@ -38,7 +38,11 @@ Rails.application.routes.draw do
         get :main, on: :collection
       end
       
-      resources :employees, only: [:index, :show, :create, :update, :destroy]
+      resources :employees, only: [:index, :show, :create, :update, :destroy] do
+        post :publish, on: :member
+        post :hide, on: :member
+        post :sort, on: :collection
+      end
       resources :gallery_images, only: [:destroy] do
         collection do
           post :sort

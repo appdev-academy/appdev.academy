@@ -1,5 +1,5 @@
 class Api::React::EmployeesController < Api::React::ApiController
-  before_action :set_employee, only: [:show, :update, :destroy, :publish]
+  before_action :set_employee, only: [:show, :update, :destroy, :publish, :hide]
   
   # GET api/react/employees
   def index
@@ -16,11 +16,13 @@ class Api::React::EmployeesController < Api::React::ApiController
   
   # POST api/react/employees
   def create
-    if @employee.save
-      employee_json = EmployeeShowSerializer.new(@employee).as_json
+    employee = Employee.new(employee_params)
+    
+    if employee.save
+      employee_json = EmployeeShowSerializer.new(employee).as_json
       render json: { employee: employee_json }, status: :created
     else
-      render json: { errors: @employee.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: employee.errors.full_messages }, status: :unprocessable_entity
     end
   end
   
@@ -53,7 +55,7 @@ class Api::React::EmployeesController < Api::React::ApiController
   end
   
   # POST api/react/employees/:id/unpublish
-  def unpublish
+  def hide
     @employee.published = false
     
     if @employee.save

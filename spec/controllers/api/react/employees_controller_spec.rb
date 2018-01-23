@@ -318,6 +318,60 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
             expect(json_response['errors'].first).to eq("Last name is too long (maximum is 100 characters)")
           end
         end
+        
+        context 'WITHOUT profile_picture params' do
+          before :each do
+            request.headers['X-Access-Token'] = @session.access_token
+            employee_params = FactoryGirl.attributes_for(:employee, profile_picture: nil)
+            @employee_count = Employee.count
+            post :create, params: { employee: employee_params }
+          end
+          
+          it 'should have :unprocessable_entity (422) HTTP response status' do
+            expect(response).to have_http_status(422)
+          end
+          
+          it 'should have right content type' do
+            expect(response.content_type).to eq('application/json')
+          end
+          
+          it 'should NOT create Employee' do
+            expect(@employee_count).to eq(Employee.count)
+          end
+          
+          it 'should include errors' do
+            json_response = JSON.parse(response.body)
+            expect(json_response.key?('errors')).to eq(true)
+            expect(json_response['errors'].first).to eq("Profile picture can't be blank")
+          end
+        end
+        
+        context 'WITHOUT title params' do
+          before :each do
+            request.headers['X-Access-Token'] = @session.access_token
+            employee_params = FactoryGirl.attributes_for(:employee, title: nil)
+            @employee_count = Employee.count
+            post :create, params: { employee: employee_params }
+          end
+          
+          it 'should have :unprocessable_entity (422) HTTP response status' do
+            expect(response).to have_http_status(422)
+          end
+          
+          it 'should have right content type' do
+            expect(response.content_type).to eq('application/json')
+          end
+          
+          it 'should NOT create Employee' do
+            expect(@employee_count).to eq(Employee.count)
+          end
+          
+          it 'should include errors' do
+            json_response = JSON.parse(response.body)
+            expect(json_response.key?('errors')).to eq(true)
+            expect(json_response['errors'].first).to eq("Title can't be blank")
+          end
+        end
       end
     end
     
@@ -527,6 +581,60 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
             expect(json_response['errors'].first).to eq("Last name is too long (maximum is 100 characters)")
           end
         end
+        
+        context 'WITHOUT profile_picture params' do
+          before :each do
+            request.headers['X-Access-Token'] = @session.access_token
+            employee_params = FactoryGirl.attributes_for(:employee, profile_picture: nil)
+            patch :update, params: { id: @published_employee.id, employee: employee_params }
+            @not_updated_employee = Employee.find_by(id: @published_employee.id)
+          end
+          
+          it 'should have :unprocessable_entity (422) HTTP response status' do
+            expect(response).to have_http_status(422)
+          end
+          
+          it 'should have right content type' do
+            expect(response.content_type).to eq('application/json')
+          end
+          
+          it 'should NOT update Employee' do
+            expect(@not_updated_employee).to eq(@published_employee)
+          end
+          
+          it 'should include errors' do
+            json_response = JSON.parse(response.body)
+            expect(json_response.key?('errors')).to eq(true)
+            expect(json_response['errors'].first).to eq("Profile picture can't be blank")
+          end
+        end
+        
+        context 'WITHOUT title params' do
+          before :each do
+            request.headers['X-Access-Token'] = @session.access_token
+            employee_params = FactoryGirl.attributes_for(:employee, title: nil)
+            patch :update, params: { id: @published_employee.id, employee: employee_params }
+            @not_updated_employee = Employee.find_by(id: @published_employee.id)
+          end
+          
+          it 'should have :unprocessable_entity (422) HTTP response status' do
+            expect(response).to have_http_status(422)
+          end
+          
+          it 'should have right content type' do
+            expect(response.content_type).to eq('application/json')
+          end
+          
+          it 'should NOT update Employee' do
+            expect(@not_updated_employee).to eq(@published_employee)
+          end
+          
+          it 'should include errors' do
+            json_response = JSON.parse(response.body)
+            expect(json_response.key?('errors')).to eq(true)
+            expect(json_response['errors'].first).to eq("Title can't be blank")
+          end
+        end
       end
     end
     
@@ -574,10 +682,14 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
   
   describe 'DELETE #destroy' do
     context 'User is authorized' do
+      before :context do
+        @destroy_employee = FactoryGirl.create(:employee)
+      end
+      
       context 'with valid params' do
         before :each do
           request.headers['X-Access-Token'] = @session.access_token
-          delete :destroy, params: { id: @published_employee.id }
+          delete :destroy, params: { id: @destroy_employee.id }
         end
         
         it 'should have :ok (200) HTTP response status' do
@@ -589,7 +701,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
         end
         
         it 'should delete Employee' do
-          expect(Employee.find_by(id: @published_employee.id)).to eq(nil)
+          expect(Employee.find_by(id: @destroy_employee.id)).to eq(nil)
         end
         
         it 'should have success' do
@@ -601,7 +713,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
       context 'with INVALID params' do
         before :each do
           request.headers['X-Access-Token'] = @session.access_token
-          delete :destroy, params: { id: @published_employee.id + 100 }
+          delete :destroy, params: { id: @destroy_employee.id + 100 }
         end
         
         it 'should have :not_found (404) HTTP response status' do
@@ -620,10 +732,14 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
     end
     
     context 'User is NOT authorized' do
+      before :context do
+        @destroy_employee = FactoryGirl.create(:employee)
+      end
+      
       context 'INVALID Access token' do
         before :each do
           request.headers['X-Access-Token'] = SecureRandom.hex(16) + 'invalid'
-          delete :destroy, params: { id: @published_employee.id + 100 }
+          delete :destroy, params: { id: @destroy_employee.id }
         end
         
         it 'should have :unauthorized (401) HTTP response status' do
@@ -642,7 +758,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
       
       context 'WITHOUT Access token' do
         before :each do
-          delete :destroy, params: { id: @published_employee.id + 100 }
+          delete :destroy, params: { id: @destroy_employee.id }
         end
         
         it 'should have :unauthorized (401) HTTP response status' do
@@ -760,7 +876,8 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
       context 'with valid params' do
         before :each do
           request.headers['X-Access-Token'] = @session.access_token
-          post :hide, params: { id: @published_employee.id }
+          pub = FactoryGirl.create(:employee, published: true)
+          post :hide, params: { id: @published_employee.reload.id }
         end
         
         it 'should have :ok (200) HTTP response status' do

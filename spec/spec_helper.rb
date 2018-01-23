@@ -100,7 +100,7 @@ RSpec.configure do |config|
   # Clean uploaded files after each request.
   config.after(:all) do
     if Rails.env.test?
-      FileUtils.remove_dir(Rails.root.join('spec', 'support', 'uploads'))
+      FileUtils.remove_dir(Rails.root.join('spec', 'support', 'uploads'), force: true)
     end
   end
 end

@@ -44,9 +44,7 @@ class Api::React::EmployeesController < Api::React::ApiController
   
   # POST api/react/employees/:id/publish
   def publish
-    @employee.published = true
-    
-    if @employee.save
+    if @employee.update(published: true)
       employee_json = EmployeeShowSerializer.new(@employee).as_json
       render json: { employee: employee_json }, status: :ok
     else
@@ -54,11 +52,9 @@ class Api::React::EmployeesController < Api::React::ApiController
     end
   end
   
-  # POST api/react/employees/:id/unpublish
+  # POST api/react/employees/:id/hide
   def hide
-    @employee.published = false
-    
-    if @employee.save
+    if @employee.update(published: false)
       employee_json = EmployeeShowSerializer.new(@employee).as_json
       render json: { employee: employee_json }, status: :ok
     else

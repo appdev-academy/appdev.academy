@@ -4,5 +4,6 @@ class Employee < ApplicationRecord
   # Fields validations
   validates :first_name, presence: true, length: { in: 2..100 }
   validates :last_name, presence: true, length: { in: 2..100 }
-  validates :position, presence: true
+  validates :title, presence: true
+  validates_presence_of :profile_picture
 end

@@ -1,14 +1,14 @@
-class EmployeeShowSerializer < ActiveModel::Serializer
+class EmployeeSerializer < ActiveModel::Serializer
   attribute :first_name
   attribute :id
   attribute :last_name
+  attribute :position
   
   attribute :profile_picture
   def profile_picture
     object.profile_picture.thumb.url
   end
   
-  attribute :position
   attribute :published
   attribute :title
   

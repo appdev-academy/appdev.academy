@@ -8,9 +8,7 @@ RSpec.describe Employee, type: :model do
   context 'validations' do
     context 'fields' do
       it { should validate_presence_of(:first_name) }
-      it { should validate_length_of(:first_name).is_at_least(2).is_at_most(100) }
       it { should validate_presence_of(:last_name) }
-      it { should validate_length_of(:last_name).is_at_least(2).is_at_most(100) }
       it { should validate_presence_of(:profile_picture) }
       it { should validate_presence_of(:title) }
     end

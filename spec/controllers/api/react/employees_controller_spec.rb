@@ -368,7 +368,6 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
   describe 'PATCH #update' do
     context 'User is authorized' do
       context 'with valid params' do
-        context 'with existing all params'
         before :each do
           request.headers['X-Access-Token'] = @session.access_token
           employee_params = FactoryGirl.attributes_for(:employee)
@@ -472,6 +471,33 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
             json_response = JSON.parse(response.body)
             expect(json_response.key?('errors')).to eq(true)
             expect(json_response['errors'].first).to eq("Last name can't be blank")
+          end
+        end
+        
+        context 'WITHOUT profile_picture params' do
+          before :each do
+            request.headers['X-Access-Token'] = @session.access_token
+            employee_params = FactoryGirl.attributes_for(:employee, profile_picture: nil)
+            patch :update, params: { id: @published_employee.id, employee: employee_params }
+            @not_updated_employee = Employee.find_by(id: @published_employee.id)
+          end
+          
+          it 'should have :unprocessable_entity (422) HTTP response status' do
+            expect(response).to have_http_status(422)
+          end
+          
+          it 'should have right content type' do
+            expect(response.content_type).to eq('application/json')
+          end
+          
+          it 'should NOT update Employee' do
+            expect(@not_updated_employee).to eq(@published_employee)
+          end
+          
+          it 'should include errors' do
+            json_response = JSON.parse(response.body)
+            expect(json_response.key?('errors')).to eq(true)
+            expect(json_response['errors'].first).to eq("Profile picture can't be blank")
           end
         end
         

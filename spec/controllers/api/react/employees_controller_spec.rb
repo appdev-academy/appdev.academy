@@ -33,14 +33,14 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
       it 'should include Employees fields' do
         json_response = JSON.parse(response.body)
         json_response['employees'].each do |employee_json|
-          includes_fields_for_employees(employee_json)
+          includes_fields_for_employee(employee_json)
         end
       end
       
       it 'should NOT include Employees fields' do
         json_response = JSON.parse(response.body)
         json_response['employees'].each do |employee_json|
-          not_includes_fields_for_employees(employee_json)
+          not_includes_fields_for_employee(employee_json)
         end
       end
     end
@@ -265,60 +265,6 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
           end
         end
         
-        context 'with INVALID first_name length' do
-          before :each do
-            request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee, first_name: 'name'*30)
-            @employee_count = Employee.count
-            post :create, params: { employee: employee_params }
-          end
-          
-          it 'should have :unprocessable_entity (422) HTTP response status' do
-            expect(response).to have_http_status(422)
-          end
-          
-          it 'should have right content type' do
-            expect(response.content_type).to eq('application/json')
-          end
-          
-          it 'should NOT create Employee' do
-            expect(@employee_count).to eq(Employee.count)
-          end
-          
-          it 'should include errors' do
-            json_response = JSON.parse(response.body)
-            expect(json_response.key?('errors')).to eq(true)
-            expect(json_response['errors'].first).to eq("First name is too long (maximum is 100 characters)")
-          end
-        end
-        
-        context 'with INVALID last_name length' do
-          before :each do
-            request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee, last_name: 'name'*30)
-            @employee_count = Employee.count
-            post :create, params: { employee: employee_params }
-          end
-          
-          it 'should have :unprocessable_entity (422) HTTP response status' do
-            expect(response).to have_http_status(422)
-          end
-          
-          it 'should have right content type' do
-            expect(response.content_type).to eq('application/json')
-          end
-          
-          it 'should NOT create Employee' do
-            expect(@employee_count).to eq(Employee.count)
-          end
-          
-          it 'should include errors' do
-            json_response = JSON.parse(response.body)
-            expect(json_response.key?('errors')).to eq(true)
-            expect(json_response['errors'].first).to eq("Last name is too long (maximum is 100 characters)")
-          end
-        end
-        
         context 'WITHOUT profile_picture params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
@@ -525,60 +471,6 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
             json_response = JSON.parse(response.body)
             expect(json_response.key?('errors')).to eq(true)
             expect(json_response['errors'].first).to eq("Last name can't be blank")
-          end
-        end
-        
-        context 'with INVALID first_name length' do
-          before :each do
-            request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee, first_name: 'name'*30)
-            patch :update, params: { id: @published_employee.id, employee: employee_params }
-            @not_updated_employee = Employee.find_by(id: @published_employee.id)
-          end
-          
-          it 'should have :unprocessable_entity (422) HTTP response status' do
-            expect(response).to have_http_status(422)
-          end
-          
-          it 'should have right content type' do
-            expect(response.content_type).to eq('application/json')
-          end
-          
-          it 'should NOT update Employee' do
-            expect(@not_updated_employee).to eq(@published_employee)
-          end
-          
-          it 'should include errors' do
-            json_response = JSON.parse(response.body)
-            expect(json_response.key?('errors')).to eq(true)
-            expect(json_response['errors'].first).to eq("First name is too long (maximum is 100 characters)")
-          end
-        end
-        
-        context 'with INVALID last_name length' do
-          before :each do
-            request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee, last_name: 'name'*30)
-            patch :update, params: { id: @published_employee.id, employee: employee_params }
-            @not_updated_employee = Employee.find_by(id: @published_employee.id)
-          end
-          
-          it 'should have :unprocessable_entity (422) HTTP response status' do
-            expect(response).to have_http_status(422)
-          end
-          
-          it 'should have right content type' do
-            expect(response.content_type).to eq('application/json')
-          end
-          
-          it 'should NOT update Employee' do
-            expect(@not_updated_employee).to eq(@published_employee)
-          end
-          
-          it 'should include errors' do
-            json_response = JSON.parse(response.body)
-            expect(json_response.key?('errors')).to eq(true)
-            expect(json_response['errors'].first).to eq("Last name is too long (maximum is 100 characters)")
           end
         end
         

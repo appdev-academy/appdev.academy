@@ -5,9 +5,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.pluralize.underscore}/#{model.id}"
   end
   
-  # Preview (should be 75px by 75px, scale to fill)
+  # Preview (should be 120px by 120px, scale to fill)
   version :thumb do
-    process resize_to_fill: [75, 75]
+    process resize_to_fill: [120, 120]
   end
 
   # White list of extensions which are allowed to be uploaded.

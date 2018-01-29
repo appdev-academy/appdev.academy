@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180123104612) do
+ActiveRecord::Schema.define(version: 20180129090029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,20 @@ ActiveRecord::Schema.define(version: 20180123104612) do
     t.datetime "updated_at", null: false
     t.string   "slug",       null: false
     t.index ["title"], name: "index_tags_on_title", unique: true, using: :btree
+  end
+
+  create_table "testimonials", force: :cascade do |t|
+    t.text     "body",                            null: false
+    t.string   "company",                         null: false
+    t.string   "first_name",                      null: false
+    t.text     "html_body",                       null: false
+    t.string   "last_name",                       null: false
+    t.string   "title",                           null: false
+    t.integer  "position",        default: 0,     null: false
+    t.string   "profile_picture",                 null: false
+    t.boolean  "published",       default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "topics", force: :cascade do |t|

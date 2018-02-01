@@ -1,3 +1,15 @@
-.full-width
+.home-container
   .page-container
-    = @page.html_content.html_safe
+    section#home
+      = @page.html_content.html_safe
+    
+    - if @testimonials.present?
+      section#testimonials.testimonials
+        h2 Our Clients
+        - @testimonials.each do |testimonial|
+          .card
+            = image_tag testimonial.profile_picture, class: 'image-circle'
+            = testimonial.html_body.html_safe
+            h3
+              span = testimonial.first_name + ' ' + testimonial.last_name + ', '
+              = testimonial.title + ' at ' + testimonial.company

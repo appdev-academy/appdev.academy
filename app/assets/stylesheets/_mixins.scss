@@ -1,0 +1,8 @@
+@mixin flexbox-tricks {
+  // Tricks for all browsers
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}

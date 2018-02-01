@@ -1,21 +1,37 @@
-.flexbox-cards {
-  // Tricks for all browsers
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
+.testimonials {
+  @include flexbox-tricks;
   
   flex-direction: row;
   flex-wrap: wrap;
   
+  h2 {
+    width: 100%;
+    margin: 40px 0px;
+  }
+  
+  h3 {
+    font-size: 14px;
+  }
+  
+  span {
+    font-style: italic;
+  }
+  
+  p {
+    @include flexbox-tricks;
+    
+    justify-content: center;
+    margin: 10px;
+  }
+  
   .card {
     width: 30%;
     text-align: center;
-    color: #5a5a5a;
     margin-bottom: 20px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 12px;
+    padding-left: 12px;
+    font-size: 15px;
+    line-height: 16px;
   }
   
   .image-circle {
@@ -23,27 +39,10 @@
     width: 140px;
     height: 140px;
   }
-  
-  h2 {
-    font-size: 30px;
-    font-weight: normal;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    margin: 0 10px 10px 10px;
-    font-size: 14px;
-  }
 }
 
 .featurette {
-  // Tricks for all browsers
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
+  @include flexbox-tricks;
   
   flex-direction: row;
   flex-wrap: wrap;
@@ -101,14 +100,6 @@
 }
 
 @media (max-width: 1200px) {
-  .flexbox-cards {
-    flex-direction: column;
-    
-    .card {
-      width: auto;
-    }
-  }
-  
   .featurette {
     flex-direction: column;
     align-items: center;
@@ -124,6 +115,24 @@
     .description,
     .image-box {
       width: 100%;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .testimonials {
+    .card {
+      width: 46%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    flex-direction: column;
+    
+    .card {
+      width: auto;
     }
   }
 }

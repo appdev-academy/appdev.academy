@@ -5,7 +5,7 @@ end
 
 if Rails.env.test?
   # Make sure our uploader is auto-loaded
-  AvatarUploader
+  ProfilePictureUploader
   
   # Use different dirs when testing
   CarrierWave::Uploader::Base.descendants.each do |klass|

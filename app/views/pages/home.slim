@@ -8,8 +8,20 @@
         h2 Our Clients
         - @testimonials.each do |testimonial|
           .card
-            = image_tag testimonial.profile_picture, class: 'image-circle'
+            = image_tag testimonial.profile_picture.thumb, class: 'image-circle'
             = testimonial.html_body.html_safe
             h3
               span = testimonial.first_name + ' ' + testimonial.last_name + ', '
               = testimonial.title + ' at ' + testimonial.company
+              
+      - if @employees.present?
+        section#employees.employees
+          h2 Our Team
+          - @employees.each do |employee|
+            .card
+              .image-box
+                = image_tag employee.profile_picture.rectangular
+              .description
+                p
+                  span #{employee.first_name} #{employee.last_name}
+                | #{employee.title} at App Dev Academy

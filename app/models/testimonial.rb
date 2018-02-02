@@ -1,5 +1,5 @@
 class Testimonial < ApplicationRecord
-  mount_uploader :profile_picture, AvatarUploader
+  mount_uploader :profile_picture, ProfilePictureUploader
   
   # Fields validations
   validates :body, presence: true

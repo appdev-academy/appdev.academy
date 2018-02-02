@@ -8,7 +8,7 @@
         h2 Our Clients
         - @testimonials.each do |testimonial|
           .card
-            = image_tag testimonial.profile_picture.thumb, class: 'image-circle'
+            = image_tag testimonial.profile_picture.rect_square, class: 'image-circle'
             = testimonial.html_body.html_safe
             h3
               span = testimonial.first_name + ' ' + testimonial.last_name + ', '

@@ -1,5 +1,5 @@
 class Employee < ApplicationRecord
-  mount_uploader :profile_picture, AvatarUploader
+  mount_uploader :profile_picture, ProfilePictureUploader
   
   # Fields validations
   validates :first_name, presence: true

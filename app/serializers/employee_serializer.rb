@@ -6,7 +6,7 @@ class EmployeeSerializer < ActiveModel::Serializer
   
   attribute :profile_picture
   def profile_picture
-    object.profile_picture.thumb.url
+    object.profile_picture.rect_square.url
   end
   
   attribute :published

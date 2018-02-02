@@ -1,18 +1,18 @@
-class AvatarUploader < CarrierWave::Uploader::Base
+class ProfilePictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
   def store_dir
     "uploads/#{model.class.to_s.pluralize.underscore}/#{model.id}"
   end
   
-  # Preview (should be 140px by 140px, scale to fill)
-  version :thumb do
-    process resize_to_fill: [140, 140]
+  # Square profile picture (should be 320px by 320px, scale to fill)
+  version :rect_square do
+    process resize_to_fill: [320, 320]
   end
   
-  # Rectangular avatar for employees (should be 300px by 200px, scale to fill)
+  # Rectangular profile picture (should be 600px by 400px, scale to fill)
   version :rectangular do
-    process resize_to_fill: [300, 200]
+    process resize_to_fill: [600, 400]
   end
 
   # White list of extensions which are allowed to be uploaded.

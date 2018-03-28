@@ -1,6 +1,9 @@
 class ProfilePictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
+  # Storage
+  storage :fog
+  
   def store_dir
     "uploads/#{model.class.to_s.pluralize.underscore}/#{model.id}"
   end
@@ -14,7 +17,7 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
   version :rectangular do
     process resize_to_fill: [600, 400]
   end
-
+  
   # White list of extensions which are allowed to be uploaded.
   def extension_white_list
     %w(jpg jpeg png)

@@ -9,6 +9,9 @@
 /public/assets
 /public/certificates
 
+# Ignore application configuration
+/config/application.yml
+
 # Standard .gitignore file for Ruby on Rails from github.com
 *.rbc
 capybara-*.html

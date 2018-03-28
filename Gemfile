@@ -7,6 +7,9 @@ gem 'pg'
 # Use Puma as the app server
 gem 'puma'
 
+# Set environment variables safely
+gem 'figaro'
+
 # Use jQuery as main JavaScript library
 gem 'jquery-rails'
 
@@ -41,6 +44,8 @@ gem 'meta-tags'
 gem 'carrierwave'
 # Image processor for uploaded images with Carrierwave
 gem 'mini_magick'
+# AWS S3 adapter for Carrierwave
+gem 'fog-aws'
 
 group :development do
   gem 'listen'

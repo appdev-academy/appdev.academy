@@ -21,7 +21,4 @@
             .card
               .image-box
                 = image_tag employee.profile_picture.rectangular
-              .description
-                p
-                  span #{employee.first_name} #{employee.last_name}
-                | #{employee.title} at App Dev Academy
+              .description #{employee.first_name} #{employee.last_name}, #{employee.title}

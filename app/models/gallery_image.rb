@@ -15,7 +15,7 @@ class GalleryImage < ApplicationRecord
   
   def update_measures
     if image.url
-      file = MiniMagick::Image.open(g.image.url)
+      file = MiniMagick::Image.open(image.url)
       update_columns(width: file.width, height: file.height)
     end
   end

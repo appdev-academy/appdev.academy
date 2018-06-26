@@ -12,11 +12,11 @@
         
         - if project.gallery_images.any?
           .image-gallery
-            - project.gallery_images.each_with_index do |gallery_image, index|
+            - project.gallery_images.order(id: :asc).each_with_index do |gallery_image, index|
               a href='javascript:void();' onClick="openPhotoSwipe(#{project.id}, #{index});"
                 = image_tag gallery_image.image.thumb.url
         = render 'tags', tags: project.tags
         .project-container
           = project.html_preview.html_safe
-        
+          
         = link_to 'Project details...', portfolio_project_path(project), class: 'button blue'

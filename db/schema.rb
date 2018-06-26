@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129090029) do
+ActiveRecord::Schema.define(version: 20180626212900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20180129090029) do
     t.integer  "project_id",             null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.float    "width"
+    t.float    "height"
     t.index ["project_id"], name: "index_gallery_images_on_project_id", using: :btree
   end
 

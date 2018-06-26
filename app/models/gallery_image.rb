@@ -1,9 +1,9 @@
 class GalleryImage < ApplicationRecord
-  mount_uploader :image, GalleryImageUploader
+  # Callbacks
+  after_save :update_measures
   
-  # Delete empty directory when GalleryImage is deleted
-  before_destroy :remember_id
-  after_destroy :remove_empty_directory
+  # Uploaders
+  mount_uploader :image, GalleryImageUploader
   
   # Associations
   belongs_to :project
@@ -11,14 +11,12 @@ class GalleryImage < ApplicationRecord
   # Associations validations
   validates :project, presence: true
   
-  # Validations
+  # Field validations
   
-  protected
-    def remember_id
-      @id = id
+  def update_measures
+    if image.url
+      file = MiniMagick::Image.open(g.image.url)
+      update_columns(width: file.width, height: file.height)
     end
-    
-    def remove_empty_directory
-      FileUtils.remove_dir("#{Rails.root}/public/uploads/gallery_images/#{@id}", force: true)
-    end
+  end
 end

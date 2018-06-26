@@ -25,7 +25,7 @@ class Portfolio::ProjectsController < ApplicationController
       end
       
       format.json do
-        images = @project.gallery_images.map { |g| { src: g.image.url, w: MiniMagick::Image.open(g.image.path).width, h: MiniMagick::Image.open(g.image.path).height } }
+        images = @project.gallery_images.map { |g| { src: g.image.url, w: MiniMagick::Image.open(g.image.url).width, h: MiniMagick::Image.open(g.image.url).height }}
         render json: images, status: :ok
       end
     end

@@ -1,0 +1,9 @@
+doctype html
+html
+  head
+    title React On Rails with Webpacker
+    = csrf_meta_tags
+    = javascript_pack_tag 'admin-bundle'
+    
+  body
+    = yield

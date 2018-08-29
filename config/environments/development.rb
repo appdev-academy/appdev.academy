@@ -3,7 +3,7 @@ Rails.application.configure do
 config.webpacker.check_yarn_integrity = true
 
   # Asset host domain
-  config.action_controller.asset_host = 'http://localhost:3001'
+  config.action_controller.asset_host = 'http://localhost:3000'
   
   # Settings specified here will take precedence over those in config/application.rb.
 

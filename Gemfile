@@ -72,7 +72,4 @@ group :test do
   gem 'rspec-expectations'
 end
 
-group :production do
-  # Use Therubyracer as JavaScript runtime in production
-  gem 'therubyracer'
-end
+gem 'mini_racer', platforms: :ruby

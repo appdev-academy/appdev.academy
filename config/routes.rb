@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'hello', to: 'admin#index'
+  get '/admin', to: 'admin#index'
+  get '/admin/*path', to: 'admin#index'
+  
   # Static pages
   root 'pages#home'
   get '/about', to: 'pages#about'

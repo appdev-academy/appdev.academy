@@ -21,6 +21,7 @@
       {
         "spec": true
       }
-    ]
+    ],
+    "babel-plugin-transform-decorators-legacy"
   ]
 }

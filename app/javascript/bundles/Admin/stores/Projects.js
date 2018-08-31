@@ -4,12 +4,15 @@ import { observable, action } from 'mobx'
 import { API_URL } from '../constants'
 
 export default class Projects {
-  sessionsStore;
-  @observable projects = []
-  @observable project = {}
+  sessionsStore
+  
+  @observable projects
+  @observable project
   
   constructor(sessionsStore) {
     this.sessionsStore = sessionsStore
+    this.projects = []
+    this.project = {}
   }
   
   @action fetchIndex() {

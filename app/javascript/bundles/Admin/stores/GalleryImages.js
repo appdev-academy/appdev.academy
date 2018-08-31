@@ -4,11 +4,13 @@ import { observable, action } from 'mobx'
 import { API_URL } from '../constants'
 
 export default class GalleryImages {
-  sessionsStore;
-  @observable images = [];
+  sessionsStore
+  
+  @observable images
   
   constructor(sessionsStore) {
     this.sessionsStore = sessionsStore
+    this.images = []
   }
   
   @action fetchIndex(projectID) {

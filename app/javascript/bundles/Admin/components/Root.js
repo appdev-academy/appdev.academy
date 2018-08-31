@@ -1,8 +1,31 @@
 import React from 'react'
 import classNames from 'classnames'
 import { withRouter } from 'react-router'
-import { NavLink } from 'react-router-dom'
+import {
+  NavLink,
+  Route,
+  Switch
+} from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
+
+// Authentication
+import SignIn from './Authentication/SignIn'
+
+// Not Found
+import NotFound from './NotFound'
+
+// Dashboard
+import Dashboard from './Dashboards/Main'
+
+// Resources
+import Articles from './Articles/Index'
+import Employees from './Employees/Index'
+import Images from './Images/Index'
+import Pages from './Pages/Index'
+import Projects from './Projects/Index'
+import Tags from './Tags/Index'
+import Testimonials from './Testimonials/Index'
+import Topics from './Topics/Index'
 
 @inject('sessionsStore')
 @observer
@@ -22,12 +45,12 @@ class Root extends React.Component {
     if (accessToken == null) {
       // accessToken is null
       if (location != '/admin/sign-in') {
-        this.context.history.push('/admin/sign-in')
+        this.props.history.push({ pathname: '/admin/sign-in' })
       }
     } else {
       // accessToken is present
       if (location == '/admin/sign-in') {
-        this.context.history.push('/admin')
+        this.props.history.push({ pathname: '/admin' })
       }
     }
   }
@@ -46,12 +69,12 @@ class Root extends React.Component {
     let adminMenu = <div></div>
     let location = this.props.location.pathname
     
-    console.log(this.props.location);
+    console.log(location);
     
     if (location != '/admin/sign-in') {
       adminMenu = (
         <div className={ adminMenuClassNames }>
-          <NavLink to={ '/admin' } activeClassName='active'>Dashboard</NavLink>
+          <NavLink to={ '/admin' } exact activeClassName='active'>Dashboard</NavLink>
           <NavLink to={ '/admin/images' } activeClassName='active'>Images</NavLink>
           <NavLink to={ '/admin/articles' } activeClassName='active'>Articles</NavLink>
           <NavLink to={ '/admin/pages' } activeClassName='active'>Pages</NavLink>
@@ -68,7 +91,18 @@ class Root extends React.Component {
     return (
       <div className='root-container'>
         { adminMenu }
-        { this.props.children }
+        <Switch>
+          <Route exact path="/admin" component={Dashboard} />
+          <Route path="/admin/articles" component={Articles} />
+          <Route path="/admin/employees" component={Employees} />
+          <Route path="/admin/images" component={Images} />
+          <Route path="/admin/pages" component={Pages} />
+          <Route path="/admin/projects" component={Projects} />
+          <Route path="/admin/tags" component={Tags} />
+          <Route path="/admin/testimonials" component={Testimonials} />
+          <Route path="/admin/topics" component={Topics} />
+          <Route path="/admin/sign-in" component={SignIn} />
+        </Switch>
       </div>
     )
   }

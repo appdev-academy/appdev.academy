@@ -14,14 +14,9 @@
     "react"
   ],
   "plugins": [
+    "babel-plugin-transform-decorators-legacy",
+    "transform-class-properties",
     "syntax-dynamic-import",
-    "transform-object-rest-spread",
-    [
-      "transform-class-properties",
-      {
-        "spec": true
-      }
-    ],
-    "babel-plugin-transform-decorators-legacy"
+    "transform-object-rest-spread"
   ]
 }

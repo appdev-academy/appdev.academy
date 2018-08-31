@@ -4,11 +4,13 @@ import { observable, action } from 'mobx'
 import { API_URL } from '../constants'
 
 export default class Tags {
-  sessionsStore;
-  @observable tags = []
+  sessionsStore
+  
+  @observable tags
   
   constructor(sessionsStore) {
     this.sessionsStore = sessionsStore
+    this.tags = []
   }
   
   @action fetchIndex() {

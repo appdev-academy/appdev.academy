@@ -4,12 +4,15 @@ import { observable, action } from 'mobx'
 import { API_URL } from '../constants'
 
 export default class Testimonials {
-  sessionsStore;
-  @observable testimonials = []
-  @observable testimonial = {}
+  sessionsStore
+  
+  @observable testimonials
+  @observable testimonial
   
   constructor(sessionsStore) {
     this.sessionsStore = sessionsStore
+    this.testimonials = []
+    this.testimonial = {}
   }
   
   @action fetchIndex() {

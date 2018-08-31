@@ -4,11 +4,13 @@ import { observable, action } from 'mobx'
 import { API_URL } from '../constants'
 
 export default class Lessons {
-  sessionsStore;
-  @observable lessons = []
+  sessionsStore
+  
+  @observable lessons
   
   constructor(sessionsStore) {
     this.sessionsStore = sessionsStore
+    this.lessons = []
   }
   
   @action fetchIndex(screencastID) {

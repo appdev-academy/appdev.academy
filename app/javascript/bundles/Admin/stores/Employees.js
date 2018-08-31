@@ -4,12 +4,15 @@ import { observable, action } from 'mobx'
 import { API_URL } from '../constants'
 
 export default class Employees {
-  sessionsStore;
-  @observable employees = []
-  @observable employee = {}
+  sessionsStore
+  
+  @observable employees
+  @observable employee
   
   constructor(sessionsStore) {
     this.sessionsStore = sessionsStore
+    this.employees = []
+    this.employee = {}
   }
   
   @action fetchIndex() {

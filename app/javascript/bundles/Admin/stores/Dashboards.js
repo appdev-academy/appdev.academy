@@ -4,11 +4,13 @@ import { observable, action } from 'mobx'
 import { API_URL } from '../constants'
 
 export default class Dashboards {
-  sessionsStore;
-  @observable main = {};
+  sessionsStore
+  
+  @observable main
   
   constructor(sessionsStore) {
     this.sessionsStore = sessionsStore
+    this.main = {}
   }
   
   @action fetchMain() {

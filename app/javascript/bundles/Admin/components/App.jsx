@@ -38,10 +38,6 @@ const testimonialsStore = new TestimonialsStore(sessionsStore)
 const topicsStore = new TopicsStore(sessionsStore)
 
 import Root from './Root';
-
-import About from './About';
-import Dashboard from './Dashboard';
-import Other from './Other';
 import NotFound from './NotFound';
 
 export default class App extends React.Component {
@@ -62,20 +58,7 @@ export default class App extends React.Component {
                 topicsStore={ topicsStore }
       >
         <Router>
-          <Root>
-            <ul>
-              <li><Link to="/admin">Dashboard</Link></li>
-              <li><Link to="/admin/about">About</Link></li>
-              <li><Link to="/admin/other">Other</Link></li>
-            </ul>
-            
-            <Switch>
-              <Route path="/admin" exact component={Dashboard} />
-              <Route path="/admin/about" exact component={About} />
-              <Route path="/admin/other" exact component={Other} />
-              <Route component={NotFound} />
-            </Switch>
-          </Root>
+          <Root />
         </Router>
       </Provider>
     );

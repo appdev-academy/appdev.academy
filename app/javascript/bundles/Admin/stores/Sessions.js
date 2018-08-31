@@ -6,7 +6,11 @@ import { API_URL } from '../constants'
 const ACCESS_TOKEN_KEY = 'access-token'
 
 export default class Sessions {
-  @observable accessToken = null
+  @observable accessToken
+  
+  constructor(sessionsStore) {
+    this.getAccessToken()
+  }
   
   @action create(email, password) {
     let params = {

@@ -1,0 +1,182 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+import ClassNames from 'classnames'
+import MarkdownIt from 'markdown-it'
+import Textarea from 'react-textarea-autosize'
+import { WithContext as ReactTags } from 'react-tag-input'
+
+import videoPlugin from '../../plugins/video'
+import ErrorsList from '../ErrorsList'
+import BlueButton from '../Buttons/Blue'
+import GreenButton from '../Buttons/Green'
+
+// Setup MarkdownIt parser with videos plugin
+let markdown = new MarkdownIt()
+markdown.use(videoPlugin)
+
+export default class Form extends React.Component {
+  
+  constructor(props) {
+    super(props)
+    this.state = {
+      preview: '',
+      htmlPreview: '',
+      content: '',
+      htmlContent: '',
+      showType: 'editor',
+      tags: []
+    }
+  }
+  
+  componentDidMount() {
+    this.props.tagsStore.fetchIndex()
+  }
+  
+  setProject(project) {
+    if (project) {
+      this.refs.title.value = project.title
+      this.setState({
+        preview: project.preview,
+        htmlPreview: markdown.render(project.preview),
+        content: project.content,
+        htmlContent: markdown.render(project.content),
+        tags: project.tags
+      })
+    }
+  }
+  
+  previewChanged(event) {
+    // Get new Markdown text
+    let newText = event.target.value
+    // Update page
+    this.setState({
+      preview: newText,
+      htmlPreview: markdown.render(newText)
+    })
+  }
+  
+  contentChanged(event) {
+    let newText = event.target.value
+    this.setState({
+      content: newText,
+      htmlContent: markdown.render(newText)
+    })
+  }
+  
+  
+  // Tags management
+  addTag(tag) {
+    let tags = this.state.tags
+    let tagID = Math.floor(100000 * Math.random())
+    tags.push({
+      id: tagID,
+      title: tag
+    });
+    this.setState({ tags: tags });
+  }
+  
+  deleteTag(index) {
+    let tags = this.state.tags;
+    tags.splice(index, 1);
+    this.setState({ tags: tags });
+  }
+  
+  dragTag(tag, currentPosition, newPosition) {
+    let tags = this.state.tags;
+    tags.splice(currentPosition, 1);
+    tags.splice(newPosition, 0, tag);
+    this.setState({ tags: tags });
+  }
+  
+  handleSubmit(event) {
+    event.preventDefault()
+    let projectParams = {
+      title: this.refs.title.value,
+      preview: this.state.preview,
+      html_preview: this.state.htmlPreview,
+      content: this.state.content,
+      html_content: this.state.htmlContent,
+      tags_titles: this.state.tags.map(tag => tag.title).join(',')
+    }
+    this.props.handleSubmit(projectParams)
+  }
+  
+  clickEditor() {
+    this.setState({
+      showType: 'editor'
+    })
+  }
+  
+  clickPreview() {
+    this.setState({
+      showType: 'preview'
+    })
+  }
+  
+  render () {
+    let editorClasses = ClassNames({
+      'hidden': this.state.showType == 'preview',
+      'half-width': this.state.showType == 'editor'
+    })
+    
+    let previewClasses = ClassNames({
+      'project-container': true,
+      'full-width': this.state.showType == 'preview',
+      'half-width': this.state.showType == 'editor'
+    })
+    
+    let suggestions = this.props.allTags.map(tag => tag.title)
+    
+    return (
+      <div className='column'>
+        <ErrorsList errors={ this.props.errors } />
+        <div className='form-group'>
+          <input type='text' ref='title' className='title' autoFocus={ true } />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='tags'>Tags</label>
+          <ReactTags
+            labelField='title'
+            autofocus={ false }
+            tags={ this.state.tags }
+            suggestions={ suggestions }
+            handleDelete={ this.deleteTag.bind(this) }
+            handleAddition={ this.addTag.bind(this) }
+            handleDrag={ this.dragTag.bind(this) }
+          />
+        </div>
+        <div className='buttons center'>
+          <BlueButton
+            title='Editor'
+            selected={ this.state.showType == 'editor' }
+            onClick={ this.clickEditor.bind(this) }
+          />
+          <BlueButton
+            title='Preview'
+            selected={ this.state.showType == 'preview' }
+            onClick={ this.clickPreview.bind(this) }
+          />
+        </div>
+        <div>
+          <h2 className='center'>Preview</h2>
+          <Textarea className={ editorClasses } value={ this.state.preview } onChange={ this.previewChanged.bind(this) } rows={ 5 }></Textarea>
+          <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlPreview }} />
+        </div>
+        <div>
+          <h2 className='center'>Content</h2>
+          <Textarea className={ editorClasses } value={ this.state.content } onChange={ this.contentChanged.bind(this) } rows={ 10 }></Textarea>
+          <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
+        </div>
+        <div className='actions center'>
+          <h3>Actions</h3>
+          <GreenButton
+            title='Save'
+            onClick={ this.handleSubmit.bind(this) }
+          />
+          <Link className='button blue' to={ `/projects` }>Back to Projects</Link>
+        </div>
+      </div>
+    )
+  }
+}

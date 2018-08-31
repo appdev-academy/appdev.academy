@@ -37,6 +37,8 @@ const tagsStore = new TagsStore(sessionsStore)
 const testimonialsStore = new TestimonialsStore(sessionsStore)
 const topicsStore = new TopicsStore(sessionsStore)
 
+import Root from './Root';
+
 import About from './About';
 import Dashboard from './Dashboard';
 import Other from './Other';
@@ -45,23 +47,22 @@ import NotFound from './NotFound';
 export default class App extends React.Component {
   render() {
     return (
-      <Provider
-        articlesStore={ articlesStore }
-        dashboardsStore={ dashboardsStore }
-        employeesStore={ employeesStore }
-        imagesStore={ imagesStore }
-        galleryImagesStore={ galleryImagesStore }
-        lessonsStore={ lessonsStore }
-        pagesStore={ pagesStore }
-        projectsStore={ projectsStore }
-        screencastsStore={ screencastsStore }
-        sessionsStore={ sessionsStore }
-        tagsStore={ tagsStore }
-        testimonialsStore={ testimonialsStore }
-        topicsStore={ topicsStore }
+      <Provider articlesStore={ articlesStore }
+                dashboardsStore={ dashboardsStore }
+                employeesStore={ employeesStore }
+                imagesStore={ imagesStore }
+                galleryImagesStore={ galleryImagesStore }
+                lessonsStore={ lessonsStore }
+                pagesStore={ pagesStore }
+                projectsStore={ projectsStore }
+                screencastsStore={ screencastsStore }
+                sessionsStore={ sessionsStore }
+                tagsStore={ tagsStore }
+                testimonialsStore={ testimonialsStore }
+                topicsStore={ topicsStore }
       >
         <Router>
-          <div>
+          <Root>
             <ul>
               <li><Link to="/admin">Dashboard</Link></li>
               <li><Link to="/admin/about">About</Link></li>
@@ -74,7 +75,7 @@ export default class App extends React.Component {
               <Route path="/admin/other" exact component={Other} />
               <Route component={NotFound} />
             </Switch>
-          </div>
+          </Root>
         </Router>
       </Provider>
     );

@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 import Form from './Form'
@@ -17,7 +17,7 @@ export default class Edit extends React.Component {
   }
   
   componentDidMount() {
-    let articleID = this.props.params.articleID
+    let articleID = this.props.match.params.articleId
     let articleForm = this.refs.articleForm
     this.props.articlesStore.fetchShow(articleID).then((response) => {
       if (response.status == 200) {
@@ -27,10 +27,10 @@ export default class Edit extends React.Component {
   }
   
   handleSubmit(params) {
-    let articleID = this.props.params.articleID
+    let articleID = this.props.match.params.articleId
     this.props.articlesStore.update(articleID, params).then((response) => {
       if (response.status == 200) {
-        browserHistory.push('/articles')
+        this.props.history.push({ pathname: '/admin/articles' })
       }
     }).catch((error) => {
       if (error.response && error.response.data && error.response.data.errors) {

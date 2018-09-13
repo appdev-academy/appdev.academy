@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import ClassNames from 'classnames';
+import PropTypes from 'prop-types'
+import React from 'react'
+import ClassNames from 'classnames'
 
-import BlueButton from './Buttons/Blue';
-import GreenButton from './Buttons/Green';
-import RedButton from './Buttons/Red';
+import BlueButton from './Buttons/Blue'
+import GreenButton from './Buttons/Green'
+import RedButton from './Buttons/Red'
 
 export default class ConfirmationDialog extends React.Component {
   render() {

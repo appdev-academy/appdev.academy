@@ -7,7 +7,7 @@ import { inject, observer } from 'mobx-react'
 export default class Show extends React.Component {
   
   componentDidMount() {
-    let articleID = this.props.params.articleID
+    let articleID = this.props.match.params.articleId
     this.props.articlesStore.fetchShow(articleID).then(response => {
       if (response.status == 200) {
         this.props.articlesStore.article = response.data
@@ -22,8 +22,8 @@ export default class Show extends React.Component {
         <h2 className='center'>{ article.title }</h2>
         <div className='article-container' dangerouslySetInnerHTML={{ __html: article.html_content }} />
         <div className='actions center'>
-          <Link to={ `/articles/${article.id}/edit` } className='button orange'>Edit</Link>
-          <Link to={ '/articles/' } className='button blue'>Back to Articles</Link>
+          <Link to={ `/admin/articles/${article.id}/edit` } className='button orange'>Edit</Link>
+          <Link to={ '/admin/articles/' } className='button blue'>Back to Articles</Link>
         </div>
       </div>
     )

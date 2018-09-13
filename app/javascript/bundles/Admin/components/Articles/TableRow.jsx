@@ -87,8 +87,8 @@ export default class TableRow extends React.Component {
         <td>{ article.slug }</td>
         <td>{ article.position }</td>
         <td className='actions left'>
-          <Link className='button blue' to={ `/articles/${article.id}` }>Show</Link>
-          <Link className='button green' to={ `/articles/${article.id}/edit` }>Edit</Link>
+          <Link className='button blue' to={ `/admin/articles/${article.id}` }>Show</Link>
+          <Link className='button green' to={ `/admin/articles/${article.id}/edit` }>Edit</Link>
           <RedButton title='Delete' onClick={ () => { this.props.deleteButtonClick(article) }} />
         </td>
         <td className='actions left'>

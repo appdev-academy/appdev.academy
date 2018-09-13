@@ -163,7 +163,7 @@ export default class Form extends React.Component {
             title='Save'
             onClick={ this.handleSubmit.bind(this) }
           />
-          <Link className='button blue' to={ `/articles` }>Back to Articles</Link>
+          <Link className='button blue' to='/admin/articles'>Back to Articles</Link>
         </div>
         <div className='buttons center'>
           <BlueButton
@@ -208,7 +208,7 @@ export default class Form extends React.Component {
             title='Save'
             onClick={ this.handleSubmit.bind(this) }
           />
-          <Link className='button blue' to={ `/articles` }>Back to Articles</Link>
+          <Link className='button blue' to='/admin/articles'>Back to Articles</Link>
         </div>
       </div>
     )

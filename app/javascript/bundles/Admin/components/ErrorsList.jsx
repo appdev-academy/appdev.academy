@@ -3,7 +3,7 @@ import React from 'react'
 
 export default class ErrorsList extends React.Component {
   render() {
-    let errorsList = null;
+    let errorsList = null
     if (this.props.errors.length) {
       errorsList = (
         <ul className='errors'>
@@ -22,4 +22,4 @@ export default class ErrorsList extends React.Component {
 
 ErrorsList.propTypes = {
   errors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
-};
+}

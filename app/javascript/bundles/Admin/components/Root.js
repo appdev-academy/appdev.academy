@@ -103,8 +103,6 @@ class Root extends React.Component {
     let adminMenu = <div></div>
     let location = this.props.location.pathname
     
-    console.log(location);
-    
     if (location != '/admin/sign-in') {
       adminMenu = (
         <div className={ adminMenuClassNames }>
@@ -171,6 +169,8 @@ class Root extends React.Component {
           <Route exact path='/admin/topics/:topicID/screencasts/:screencastID/lessons/:lessonID/edit' component={EditLesson} />
           
           <Route path='/admin/sign-in' component={SignIn} />
+          
+          <Route component={NotFound} />
         </Switch>
       </div>
     )

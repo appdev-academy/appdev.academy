@@ -52,7 +52,7 @@ export default class Index extends React.Component {
   }
   
   deleteButtonClick() {
-    this.props.articlesStore.delete(this.state.deleteConfirmationDialogEntityID);
+    this.props.articlesStore.delete(this.state.deleteConfirmationDialogEntityID)
     this.setState({
       deleteConfirmationDialogShow: false,
       deleteConfirmationDialogEntityID: null,

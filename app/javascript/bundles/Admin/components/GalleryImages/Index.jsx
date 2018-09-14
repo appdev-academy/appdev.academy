@@ -74,7 +74,7 @@ export default class Index extends React.Component {
   deleteButtonClick() {
     let projectID = this.props.projectID
     let galleryImageID = this.state.deleteConfirmationDialogEntityID
-    this.props.galleryImagesStore.delete(projectID, galleryImageID);
+    this.props.galleryImagesStore.delete(projectID, galleryImageID)
     this.setState({
       deleteConfirmationDialogShow: false,
       deleteConfirmationDialogEntityID: null

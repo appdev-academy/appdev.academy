@@ -37,8 +37,8 @@ const tagsStore = new TagsStore(sessionsStore)
 const testimonialsStore = new TestimonialsStore(sessionsStore)
 const topicsStore = new TopicsStore(sessionsStore)
 
-import Root from './Root';
-import NotFound from './NotFound';
+import Root from './Root'
+import NotFound from './NotFound'
 
 export default class App extends React.Component {
   render() {
@@ -61,6 +61,6 @@ export default class App extends React.Component {
           <Root />
         </Router>
       </Provider>
-    );
+    )
   }
 }

@@ -71,8 +71,8 @@ export default class TableRow extends React.Component {
   }
   
   render() {
-    const { text, isDragging, connectDragSource, connectDropTarget } = this.props;
-    const opacity = isDragging ? 0 : 1;
+    const { text, isDragging, connectDragSource, connectDropTarget } = this.props
+    const opacity = isDragging ? 0 : 1
     
     let employee = this.props.employee
     let publishButton = <GreenButton title='Publish' onClick={ () => { this.props.publishButtonClick(employee.id) }} />

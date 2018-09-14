@@ -11,7 +11,7 @@ export default class ConfirmationDialog extends React.Component {
     let confirmationClass = ClassNames({
       'confirmation-dialog': true,
       'show': this.props.show,
-    });
+    })
     
     let title = `Are you sure you want to ${this.props.actionName} this ${this.props.entityName}?`
     if (this.props.entityTitle) {

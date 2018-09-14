@@ -25,6 +25,8 @@ import ShowArticle from './Articles/Show'
 import Employees from './Employees/Index'
 import Images from './Images/Index'
 import Pages from './Pages/Index'
+import EditPage from './Pages/Edit'
+import ShowPage from './Pages/Show'
 import Projects from './Projects/Index'
 import Tags from './Tags/Index'
 import Testimonials from './Testimonials/Index'
@@ -102,7 +104,9 @@ class Root extends React.Component {
           <Route exact path='/admin/articles/:articleId/edit' component={EditArticle} />
           <Route path='/admin/employees' component={Employees} />
           <Route path='/admin/images' component={Images} />
-          <Route path='/admin/pages' component={Pages} />
+          <Route exact path='/admin/pages' component={Pages} />
+          <Route exact path='/admin/pages/:slug' component={ShowPage} />
+          <Route exact path='/admin/pages/:slug/edit' component={EditPage} />
           <Route path='/admin/projects' component={Projects} />
           <Route path='/admin/tags' component={Tags} />
           <Route path='/admin/testimonials' component={Testimonials} />

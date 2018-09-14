@@ -1,5 +1,6 @@
 import React from 'react'
-import { browserHistory, Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
+import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 
 @inject('pagesStore')
@@ -15,9 +16,9 @@ export default class Show extends React.Component {
   
   componentDidMount() {
     // Make sure Page is among allowed ones
-    let slug = this.props.params.slug
+    let slug = this.props.match.params.slug
     if (!this.props.pagesStore.allowedPages.includes(slug)) {
-      browserHistory.push('/pages')
+      this.props.history.push({ pathname: '/admin/pages' })
     }
     // Fetch Page to show
     this.props.pagesStore.fetchShow(slug).then((response) => {
@@ -30,14 +31,14 @@ export default class Show extends React.Component {
   }
   
   render() {
-    let slug = this.props.params.slug
+    let slug = this.props.match.params.slug
     
     return (
       <div className='full-width'>
         <div className='page-container' dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
         <div className='actions center'>
-          <Link to={ `/pages/${slug}/edit` } className='button orange'>Edit</Link>
-          <Link to={ '/pages/' } className='button blue'>Back to Pages</Link>
+          <Link to={ `/admin/pages/${slug}/edit` } className='button orange'>Edit</Link>
+          <Link to='/admin/pages/' className='button blue'>Back to Pages</Link>
         </div>
       </div>
     )

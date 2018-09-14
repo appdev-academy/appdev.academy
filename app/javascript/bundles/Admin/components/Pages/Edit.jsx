@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 import Form from './Form'
@@ -17,9 +17,9 @@ export default class Edit extends React.Component {
   
   componentDidMount() {
     // Make sure Page is among allowed ones
-    let slug = this.props.params.slug
+    let slug = this.props.match.params.slug
     if (!this.props.pagesStore.allowedPages.includes(slug)) {
-      browserHistory.push('/pages')
+      this.props.history.push({ pathname: '/admin/pages' })
     }
     // Fetch Page to edit
     this.props.pagesStore.fetchShow(slug).then((response) => {
@@ -30,10 +30,10 @@ export default class Edit extends React.Component {
   }
   
   handleSubmit(params) {
-    let slug = this.props.params.slug
+    let slug = this.props.match.params.slug
     this.props.pagesStore.update(slug, params).then((response) => {
       if (response.status == 200) {
-        browserHistory.push('/pages')
+        this.props.history.push({ pathname: '/admin/pages' })
       }
     }).catch((error) => {
       if (error.response && error.response.data && error.response.data.errors) {

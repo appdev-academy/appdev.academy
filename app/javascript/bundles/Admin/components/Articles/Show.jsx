@@ -7,7 +7,7 @@ import { inject, observer } from 'mobx-react'
 export default class Show extends React.Component {
   
   componentDidMount() {
-    let articleID = this.props.match.params.articleId
+    let articleID = this.props.match.params.articleID
     this.props.articlesStore.fetchShow(articleID).then(response => {
       if (response.status == 200) {
         this.props.articlesStore.article = response.data

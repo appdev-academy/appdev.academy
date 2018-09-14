@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 import Form from './Form'
@@ -16,7 +16,7 @@ export default class Edit extends React.Component {
   }
   
   componentDidMount() {
-    let employeeID = this.props.params.employeeID
+    let employeeID = this.props.match.params.employeeID
     let employeeForm = this.refs.employeeForm
     this.props.employeesStore.fetchShow(employeeID).then((response) => {
       if (response.status == 200) {
@@ -26,10 +26,10 @@ export default class Edit extends React.Component {
   }
   
   handleSubmit(params) {
-    let employeeID = this.props.params.employeeID
+    let employeeID = this.props.match.params.employeeID
     this.props.employeesStore.update(employeeID, params).then((response) => {
       if (response.status == 200) {
-        browserHistory.push('/employees')
+        this.props.history.push({ pathname: '/admin/employees' })
       }
     }).catch((error) => {
       if (error.response && error.response.data && error.response.data.errors) {

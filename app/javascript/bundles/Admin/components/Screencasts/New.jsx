@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { inject } from 'mobx-react'
 
 import Form from './Form'
@@ -15,11 +15,11 @@ export default class New extends React.Component {
   }
   
   handleSubmit(screencastParams) {
-    let topicID = this.props.params.topicID
+    let topicID = this.props.match.params.topicID
     
     this.props.screencastsStore.create(topicID, screencastParams).then((response) => {
       if (response.status == 200) {
-        browserHistory.push(`/topics/${topicID}/screencasts`)
+        this.props.history.push({ pathname: `/admin/topics/${topicID}/screencasts` })
       }
     }).catch((error) => {
       if (error.response && error.response.data && error.response.data.errors) {
@@ -35,6 +35,7 @@ export default class New extends React.Component {
       <Form
         errors={ this.state.errors }
         params={ this.props.params }
+        match= { this.props.match }
         handleSubmit={ this.handleSubmit.bind(this) }
       />
     )

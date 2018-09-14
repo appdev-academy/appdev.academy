@@ -86,8 +86,8 @@ export default class TableRow extends React.Component {
         <td>{ project.slug }</td>
         <td>{ project.position }</td>
         <td className='actions left'>
-          <Link className='button blue' to={ `/projects/${project.id}` }>Show</Link>
-          <Link className='button green' to={ `/projects/${project.id}/edit` }>Edit</Link>
+          <Link className='button blue' to={ `/admin/projects/${project.id}` }>Show</Link>
+          <Link className='button green' to={ `/admin/projects/${project.id}/edit` }>Edit</Link>
         </td>
         <td className='actions left'>
           { publishButton }

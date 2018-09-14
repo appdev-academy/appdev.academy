@@ -167,7 +167,7 @@ export default class Form extends React.Component {
             title='Save'
             onClick={ this.handleSubmit.bind(this) }
           />
-          <Link className='button blue' to={ `/testimonials` }>Back to Testimonials</Link>
+          <Link className='button blue' to='/testimonials'>Back to Testimonials</Link>
         </div>
       </div>
     )

@@ -1,5 +1,4 @@
 import React from 'react'
-import { browserHistory } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 
 import BlueButton from '../Buttons/Blue'

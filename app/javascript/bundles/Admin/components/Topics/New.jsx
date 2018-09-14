@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { inject } from 'mobx-react'
 
 import Form from './Form'
@@ -17,7 +17,7 @@ export default class New extends React.Component {
   handleSubmit(topicParams) {
     this.props.topicsStore.create(topicParams).then((response) => {
       if (response.status == 200) {
-        browserHistory.push('/topics')
+        this.props.history.push({ pathname: '/admin/topics' })
       }
     }).catch((error) => {
       if (error.response && error.response.data && error.response.data.errors) {

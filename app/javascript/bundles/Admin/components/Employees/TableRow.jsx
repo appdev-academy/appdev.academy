@@ -89,8 +89,8 @@ export default class TableRow extends React.Component {
         <td><img className='profile-picture' src={ employee.profile_picture } /></td>
         <td>{ employee.position }</td>
         <td className='actions left'>
-          <Link className='button blue' to={ `/employees/${employee.id}` }>Show</Link>
-          <Link className='button green' to={ `/employees/${employee.id}/edit` }>Edit</Link>
+          <Link className='button blue' to={ `/admin/employees/${employee.id}` }>Show</Link>
+          <Link className='button green' to={ `/admin/employees/${employee.id}/edit` }>Edit</Link>
           <RedButton title='Delete' onClick={ () => { this.props.deleteButtonClick(employee) }} />
         </td>
         <td className='actions left'>

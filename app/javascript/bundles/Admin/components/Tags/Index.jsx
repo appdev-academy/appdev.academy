@@ -51,7 +51,7 @@ export default class Index extends React.Component {
     return (
       <div className='tags'>
         <h2 className='center'>Tags</h2>
-        <Link className='button blue' to='/tags/new'>+ New Tag</Link>
+        <Link className='button blue' to='/admin/tags/new'>+ New Tag</Link>
         <br />
         <br />
         <table className='admin'>

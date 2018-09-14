@@ -85,7 +85,7 @@ export default class Form extends React.Component {
   }
   
   render () {
-    let topicID = this.props.params.topicID
+    let topicID = this.props.match.params.topicID
     
     let editorClasses = ClassNames({
       'hidden': this.state.showType == 'preview',
@@ -117,7 +117,7 @@ export default class Form extends React.Component {
             title='Save'
             onClick={ this.handleSubmit.bind(this) }
           />
-          <Link className='button blue' to={ `/topics/${topicID}/screencasts` }>Back to Screencasts</Link>
+          <Link className='button blue' to={ `/admin/topics/${topicID}/screencasts` }>Back to Screencasts</Link>
         </div>
         <div className='buttons center'>
           <BlueButton
@@ -146,7 +146,7 @@ export default class Form extends React.Component {
             title='Save'
             onClick={ this.handleSubmit.bind(this) }
           />
-          <Link className='button blue' to={ `/topics/${topicID}/screencasts` }>Back to Screencasts</Link>
+          <Link className='button blue' to={ `/admin/topics/${topicID}/screencasts` }>Back to Screencasts</Link>
         </div>
       </div>
     )

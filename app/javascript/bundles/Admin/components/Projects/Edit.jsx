@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 import Form from './Form'
@@ -19,7 +19,7 @@ export default class Edit extends React.Component {
   }
   
   componentDidMount() {
-    let projectID = this.props.params.projectID
+    let projectID = this.props.match.params.projectID
     let projectForm = this.refs.projectForm
     this.props.projectsStore.fetchShow(projectID).then((response) => {
       if (response.status == 200) {
@@ -29,10 +29,10 @@ export default class Edit extends React.Component {
   }
   
   handleSubmit(params) {
-    let projectID = this.props.params.projectID
+    let projectID = this.props.match.params.projectID
     this.props.projectsStore.update(projectID, params).then((response) => {
       if (response.status == 200) {
-        browserHistory.push('/projects')
+        this.props.history.push({ pathname: '/admin/projects' })
       }
     }).catch((error) => {
       if (error.response && error.response.data && error.response.data.errors) {
@@ -44,7 +44,7 @@ export default class Edit extends React.Component {
   }
   
   render() {
-    let projectID = this.props.params.projectID
+    let projectID = this.props.match.params.projectID
     
     return (
       <div>

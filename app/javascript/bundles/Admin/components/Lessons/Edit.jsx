@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 import Form from './Form'
@@ -16,7 +16,7 @@ export default class Edit extends React.Component {
   }
   
   componentDidMount() {
-    let lessonID = this.props.params.lessonID
+    let lessonID = this.props.match.params.lessonID
     let lessonForm = this.refs.lessonForm
     this.props.lessonsStore.fetchShow(lessonID).then((response) => {
       if (response.status == 200) {
@@ -26,13 +26,13 @@ export default class Edit extends React.Component {
   }
   
   handleSubmit(params) {
-    let topicID = this.props.params.topicID
-    let screencastID = this.props.params.screencastID
-    let lessonID = this.props.params.lessonID
+    let topicID = this.props.match.params.topicID
+    let screencastID = this.props.match.params.screencastID
+    let lessonID = this.props.match.params.lessonID
     
     this.props.lessonsStore.update(lessonID, params).then((response) => {
       if (response.status == 200) {
-        browserHistory.push(`/topics/${topicID}/screencasts/${screencastID}/lessons`)
+        this.props.history.push({ pathname: `/admin/topics/${topicID}/screencasts/${screencastID}/lessons` })
       }
     }).catch((error) => {
       if (error.response && error.response.data && error.response.data.errors) {
@@ -48,6 +48,7 @@ export default class Edit extends React.Component {
       <Form
         errors={ this.state.errors }
         params={ this.props.params }
+        match= { this.props.match }
         handleSubmit={ this.handleSubmit.bind(this) } ref='lessonForm'
       />
     )

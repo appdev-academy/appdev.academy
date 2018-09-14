@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { inject } from 'mobx-react'
 
 import Form from './Form'
@@ -17,7 +17,7 @@ export default class New extends React.Component {
   handleSubmit(tagParams) {
     this.props.tagsStore.create(tagParams).then((response) => {
       if (response.status == 200) {
-        browserHistory.push('/tags')
+        this.props.history.push({ pathname: '/admin/tags' })
       }
     }).catch((error) => {
       if (error.response && error.response.data && error.response.data.errors) {

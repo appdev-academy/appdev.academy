@@ -19,7 +19,7 @@ export default class TableRow extends React.Component {
         <td>{ tag.articles_count }</td>
         <td>{ tag.projects_count }</td>
         <td className='actions left'>
-          <Link className='button green' to={ `/tags/${tag.id}/edit` }>Edit</Link>
+          <Link className='button green' to={ `/admin/tags/${tag.id}/edit` }>Edit</Link>
           <RedButton title='Delete' onClick={ () => { this.props.deleteButtonClick(tag) }} />
         </td>
       </tr>

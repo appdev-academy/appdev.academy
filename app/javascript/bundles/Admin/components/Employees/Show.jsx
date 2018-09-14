@@ -7,7 +7,7 @@ import { inject, observer } from 'mobx-react'
 export default class Show extends React.Component {
   
   componentDidMount() {
-    let employeeID = this.props.params.employeeID
+    let employeeID = this.props.match.params.employeeID
     this.props.employeesStore.fetchShow(employeeID).then(response => {
       if (response.status == 200) {
         this.props.employeesStore.employee = response.data.employee
@@ -57,8 +57,8 @@ export default class Show extends React.Component {
           </tbody>
         </table>
         <div className='actions center'>
-          <Link to={ `/employees/${employee.id}/edit` } className='button orange'>Edit</Link>
-          <Link to={ '/employees/' } className='button blue'>Back to Employees</Link>
+          <Link to={ `/admin/employees/${employee.id}/edit` } className='button orange'>Edit</Link>
+          <Link to='/admin/employees/' className='button blue'>Back to Employees</Link>
         </div>
       </div>
     )

@@ -9,7 +9,7 @@ import TableBody from './TableBody'
 export default class Index extends React.Component {
   
   componentDidMount() {
-    let topicID = this.props.params.topicID
+    let topicID = this.props.match.params.topicID
     this.props.screencastsStore.fetchIndex(topicID)
   }
   
@@ -18,7 +18,7 @@ export default class Index extends React.Component {
       return
     }
     
-    let topicID = this.props.params.topicID
+    let topicID = this.props.match.params.topicID
     
     let screencastIDs = this.props.screencastsStore.screencasts.map((screencast) => screencast.id)
     let draggedScreencastID = screencastIDs[startIndex]
@@ -29,12 +29,12 @@ export default class Index extends React.Component {
   }
   
   render() {
-    let topicID = this.props.params.topicID
+    let topicID = this.props.match.params.topicID
     
     return (
       <div className='screencasts'>
         <h2 className='center'>Screencasts</h2>
-        <Link className='button blue' to={ `/topics/${topicID}/screencasts/new` }>+ New Screencast</Link>
+        <Link className='button blue' to={ `/admin/topics/${topicID}/screencasts/new` }>+ New Screencast</Link>
         <br />
         <br />
         <table className='admin'>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 import Form from './Form'
@@ -16,7 +16,7 @@ export default class Edit extends React.Component {
   }
   
   componentDidMount() {
-    let screencastID = this.props.params.screencastID
+    let screencastID = this.props.match.params.screencastID
     let screencastForm = this.refs.screencastForm
     this.props.screencastsStore.fetchShow(screencastID).then((response) => {
       if (response.status == 200) {
@@ -26,11 +26,11 @@ export default class Edit extends React.Component {
   }
   
   handleSubmit(params) {
-    let topicID = this.props.params.topicID
-    let screencastID = this.props.params.screencastID
+    let topicID = this.props.match.params.topicID
+    let screencastID = this.props.match.params.screencastID
     this.props.screencastsStore.update(screencastID, params).then((response) => {
       if (response.status == 200) {
-        browserHistory.push(`/topics/${topicID}/screencasts`)
+        this.props.history.push({ pathname: `/admin/topics/${topicID}/screencasts` })
       }
     }).catch((error) => {
       if (error.response && error.response.data && error.response.data.errors) {
@@ -46,6 +46,7 @@ export default class Edit extends React.Component {
       <Form
         errors={ this.state.errors }
         params={ this.props.params }
+        match= { this.props.match }
         handleSubmit={ this.handleSubmit.bind(this) } ref='screencastForm'
       />
     )

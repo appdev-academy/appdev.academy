@@ -17,7 +17,7 @@ export default class Edit extends React.Component {
   }
   
   componentDidMount() {
-    let articleID = this.props.match.params.articleId
+    let articleID = this.props.match.params.articleID
     let articleForm = this.refs.articleForm
     this.props.articlesStore.fetchShow(articleID).then((response) => {
       if (response.status == 200) {
@@ -27,7 +27,7 @@ export default class Edit extends React.Component {
   }
   
   handleSubmit(params) {
-    let articleID = this.props.match.params.articleId
+    let articleID = this.props.match.params.articleID
     this.props.articlesStore.update(articleID, params).then((response) => {
       if (response.status == 200) {
         this.props.history.push({ pathname: '/admin/articles' })

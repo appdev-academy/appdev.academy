@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 import Form from './Form'
@@ -18,7 +18,7 @@ export default class New extends React.Component {
   handleSubmit(employeeParams) {
     this.props.employeesStore.create(employeeParams).then((response) => {
       if (response.status == 201) {
-        browserHistory.push('/employees')
+        this.props.history.push({ pathname: '/admin/employees' })
       }
     }).catch((error) => {
       if (error.response && error.response.data && error.response.data.errors) {

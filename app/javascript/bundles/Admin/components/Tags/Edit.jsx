@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 import Form from './Form'
@@ -16,7 +16,7 @@ export default class Edit extends React.Component {
   }
   
   componentDidMount() {
-    let tagID = this.props.params.tagID
+    let tagID = this.props.match.params.tagID
     let tagForm = this.refs.tagForm
     this.props.tagsStore.fetchShow(tagID).then((response) => {
       if (response.status == 200) {
@@ -26,10 +26,10 @@ export default class Edit extends React.Component {
   }
   
   handleSubmit(params) {
-    let tagID = this.props.params.tagID
+    let tagID = this.props.match.params.tagID
     this.props.tagsStore.update(tagID, params).then((response) => {
       if (response.status == 200) {
-        browserHistory.push('/tags')
+        this.props.history.push({ pathname: '/admin/tags' })
       }
     }).catch((error) => {
       if (error.response && error.response.data && error.response.data.errors) {

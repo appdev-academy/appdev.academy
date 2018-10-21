@@ -1,0 +1,302 @@
+/*
+---------------------------------------------
+global styles
+---------------------------------------------
+*/
+
+::selection {
+  background: $primaryColor;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: $primaryColor;
+  color: #fff;
+}
+
+.align-self-center {
+  -ms-flex-item-align: center!important;
+  align-self: center!important;
+}
+
+.align-self-bottom {
+  -ms-flex-item-align: flex-end!important;
+  align-self: flex-end!important;
+}
+
+.section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  position: relative;
+  
+  &.services-section {
+    margin-top: -200px;
+    position: relative;
+    z-index: 10;
+  }
+  
+  &.background {
+    background: #F4F8FB url(../images/bg-top.svg) center top no-repeat;
+    background-size: contain;
+  }
+}
+
+.page {
+  
+  .cover {
+    min-height: 270px;
+    position: relative;
+    
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0px;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      background-image: linear-gradient(127deg, $gradientDark 0%, $gradientLight 91%);
+      z-index: 2;
+      opacity: 0.85;
+    }
+    
+    .page-top {
+      position: absolute;
+      width: 100%;
+      bottom: 50px;
+      z-index: 3;
+      
+      h1 {
+        @include font($normal, 36px);
+        line-height: 46px;
+        letter-spacing: 1.4px;
+        color: #fff;
+        text-align: center;
+      }
+      
+      .breadcrumb {
+        float: none;
+        @include radius(0px);
+        background: none;
+        padding: 0px;
+        margin-top: 8px;
+        margin-bottom: 0px;
+        display: block;
+        text-align: center;
+        
+        li {
+          @include font($normal, 14px);
+          color: $textLight;
+          line-height: 30px;
+          margin-left: 10px;
+          display: inline-block;
+          
+          &:after {
+            font-family: FontAwesome;
+            content: "\f105";
+            margin-left: 10px;
+            color: $textLight;
+          }
+          
+          &:first-child {
+            margin-left: 0px;
+          }
+          
+          &:last-child {
+            &:after {
+              content: '';
+              margin-left: 0px;
+            }
+          }
+          
+          a {
+            @include font($normal, 14px);
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+  
+  .page-bottom {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    @include font($normal, 16px);
+    letter-spacing: 0.88px;
+    line-height: 28px;
+    color: $textDark;
+    
+    p {
+      margin-bottom: 28px;
+    }
+    
+    .home-services-item {
+      margin-top: 0px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.page-gallery {
+  height: 400px;
+  display: block;
+  overflow: hidden;
+  @include radius(4px);
+  margin-bottom: 30px;
+  
+  &.small {
+    height: 185px;
+  }
+}
+
+.mtop-70 {
+  margin-top: 70px !important;
+}
+
+.mbottom-20 {
+  margin-bottom: 20px !important;
+}
+
+.mbottom-30 {
+  margin-bottom: 30px !important;
+}
+
+.mbottom-60 {
+  margin-bottom: 60px !important;
+}
+
+.mbottom-0 {
+  margin-bottom: 0px !important;
+}
+
+.pbottom-70 {
+  padding-bottom: 70px !important;
+}
+
+blockquote {
+  margin-bottom: 28px;
+  padding: 30px;
+  padding-top: 40px;
+  @include radius(4px);
+  background: #F4F8FB;
+  overflow: hidden;
+  
+  .text {
+    position: relative;
+    text-align: center;
+    
+    p {
+      position: relative;
+      width: 100%;
+      z-index: 2;
+      margin-bottom: 10px !important;
+    }
+    
+    &:before {
+      font-family: FontAwesome;
+      content: "\f10d";
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      color: $headingDark;
+      z-index: 1;
+      font-size: 40px;
+      color: darken(#F4F8FB, 5%)
+    }
+    &:after {
+      font-family: FontAwesome;
+      content: "\f10e";
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+      color: $headingDark;
+      z-index: 1;
+      font-size: 40px;
+      color: darken(#F4F8FB, 5%)
+    }
+  }
+  
+  .author {
+    color: $headingDark;
+    text-align: center;
+  }
+}
+
+.left-heading {
+  .section-title {
+    @include font($normal, 28px);
+    color: $headingDark;
+    letter-spacing: 1.75px;
+    line-height: 42px;
+    margin-bottom: 20px !important;
+  }
+}
+
+.center-heading {
+  text-align: center;
+  
+  .section-title {
+    @include font($normal, 30px);
+    color: $headingDark;
+    letter-spacing: 1.30px;
+    line-height: 40px;
+    margin-bottom: 20px !important;
+  }
+}
+
+.left-text {
+  @include font($normal, 16px);
+  color: $textDark;
+  line-height: 28px;
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+  
+  p {
+    margin-bottom: 30px;
+  }
+}
+
+.center-text {
+  text-align: center;
+  @include font($normal, 16px);
+  color: $textDark;
+  line-height: 28px;
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+  
+  p {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width : 991px) {
+  .page {
+    .cover {
+      margin-top: 80px;
+      
+      h1 {
+        font-size: 26px !important;
+        line-height: 36px !important;
+      }
+      
+      .page-top {
+        text-align: center;
+        
+        .breadcrumb {
+          float: none;
+          text-align: center;
+          display: block;
+          
+          li {
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+  
+  .page-gallery {
+    height: 185px;
+  }
+}

@@ -1,0 +1,260 @@
+/*
+---------------------------------------------
+our work
+---------------------------------------------
+*/
+
+.page-app {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin-bottom: 30px;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    right: 0px;
+    width: calc(100% - 27px);
+    width: -webkit-calc(100% - 27px);
+    z-index: 1;
+    height: 100%;
+    background: #fff;
+    box-shadow: 0 2px 48px 0 rgba(0,0,0,0.06);
+    border-radius: 4px;
+  }
+  
+  .icon {
+    float: left;
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+  }
+  
+  .app-content {
+    position: relative;
+    z-index: 2;
+    float: right;
+    width: calc(100% - 77px);
+    width: -webkit-calc(100% - 77px);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 28px;
+    padding-top: 30px;
+    
+    .title {
+      @include font($normal, 16px);
+      color: $headingDark;
+      letter-spacing: 0.7px;
+      margin-bottom: 10px !important;
+    }
+    
+    .stars {
+      overflow: hidden;
+      margin-bottom: 10px;
+      
+      li {
+        float: left;
+        margin-right: 5px;
+        font-size: 12px;
+        color: #AEBCD6;
+        
+        i {
+          &.active {
+            color: #F5A623;
+          }
+        }
+      }
+    }
+    
+    .text {
+      @include font($normal, 14px);
+      color: $textDark;
+      line-height: 26px;
+      letter-spacing: 0.88px;
+      margin-bottom: 15px;
+    }
+    
+    .btn-primary-line {
+      width: 100%;
+    }
+  }
+}
+
+.app-single {
+  background: #fff;
+  box-shadow: 0 2px 48px 0 rgba(0,0,0,0.06);
+  border-radius: 4px;
+  
+  .header {
+    padding: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ECF7FF;
+    
+    .title {
+      h2 {
+        display: block;
+        @include font($normal, 24px);
+        letter-spacing: 1px;
+        margin-bottom: 10px !important;
+      }
+      
+      .stars {
+        overflow: hidden;
+        margin-bottom: 10px;
+        
+        li {
+          float: left;
+          margin-right: 5px;
+          font-size: 12px;
+          color: #AEBCD6;
+          
+          i {
+            &.active {
+              color: #F5A623;
+            }
+          }
+        }
+      }
+    }
+    
+    .download-buttons {
+      float: right;
+      text-align: right;
+      margin-top: 5px;
+      
+      a {
+        display: inline-block;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  
+  .item {
+    padding: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ECF7FF;
+    overflow: hidden;
+    
+    .icon {
+      float: left;
+      width: 30px;
+      
+      i {
+        font-size: 26px;
+        background-image: linear-gradient(127deg, $gradientDark 0%, $gradientLight 91%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+    
+    .content {
+      float: left;
+      width: calc(100% - 30px);
+      width: -webkit-calc(100% - 30px);
+      padding-left: 30px;
+      
+      .title {
+        margin-top: 3px;
+      }
+      
+      .text {
+        @include font($normal, 16px);
+        letter-spacing: 0.88px;
+        line-height: 28px;
+        color: $textDark;
+        
+        p {
+          margin-bottom: 16px;
+        }
+        
+        .version {
+          margin-bottom: 30px;
+          
+          h6 {
+            margin-bottom: 10px !important;
+          }
+          
+          ul {
+            li {
+              font-size: 14px;
+              position: relative;
+              @include transition(.3s);
+              
+              &:hover {
+                padding-left: 5px;
+              }
+              
+              &:before {
+                font-family: FontAwesome;
+                content: "\f105";
+                color: $primaryColor;
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+      }
+      
+      .gallery {
+        .gallery-item {
+          display: block;
+          overflow: hidden;
+          @include radius(4px);
+          box-shadow: 0 2px 48px 0 rgba(0,0,0,0.06);
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width : 991px) {
+  .app-single {
+    .header {
+      .icon {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      .title {
+        text-align: center;
+        
+        h2 {
+          margin-bottom: 10px;
+        }
+        
+        .stars {
+          text-align: center;
+          margin-bottom: 20px;
+          
+          li {
+            float: none;
+            display: inline;
+          }
+        }
+      }
+      
+      .download-buttons {
+        float: none;
+        text-align: right;
+        
+        a {
+          margin-left: 0px;
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width : 420px) {
+  .app-single {
+    .header {
+      .download-buttons {
+        text-align: center;
+      }
+    }
+  }
+}

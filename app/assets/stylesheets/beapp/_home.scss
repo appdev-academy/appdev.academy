@@ -1,0 +1,424 @@
+/*
+---------------------------------------------
+home
+---------------------------------------------
+*/
+
+.home-services-item {
+  display: block;
+  background-image: linear-gradient(127deg, #fff 0%, #fff 91%);
+  box-shadow: 0 2px 48px 0 rgba(0,0,0,0.06);
+  @include font($normal, 14px);
+  color: $textDark;
+  line-height: 26px;
+  letter-spacing: 0.88px;
+  padding: 30px;
+  border-radius: 40px;
+  border-bottom-right-radius: 4px;
+  margin-top: 30px;
+  position: relative;
+  
+  &.box {
+    border-radius: 4px !important;
+    
+    &:before {
+      border-radius: 4px !important;
+    }
+  }
+  
+  &:before {
+    content: '';
+    border-radius: 40px;
+    border-bottom-right-radius: 4px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: red;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    background-image: linear-gradient(127deg, $gradientDark 0%, $gradientLight 91%);
+    opacity: 0;
+    @include transition(.3s);
+  }
+  
+  &:hover, &.active {
+    color: $textLight;
+    
+    &:before {
+      opacity: 1;
+    }
+    
+    .services-title {
+      color: #fff;
+    }
+    
+    i {
+      background-image: linear-gradient(127deg, #fff 0%, #fff 91%);
+    }
+  }
+  
+  .services-title {
+    @include font($normal, 16px);
+    line-height: 26px;
+    color: $headingDark;
+    margin-bottom: 23px !important;
+    letter-spacing: 0.7px;
+    @include transition(.3s);
+    position: relative;
+    z-index: 2;
+  }
+  
+  i {
+    font-size: 26px;
+    margin-bottom: 23px;
+    background-image: linear-gradient(127deg, $gradientDark 0%, $gradientLight 91%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @include transition(.3s);
+    position: relative;
+    z-index: 2;
+  }
+  
+  p {
+    position: relative;
+    z-index: 2;
+    @include transition(.3s);
+    margin-bottom: 0px !important;
+  }
+  
+  .btn-white-line {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+}
+
+.features {
+  padding-top: 30px;
+  
+  li {
+    overflow: hidden;
+    margin-bottom: 30px;
+    
+    &:hover {
+      .count {
+        span {
+          background: $primaryColor;
+          color: #fff;
+        }
+      }
+    }
+    
+    .count {
+      float: left;
+      width: 68px;
+      min-height: 150px;
+      background: url(../images/features-bg.svg) center bottom no-repeat;
+      
+      span {
+        display: block;
+        width: 37px;
+        height: 37px;
+        line-height: 37px;
+        text-align: center;
+        @include radius(100px);
+        margin: auto;
+        border: 1px solid $primaryColor;
+        @include font($semi, 16px);
+        color: $primaryColor;
+        @include transition(.3s);
+      }
+    }
+    
+    .text {
+      float: left;
+      width: calc(100% - 68px);
+      width: -webkit-calc(100% - 68px);
+      padding-left: 20px;
+      
+      .title {
+        @include font($normal, 16px);
+        line-height: 28px;
+        letter-spacing: 1px;
+        color: $headingDark;
+        margin-top: 5px;
+        margin-bottom: 24px !important;
+      }
+      
+      p {
+        @include font($normal, 16px);
+        color: $textDark;
+        letter-spacing: 1px;
+        line-height: 28px;
+      }
+    }
+  }
+}
+
+.team-item {
+  background-image: linear-gradient(127deg, #fff 0%, #fff 91%);
+  box-shadow: 0 2px 48px 0 rgba(0,0,0,0.06);
+  padding: 20px;
+  border-radius: 40px;
+  border-bottom-right-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+  
+  &:before {
+    content: '';
+    border-radius: 40px;
+    border-bottom-right-radius: 4px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: red;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    background-image: linear-gradient(127deg, $gradientDark 0%, $gradientLight 91%);
+    opacity: 0;
+    @include transition(.3s);
+  }
+  
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+    
+    .header {
+      .info {
+        strong {
+          color: #fff;
+        }
+        
+        span {
+          color: $textLight;
+        }
+      }
+    }
+    
+    .body {
+      color: $textLight;
+    }
+    
+    .social {
+      right: 0px;
+    }
+  }
+  
+  .header {
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    
+    .img {
+      float: left;
+      width: 76px;
+      margin-right: 10px;
+      overflow: hidden;
+      border-radius: 2px;
+      border-top-left-radius: 40px;
+    }
+    
+    .info {
+      strong {
+        display: block;
+        @include font($normal, 14px);
+        color: $headingDark;
+        letter-spacing: 0.6px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        @include transition(.3s);
+      }
+      
+      span {
+        display: block;
+        @include font($normal, 12px);
+        color: $textDark;
+        letter-spacing: 0.52px;
+        @include transition(.3s);
+      }
+    }
+  }
+  
+  .body {
+    @include font($normal, 14px);
+    line-height: 26px;
+    color: $textDark;
+    letter-spacing: 0.6px;
+    position: relative;
+    z-index: 2;
+    @include transition(.3s);
+  }
+  
+  .social {
+    position: absolute;
+    right: -150px;
+    top: 77px;
+    overflow: hidden;
+    width: 150px;
+    height: 28px;
+    background: #fff;
+    text-align: center;
+    border-radius: 3px 0px 0px 3px;
+    @include transition(.3s);
+    z-index: 2;
+    
+    li {
+      display: inline-block;
+      height: 28px;
+      line-height: 28px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+}
+
+.parallax {
+  min-height: 280px;
+  position: relative;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: .78;
+    background-image: linear-gradient(127deg, $gradientDark 0%, $gradientLight 91%);
+    z-index: 2;
+  }
+  
+  .parallax-content {
+    position: relative;
+    z-index: 3;
+    
+    .count-item {
+      height: 280px;
+      position: relative;
+      overflow: hidden;
+      
+      &:hover {
+        strong {
+          margin-top: 60px;
+        }
+      }
+      
+      &:before {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 40px;
+        background: #fff;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        top: 0px;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 40px;
+        background: #fff;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        bottom: 0px;
+      }
+      
+      strong {
+        display: block;
+        text-align: center;
+        @include font($normal, 40px);
+        letter-spacing: 1.72px;
+        margin-bottom: 10px;
+        color: #fff;
+        margin-top: 70px;
+        @include transition(.3s);
+      }
+      
+      span {
+        display: block;
+        text-align: center;
+        color: #fff;
+        @include font($normal, 20px);
+        letter-spacing: 0.86px
+      }
+    }
+    
+    .info {
+      text-align: center;
+      @include font($normal, 22px);
+      color: #fff;
+      
+      p {
+        letter-spacing: 1px;
+        margin-top: 80px;
+        margin-bottom: 60px;
+        
+        span {
+          text-decoration: underline;
+        }
+      }
+      
+      .btn-white-line {
+        margin: auto;
+      }
+    }
+  }
+}
+
+@media (max-width : 991px) {
+  .home-services-item {
+    &.mtop-70 {
+      margin-top: 30px !important;
+    }
+  }
+  
+  .services-section {
+    margin-top: 0px !important;
+  }
+  
+  .team-item {
+    cursor: pointer;
+  }
+  
+  .parallax {
+    .parallax-content {
+      .count-item {
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
+        &:hover {
+          strong {
+            margin-top: 0px;
+          }
+        }
+        
+        &:before {
+          display: none;
+        }
+        
+        &:after {
+          width: 40px;
+          height: 1px;
+        }
+        
+        strong {
+          margin-top: 0px;
+        }
+      }
+      
+      .info {
+        
+        .btn-white-line {
+          margin-bottom: 80px;
+        }
+      }
+    }
+  }
+}

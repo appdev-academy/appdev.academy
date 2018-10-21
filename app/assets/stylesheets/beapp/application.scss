@@ -1,0 +1,51 @@
+/* ----------------------------------------------------------------------------------------
+Template: Beapp - Mobile App Development Agency HTML5 Template
+Version: 1.0
+Author: tempload - support@tempload.com
+-----------------------------------------------------------------------------------------*/
+
+/* ---------------------------------------------
+Table of contents
+------------------------------------------------
+01. font & reset css
+02. preloader
+03. global styles
+04. buttons
+05. header
+06. welcome area
+07. home
+08. blog
+09. our work
+10. aside
+11. contact
+12. footer
+--------------------------------------------- */
+
+
+@import '_mixins';
+
+@import '_theme-options';
+
+@import '_reset';
+
+@import '_loader';
+
+@import '_global';
+
+@import '_buttons';
+
+@import '_header';
+
+@import '_welcome';
+
+@import '_home';
+
+@import '_blog';
+
+@import '_our-work';
+
+@import 'aside';
+
+@import 'contact';
+
+@import 'footer';

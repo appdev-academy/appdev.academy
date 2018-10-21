@@ -1,0 +1,157 @@
+/*
+---------------------------------------------
+aside
+---------------------------------------------
+*/
+
+aside.default-aside {
+  .sidebar {
+    .box {
+      margin-bottom: 30px;
+    }
+    
+    ul {
+      border: 1px solid #ECF7FF;
+      @include radius(4px);
+      overflow: hidden;
+      margin-bottom: 30px;
+      
+      li {
+        &.active {
+          a {
+            background: #F4F8FB;
+            color: $textDark;
+            
+            &:after {
+              color: $textDark;
+            }
+            
+            &:hover {
+              padding-left: 60px;
+            }
+          }
+        }
+        
+        &:last-child {
+          a {
+            border: none;
+          }
+        }
+        
+        a {
+          display: block;
+          border-bottom: 1px dashed #ECF7FF;
+          height: 60px;
+          line-height: 60px;
+          padding-left: 60px;
+          position: relative;
+          @include font($normal, 14px);
+          color: $headingDark;
+          letter-spacing: 0.88px;
+          @include transition(.3s);
+          position: relative;
+          
+          &:hover {
+            padding-left: 70px;
+          }
+          
+          &:after {
+            font-family: FontAwesome;
+            content: "\f105";
+            position: absolute;
+            left: 30px;
+            color: $headingDark;
+          }
+          
+          span {
+            float: right;
+            margin-right: 30px;
+            display: inline-block;
+            background: #F4F8FB;
+            height: 20px;
+            line-height: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 10px;
+            color: $textDark;
+            margin-top: 18px;
+            @include radius(100px);
+          }
+        }
+      }
+    }
+    
+    .search-widget {
+      display: block;
+      margin-bottom: 30px;
+      height: 50px;
+      position: relative;
+      
+      input {
+        border: 1px solid #ECF7FF;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        padding-left: 20px;
+        padding-right: 50px;
+        @include transition(.3s);
+        @include radius(4px);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        
+        &:focus {
+          border: 1px solid $primaryColor;
+          padding-left: 30px;
+        }
+      }
+      
+      button {
+        position: absolute;
+        z-index: 2;
+        right: 10px;
+        top: 10px;
+        height: 30px;
+        width: 30px;
+        border: none;
+        background-image: linear-gradient(127deg, $gradientDark 0%, $gradientLight 91%);
+        @include radius(4px);
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        padding: 0px;
+        
+        i {
+          color: #fff;
+        }
+      }
+    }
+    
+    .widget-tags {
+      border: 1px solid #F4F8FB;
+      padding: 30px;
+      padding-bottom: 20px;
+      overflow: hidden;
+      @include radius(4px);
+      
+      a {
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        background: #F4F8FB;
+        padding-left: 10px;
+        padding-right: 10px;
+        @include font($normal, 14px);
+        color: $textDark;
+        @include radius(4px);
+        @include transition(.3s);
+        
+        &:hover {
+          background: $primaryColor;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

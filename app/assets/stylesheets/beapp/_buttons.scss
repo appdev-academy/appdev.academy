@@ -1,0 +1,47 @@
+/*
+---------------------------------------------
+buttons
+---------------------------------------------
+*/
+
+.btn-white-line {
+  display: block;
+  width: 225px;
+  height: 45px;
+  line-height: 45px;
+  color: #fff;
+  @include font($bold, 13px);
+  letter-spacing: 0.81px;
+  border: 1px solid #fff;
+  @include radius(100px);
+  background: none;
+  @include transition(.3s);
+  text-align: center;
+  cursor: pointer;
+  
+  &:hover {
+    background: #fff;
+    color: $primaryColor;
+  }
+}
+
+.btn-primary-line {
+  display: block;
+  width: 225px;
+  height: 45px;
+  line-height: 45px;
+  color: $primaryColor;
+  @include font($bold, 13px);
+  letter-spacing: 0.81px;
+  border: 1px solid $primaryColor;
+  @include radius(100px);
+  background: none;
+  @include transition(.3s);
+  text-align: center;
+  cursor: pointer;
+  
+  &:hover {
+    background: $primaryColor;
+    color: #fff;
+  }
+}

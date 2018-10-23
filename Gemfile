@@ -12,6 +12,9 @@ gem 'puma'
 gem 'react_on_rails', '11.1.3' # Update to the current version
 gem 'webpacker', '~> 3' # Newer versions might be supported
 
+gem 'bootstrap', '4.1.3'
+gem 'font-awesome-sass', '4.7.0'
+
 # Set environment variables safely
 gem 'figaro'
 

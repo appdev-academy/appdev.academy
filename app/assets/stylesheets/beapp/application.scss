@@ -21,6 +21,9 @@ Table of contents
 12. footer
 --------------------------------------------- */
 
+@import 'bootstrap';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 @import '_mixins';
 
@@ -44,8 +47,8 @@ Table of contents
 
 @import '_our-work';
 
-@import 'aside';
+@import '_aside';
 
-@import 'contact';
+@import '_contact';
 
-@import 'footer';
+@import '_footer';

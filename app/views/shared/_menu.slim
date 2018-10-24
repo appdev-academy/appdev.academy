@@ -3,21 +3,27 @@ header.header-area
     .row
       .col-lg-12
         nav.main-nav
-          a.logo href="home.html"
+          = link_to root_path, class: 'logo'
             img.light-logo src='/favicons/favicon-32x32.png' alt='App Dev Academy light logo'
             img.dark-logo src='/favicons/favicon-32x32.png' alt='App Dev Academy dark logo'
           ul.nav
             li
-              a href='home.html' HOME
+              = link_to 'HOME', root_path
             li
-              a href='home.html' OUR WORK
+              = link_to 'OUR WORK', portfolio_root_path
             li
-              a href='home.html' ABOUT US
-            li
+              = link_to 'ABOUT US', about_path
+            /li
               a href='home.html' SERVICES
             li
-              a href='home.html' BLOG
+              = link_to 'BLOG', articles_path
+            /li
+              = link_to 'Guides', guides_path
+            /li
+              = link_to 'Open Source', open_source_path
+            /li
+              = link_to 'RSS', feed_path
             li
-              a.btn-nav-line href='contact.html' CONTACT
+              = link_to 'CONTACT', contacts_path, class: 'btn-nav-line'
           a.menu-trigger
             span Menu

@@ -7,7 +7,7 @@ html
     
     = csrf_meta_tags
     
-    // RSS
+    // RSS feed
     = auto_discovery_link_tag :rss, 'https://www.appdev.academy/feed'
     
     // CSS
@@ -23,15 +23,7 @@ html
     / TODO: Remove this when finish transition to new menu
     /.root-container
       .menu#menu
-        = link_to 'Home', root_path, class: ((params[:controller] == 'pages' && params[:action] == 'home') ? 'active' : '')
-        = link_to 'Blog', articles_path, class: ((params[:controller] == 'articles') ? 'active' : '')
-        = link_to 'About', about_path, class: ((params[:controller] == 'pages' && params[:action] == 'about') ? 'active' : '')
-        = link_to 'Portfolio', portfolio_root_path, class: ((params[:controller] == 'portfolio/projects') ? 'active' : '')
-        = link_to 'Contacts', contacts_path, class: ((params[:controller] == 'pages' && params[:action] == 'contacts') ? 'active' : '')
-        = link_to 'Guides', guides_path, class: ((params[:controller] == 'pages' && params[:action] == 'guides') ? 'active' : '')
-        = link_to 'Open Source', open_source_path, class: ((params[:controller] == 'pages' && params[:action] == 'open_source') ? 'active' : '')
-        = link_to 'RSS', feed_path, class: ((params[:controller] == 'articles' && params[:action] == 'feed') ? 'active' : '')
-        a href="javascript:void(0);" class="hamburger" onclick="toggleMenu()"&#9776;
+        , class: ((params[:controller] == 'pages' && params[:action] == 'contacts') ? 'active' : '')
         
     = yield
     = render 'shared/footer'

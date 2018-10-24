@@ -19,12 +19,6 @@ html
     = render 'shared/preloader'
     = render 'shared/menu'
     = render 'shared/page_top'
-    
-    / TODO: Remove this when finish transition to new menu
-    /.root-container
-      .menu#menu
-        , class: ((params[:controller] == 'pages' && params[:action] == 'contacts') ? 'active' : '')
-        
     = yield
     = render 'shared/footer'
     

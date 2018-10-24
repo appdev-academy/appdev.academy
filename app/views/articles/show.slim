@@ -7,14 +7,16 @@
 - else
   - set_meta_tags title: @article.title, keywords: @article.tags.map(&:title), twitter: twitter_meta_params, og: og_meta_params
 
-.full-width
-  .article-container
-    h2 #{@article.title}
-    p.author
-      | Published by #{@article.author.full_name} on #{@article.published_at.strftime('%B %d, %Y')}
-      br
-      | last update on #{@article.updated_at.strftime('%B %d, %Y')}
-    = render 'tags', tags: @article.tags
-    .article-container #{@article.html_content.html_safe}
-    = social_share_button_tag(@article.title)
-    = link_to 'Back to all Articles', articles_path, class: 'button blue'
+.page-bottom.ptop-50.pbottom-70
+  .container
+    .row
+      .col-lg-12
+        h2 #{@article.title}
+        p.author
+          | Published by #{@article.author.full_name} on #{@article.published_at.strftime('%B %d, %Y')}
+          br
+          | last update on #{@article.updated_at.strftime('%B %d, %Y')}
+        = render 'tags', tags: @article.tags
+        .article-container #{@article.html_content.html_safe}
+        = social_share_button_tag(@article.title)
+        = link_to 'Back to all Articles', articles_path, class: 'button blue'

@@ -1,8 +1,9 @@
-.home-container
-  .page-container
-    section#home
-      = @page.html_content.html_safe
-      
+.page-bottom.ptop-50.pbottom-70
+  .container
+    .row
+      .col-lg-12
+        = @page.html_content.html_safe
+        
     - if @testimonials.present?
       section#testimonials.testimonials
         h2 Our Clients

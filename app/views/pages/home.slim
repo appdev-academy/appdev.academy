@@ -4,22 +4,40 @@
       .col-lg-12
         = @page.html_content.html_safe
         
-    - if @testimonials.present?
-      section#testimonials.testimonials
-        h2 Our Clients
-        - @testimonials.each do |testimonial|
-          .card
-            = image_tag testimonial.profile_picture.rect_square, class: 'image-circle'
-            = testimonial.html_body.html_safe
-            h3
-              span = testimonial.first_name + ' ' + testimonial.last_name + ', '
-              = testimonial.title + ' at ' + testimonial.company
-              
-      - if @employees.present?
-        section#employees.employees
-          h2 Our Team
-          - @employees.each do |employee|
-            .card
-              .image-box
-                = image_tag employee.profile_picture.rectangular
-              .description #{employee.first_name} #{employee.last_name}, #{employee.title}
+section.section.pbottom-70
+  .container
+    .row
+      .col-lg-12
+        .center-heading
+          h2.section-title Our Team
+      .offset-lg-3.col-lg-6
+        .center-text
+          p Highly motivated team of professionals eager to solve challenges of your business
+    .row
+      - @employees.each do |employee|
+        .col-lg-3.col-md-6.col-sm-6.col-xs-12
+          .team-item
+            .header
+              .img
+                = image_tag employee.profile_picture.rect_square, alt: "#{employee.full_name}, #{employee.title} at App Dev Academy Ltd."
+              .info
+                strong = employee.full_name
+                span = employee.title
+            .body = employee.motivation
+            ul.social
+              - if employee.facebook_url.present?
+                li
+                  = link_to employee.facebook_url, target: '_blank'
+                    i.fa.fa-facebook
+              - if employee.twitter_url.present?
+                li
+                  = link_to employee.twitter_url, target: '_blank'
+                    i.fa.fa-twitter
+              - if employee.linkedin_url.present?
+                li
+                  = link_to employee.linkedin_url, target: '_blank'
+                    i.fa.fa-linkedin
+              - if employee.github_url.present?
+                li
+                  = link_to employee.github_url, target: '_blank'
+                    i.fa.fa-github

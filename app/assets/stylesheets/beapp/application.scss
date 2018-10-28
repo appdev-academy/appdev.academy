@@ -52,3 +52,14 @@ Table of contents
 @import '_contact';
 
 @import '_footer';
+
+// Custom CSS
+.ptop-50 {
+  padding-top: 50px !important;
+}
+
+.team-item {
+  img {
+    width: 75px;
+  }
+}

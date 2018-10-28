@@ -16,9 +16,14 @@ export default class Form extends React.Component {
   
   setEmployee(employee) {
     if (employee) {
-      this.refs.firstName.value = employee.first_name,
-      this.refs.lastName.value = employee.last_name,
-      this.refs.title.value = employee.title,
+      this.refs.firstName.value = employee.first_name
+      this.refs.lastName.value = employee.last_name
+      this.refs.title.value = employee.title
+      this.refs.motivation.value = employee.motivation
+      this.refs.facebookURL.value = employee.facebook_url
+      this.refs.twitterURL.value = employee.twitter_url
+      this.refs.linkedinURL.value = employee.linkedin_url
+      this.refs.githubURL.value = employee.github_url
       this.setState({
         profilePicture: employee.profile_picture
       })
@@ -50,6 +55,11 @@ export default class Form extends React.Component {
     formData.append('employee[first_name]', this.refs.firstName.value)
     formData.append('employee[last_name]', this.refs.lastName.value)
     formData.append('employee[title]', this.refs.title.value)
+    formData.append('employee[motivation]', this.refs.motivation.value)
+    formData.append('employee[facebook_url]', this.refs.facebookURL.value)
+    formData.append('employee[twitter_url]', this.refs.twitterURL.value)
+    formData.append('employee[linkedin_url]', this.refs.linkedinURL.value)
+    formData.append('employee[github_url]', this.refs.githubURL.value)
     
     if (this.state.file) {
       formData.append('employee[profile_picture]', this.state.file)
@@ -63,16 +73,36 @@ export default class Form extends React.Component {
       <div className='column'>
         <ErrorsList errors={ this.props.errors } />
         <div className='form-group'>
-          <label htmlFor='title'>Title</label>
-          <input type='text' ref='title' id='title' autoFocus={ true } />
-        </div>
-        <div className='form-group'>
           <label htmlFor='firstName'>First name</label>
-          <input type='text' ref='firstName' id='firstName' />
+          <input type='text' ref='firstName' id='firstName' autoFocus={ true } />
         </div>
         <div className='form-group'>
           <label htmlFor='lastName'>Last name</label>
           <input type='text' ref='lastName' id='lastName' />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='title'>Title</label>
+          <input type='text' ref='title' id='title' />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='motivation'>Motivation</label>
+          <textarea className='inline' rows='3' ref='motivation' id='motivation' />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='facebookURL'>Facebook profile URL</label>
+          <input type='text' ref='facebookURL' id='facebookURL' />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='twitterURL'>Twitter profile URL</label>
+          <input type='text' ref='twitterURL' id='twitterURL' />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='linkedinURL'>LinkedIn profile URL</label>
+          <input type='text' ref='linkedinURL' id='linkedinURL' />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='githubURL'>GitHub profile URL</label>
+          <input type='text' ref='githubURL' id='githubURL' />
         </div>
         <div className='form-group employee-picture'>
           <label htmlFor='profilePicture'>Profile picture</label>

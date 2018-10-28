@@ -6,6 +6,12 @@ textarea {
   font-family: Raleway;
   font-size: 1em;
   line-height: 30px;
+  
+  &.inline {
+    border: 1px solid #ccc;
+    font-size: 0.75em;
+    line-height: normal;
+  }
 }
 
 .form-group {

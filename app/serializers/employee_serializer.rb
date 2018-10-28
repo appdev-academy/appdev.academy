@@ -1,7 +1,11 @@
 class EmployeeSerializer < ActiveModel::Serializer
+  attribute :facebook_url
   attribute :first_name
+  attribute :github_url
   attribute :id
   attribute :last_name
+  attribute :linkedin_url
+  attribute :motivation
   attribute :position
   
   attribute :profile_picture
@@ -11,6 +15,7 @@ class EmployeeSerializer < ActiveModel::Serializer
   
   attribute :published
   attribute :title
+  attribute :twitter_url
   
   attribute :updated_at
   def updated_at

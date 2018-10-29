@@ -82,6 +82,9 @@ export default class TableRow extends React.Component {
     return connectDragSource(connectDropTarget(
       <tr key={ project.id }>
         <td>{ project.id }</td>
+        <td>
+          <img className='app-icon' src={ project.app_icon } alt={ `${project.title} app icon` } />
+        </td>
         <td>{ project.title }</td>
         <td>{ project.slug }</td>
         <td>{ project.position }</td>

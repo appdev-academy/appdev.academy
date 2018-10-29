@@ -5,6 +5,9 @@ class Project < ApplicationRecord
   # Set slug on create/update
   after_save :set_slug
   
+  # Uploaders
+  mount_uploader :app_icon, AppIconUploader
+  
   # Associations
   has_many :gallery_images, dependent: :destroy
   has_and_belongs_to_many :tags
@@ -12,6 +15,7 @@ class Project < ApplicationRecord
   # Associations validations
   
   # Fields validations
+  validates :app_icon, presence: true
   validates :content, presence: true
   validates :html_content, presence: true
   validates :html_preview, presence: true

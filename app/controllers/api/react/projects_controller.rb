@@ -80,7 +80,7 @@ class Api::React::ProjectsController < Api::React::ApiController
   
   private
     def project_params
-      params.require(:project).permit(:content, :html_content, :html_preview, :preview, :title)
+      params.require(:project).permit(:app_icon, :content, :html_content, :html_preview, :preview, :title)
     end
     
     def update_tags_for_project(project)

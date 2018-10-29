@@ -36,6 +36,7 @@ export default class Index extends React.Component {
           <thead>
             <tr>
               <td>ID</td>
+              <td>App Icon</td>
               <td>Title</td>
               <td>Slug</td>
               <td>Position</td>

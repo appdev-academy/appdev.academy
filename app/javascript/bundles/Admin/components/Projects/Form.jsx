@@ -20,6 +20,8 @@ export default class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      appIcon: '',
+      appIconFile: '',
       preview: '',
       htmlPreview: '',
       content: '',
@@ -37,6 +39,7 @@ export default class Form extends React.Component {
     if (project) {
       this.refs.title.value = project.title
       this.setState({
+        appIcon: project.app_icon,
         preview: project.preview,
         htmlPreview: markdown.render(project.preview),
         content: project.content,
@@ -64,7 +67,6 @@ export default class Form extends React.Component {
     })
   }
   
-  
   // Tags management
   addTag(tag) {
     let tags = this.state.tags
@@ -89,17 +91,42 @@ export default class Form extends React.Component {
     this.setState({ tags: tags })
   }
   
+  selectFile() {
+    this.refs.appIcon.click()
+  }
+  
+  didSelectFile() {
+    let file = this.refs.appIcon.files[0]
+    let reader = new FileReader()
+    
+    reader.onload = (event) => {
+      this.setState({
+        appIcon: reader.result,
+        appIconFile: file
+      })
+    }
+    reader.readAsDataURL(file)
+  }
+  
   handleSubmit(event) {
     event.preventDefault()
-    let projectParams = {
-      title: this.refs.title.value,
-      preview: this.state.preview,
-      html_preview: this.state.htmlPreview,
-      content: this.state.content,
-      html_content: this.state.htmlContent,
-      tags_titles: this.state.tags.map(tag => tag.title).join(',')
+    let formData = new FormData()
+    
+    formData.append('project[title]', this.refs.title.value)
+    formData.append('project[preview]', this.state.preview)
+    formData.append('project[html_preview]', this.state.htmlPreview)
+    formData.append('project[content]', this.state.content)
+    formData.append('project[html_content]', this.state.htmlContent)
+    
+    // App Icon if it was selected
+    if (this.state.appIconFile) {
+      formData.append('project[app_icon]', this.state.appIconFile)
     }
-    this.props.handleSubmit(projectParams)
+    
+    // Tags are separate from Project fields
+    formData.append('tags_titles', this.state.tags.map(tag => tag.title).join(','))
+    
+    this.props.handleSubmit(formData)
   }
   
   clickEditor() {
@@ -133,6 +160,18 @@ export default class Form extends React.Component {
         <ErrorsList errors={ this.props.errors } />
         <div className='form-group'>
           <input type='text' ref='title' className='title' autoFocus={ true } />
+        </div>
+        <div className='form-group employee-picture'>
+          <label htmlFor='appIcon'>App Icon</label>
+          <img src={ this.state.appIcon } onClick={ this.selectFile.bind(this) } />
+          <input
+            name='appIcon'
+            id='appIcon'
+            type='file'
+            accept='image/png, image/jpeg, image/jpg'
+            onChange={ this.didSelectFile.bind(this) }
+            ref='appIcon'
+          />
         </div>
         <div className='form-group'>
           <label htmlFor='tags'>Tags</label>

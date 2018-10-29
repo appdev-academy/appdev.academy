@@ -8,18 +8,29 @@
       .col-lg-12
         = @portfolio_page.html_content.html_safe
         
-  ol.projects
-    - @projects.each do |project|
-      li
-        = link_to project.title, portfolio_project_path(project), class: 'project-title'
-        
-        - if project.gallery_images.any?
-          .image-gallery
-            - project.gallery_images.order(id: :asc).each_with_index do |gallery_image, index|
-              a href='javascript:void();' onClick="openPhotoSwipe(#{project.id}, #{index});"
-                = image_tag gallery_image.image.thumb.url
-        = render 'tags', tags: project.tags
-        .project-container
-          = project.html_preview.html_safe
-          
-        = link_to 'Project details...', portfolio_project_path(project), class: 'button blue'
+.page-bottom.pbottom-70
+  .container
+    .row
+      - @projects.each do |project|
+        .col-lg-4.col-md-6.col-sm-12
+          .page-app
+            .icon
+              = image_tag project.app_icon, alt: "#{project.title} app icon", width: '75px'
+            .app-content
+              h5.title = project.title
+              /ul.stars
+                li
+                  i.fa.fa-star.active
+                li
+                  i.fa.fa-star.active
+                li
+                  i.fa.fa-star.active
+                li
+                  i.fa.fa-star.active
+                li
+                  i.fa.fa-star
+                li
+                  | (144)
+              .text
+                = project.html_preview.html_safe
+              = link_to 'App Details', portfolio_project_path(project), class: 'btn-primary-line'

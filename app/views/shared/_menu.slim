@@ -4,8 +4,8 @@ header.header-area
       .col-lg-12
         nav.main-nav
           = link_to root_path, class: 'logo'
-            img.light-logo src='/favicons/favicon-32x32.png' alt='App Dev Academy light logo'
-            img.dark-logo src='/favicons/favicon-32x32.png' alt='App Dev Academy dark logo'
+            = image_tag image_url('logos/light.svg'), alt: 'App Dev Academy light logo', class: 'light-logo'
+            = image_tag image_url('logos/dark.svg'), alt: 'App Dev Academy dark logo', class: 'dark-logo'
           ul.nav
             li
               = link_to 'HOME', root_path

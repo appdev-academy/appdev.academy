@@ -54,8 +54,15 @@ Table of contents
 @import '_footer';
 
 // Custom CSS
+
+@import 'magnific-popup';
+
 .ptop-50 {
   padding-top: 50px !important;
+}
+
+.pbottom-100 {
+  padding-bottom: 100px !important;
 }
 
 .team-item {

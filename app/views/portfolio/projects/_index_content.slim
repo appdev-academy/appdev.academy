@@ -1,7 +1,5 @@
 - set_meta_tags title: 'Portfolio'
 
-/= render 'photoswipe/gallery'
-
 .page-bottom.ptop-50.pbottom-70
   .container
     .row
@@ -15,7 +13,7 @@
         .col-lg-4.col-md-6.col-sm-12
           .page-app
             .icon
-              = image_tag project.app_icon, alt: "#{project.title} app icon", width: '75px'
+              = image_tag project.app_icon.regular, alt: "#{project.title} app icon", width: '75px'
             .app-content
               h5.title = project.title
               /ul.stars

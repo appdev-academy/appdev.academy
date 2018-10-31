@@ -4,7 +4,9 @@ class ProjectShowSerializer < ActiveModel::Serializer
     object.app_icon.regular.url
   end
   
+  attribute :app_store_url
   attribute :content
+  attribute :google_play_url
   attribute :html_content
   attribute :html_preview
   attribute :id

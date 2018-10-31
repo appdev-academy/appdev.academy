@@ -1,18 +1,82 @@
 - set_meta_tags title: @project.title
 
-= render 'photoswipe/gallery'
-
-.full-width
-  h2.center = @project.title
-  
-  - if @project.gallery_images.any?
-    .image-gallery
-      - @project.gallery_images.each_with_index do |gallery_image, index|
-        a href='javascript:void();' onClick="openPhotoSwipe(#{@project.id}, #{index});"
-          = image_tag gallery_image.image.thumb.url
-          
-  = render 'tags', tags: @project.tags
-  .project-container = @project.html_content.html_safe
-  
-  br
-  = link_to 'Back to Portfolio', portfolio_root_path, class: 'button blue'
+.page-bottom.pbottom-100
+  .container
+    .row
+      .col-lg-12
+        .app-single
+          .header
+            .row
+              .col-lg-1.col-md-2.col-sm-12
+                .icon
+                  = image_tag @project.app_icon.regular, alt: "#{@project.title} app icon", class: 'img-fluid', width: '75px'
+              .col-lg-5.col-md-4.col-sm-12
+                .title
+                  h2 = @project.title
+                  /ul.stars
+                    li
+                      i.fa.fa-star.active
+                    li
+                      i.fa.fa-star.active
+                    li
+                      i.fa.fa-star.active
+                    li
+                      i.fa.fa-star.active
+                    li
+                      i.fa.fa-star
+                    li
+                      | (144)
+              .col-lg-6.col-md-6.col-sm-12
+                .download-buttons
+                  - if @project.app_store_url.present?
+                    = link_to @project.app_store_url, target: '_blank'
+                      = image_tag image_url('logos/download-apple-store.svg'), alt: 'Download on the Apple Store icon'
+                  - if @project.google_play_url.present?
+                    = link_to @project.google_play_url, target: '_blank'
+                      = image_tag image_url('logos/download-google-play.svg'), alt: 'Download on the Google Play icon'
+                      
+          .item
+            .icon
+              i.fa.fa-file-text-o
+            .content
+              h5.title Description
+              .text
+                = @project.html_content.html_safe
+                
+          .item
+            .icon
+              i.fa.fa-file-image-o
+            .content
+              h5.title Screenshots
+              .row.gallery
+                - @project.gallery_images.each_with_index do |gallery_image, index|
+                  .col-lg-3.col-md-6.col-sm-6.col-xs-12
+                    = link_to gallery_image.image.url, class: 'gallery-item', title: "#{@project.title} screenshot ##{index}"
+                      = image_tag gallery_image.image.url, class: 'img-fluid', alt: "#{@project.title} screenshot ##{index}"
+                      
+          /.item
+            .icon
+              i.fa.fa-file-code-o
+            .content
+              h5.title Version History
+              .text
+                .version
+                  h6 1.8.2
+                  ul
+                    li A major improvement to Inbox that will be rolled out in phases.
+                    li When you add a mail to a Connected App, it will also have a link to open the conversation in Newton on any device.
+                    li Notifications will be cleared for emails that are read in the app.
+                .version
+                  h6 1.6.7
+                  ul
+                    li Tidy Inbox bugs are fixed. You can now archive mails from Low Priority folders in Gmail accounts.
+                    li Fixed crashes and squashed some annoying bugs.
+                    li The Paper Plane now has the thrust to take you to the next orbit.
+                .version
+                  h6 1.3.3
+                  ul
+                    li Disable signature for reply. The first reply will have the signature however, you can choose to disable it for subsequent replies
+                    li Fixed connection issue in iPhone where new emails were not showing until the app was killed.
+                    li Issues with replying to an email that has more than 30 inline attachments. Fixed.
+                    
+  /= render 'tags', tags: @project.tags

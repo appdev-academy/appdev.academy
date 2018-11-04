@@ -18,6 +18,9 @@
                         span = article.published_at.strftime('%d')
                   ul.post-meta
                     li
+                      span.icon.fa.fa-user
+                      = article.author.full_name
+                    /li
                       a href="#"
                         span.icon.fa.fa-user
                         = article.author.full_name
@@ -43,6 +46,9 @@
                         span = article.published_at.strftime('%d')
                   ul.post-meta
                     li
+                      span.icon.fa.fa-user
+                      = article.author.full_name
+                    /li
                       a href="#"
                         span.icon.fa.fa-user
                         = article.author.full_name
@@ -55,4 +61,3 @@
                   .text
                     = article.html_preview.html_safe
                   = link_to 'Read More', article_path(article), class: 'btn-primary-line'
-                  

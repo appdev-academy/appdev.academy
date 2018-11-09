@@ -25,4 +25,8 @@ class PagesController < ApplicationController
   def open_source
     @page = Page.find_by!(slug: 'open-source')
   end
+  
+  # GET /services
+  def services
+  end
 end

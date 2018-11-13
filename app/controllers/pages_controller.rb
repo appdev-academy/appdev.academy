@@ -17,6 +17,7 @@ class PagesController < ApplicationController
   # GET /
   def home
     @page = Page.find_by!(slug: 'home')
+    @projects = Project.where(is_hidden: false).order('position DESC').limit(8)
     @testimonials = Testimonial.where(published: true).order('position DESC').limit(100)
     @employees = Employee.where(published: true).order('position DESC').limit(100)
   end

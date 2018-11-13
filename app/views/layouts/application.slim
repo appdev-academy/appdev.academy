@@ -18,7 +18,8 @@ html
   body
     = render 'shared/preloader'
     = render 'shared/menu'
-    = render 'shared/page_top'
+    - unless params[:controller] == 'pages' && params[:action] == 'home'
+      = render 'shared/page_top'
     = yield
     = render 'shared/footer'
     

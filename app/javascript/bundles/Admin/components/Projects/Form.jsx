@@ -71,11 +71,11 @@ export default class Form extends React.Component {
   
   // Tags management
   addTag(tag) {
-    let tags = this.state.tags
+    let tags = this.state.tags.slice()
     let tagID = Math.floor(100000 * Math.random())
     tags.push({
       id: tagID,
-      title: tag
+      title: tag.title
     })
     this.setState({ tags: tags })
   }
@@ -157,7 +157,13 @@ export default class Form extends React.Component {
       'half-width': this.state.showType == 'editor'
     })
     
-    let suggestions = this.props.allTags.map(tag => tag.title)
+    // Normalize tags and suggestions
+    let tags = this.state.tags.map(tag => {
+      return { id: `${tag.id}`, title: tag.title }
+    })
+    let suggestions = this.props.allTags.map(tag => {
+      return { id: `${tag.id}`, title: tag.title }
+    })
     
     return (
       <div className='column'>
@@ -190,7 +196,7 @@ export default class Form extends React.Component {
           <ReactTags
             labelField='title'
             autofocus={ false }
-            tags={ this.state.tags }
+            tags={ tags }
             suggestions={ suggestions }
             handleDelete={ this.deleteTag.bind(this) }
             handleAddition={ this.addTag.bind(this) }

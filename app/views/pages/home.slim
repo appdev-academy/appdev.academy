@@ -1,9 +1,25 @@
-.page-bottom.ptop-50.pbottom-70
-  .container
-    .row
-      .col-lg-12
-        = @page.html_content.html_safe
-        
+section.welcome-area
+  .welcome-bg data-bg="#{image_url('photos/parallax.jpg')}"
+    img src="#{image_url('hovers/bg-bottom.svg')}" alt=""
+    
+  .welcome-content
+    .container
+      .row
+        .col-lg-6.col-md-12.col-sm-12.col-xs-12.align-self-center
+          h1 Check out our mobile apps we're working on.
+          p We design and develop mobile apps that delight your users and grow your business. Enterprise-grade development combined with outstanding design.
+          = link_to 'ALL WORKS', portfolio_root_path, class: 'btn-white-line'
+          
+        .offset-lg-1.col-lg-5.col-md-12.col-sm-12.col-xs-12.align-self-center
+          .apps
+            .container-fluid
+              .row
+                - @projects.each do |project|
+                  .col-lg-3.col-md-3.col-sm-3.col-3
+                    = link_to portfolio_project_path(project), class: 'app-item'
+                      .icon
+                        = image_tag project.app_icon.regular, alt: "#{project.title} app icon", class: 'img-fluid', width: '75px'
+                        
 section.section.pbottom-70
   .container
     .row

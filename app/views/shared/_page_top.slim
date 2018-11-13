@@ -3,10 +3,54 @@ section.page
     .page-top
       .container
         .row
-          .col-lg-12
-            h1 About Us
-          .col-lg-12
-            ol.breadcrumb
-              li
-                a href="index.html" Home
-              li.active About Us
+          - if params[:controller] == 'articles'
+            - if params[:action] == 'index'
+              .col-lg-12
+                h1 Blog
+              .col-lg-12
+                ol.breadcrumb
+                  li
+                    = link_to 'Home', root_path
+                  li.active
+                    | Blog
+            - if params[:action] == 'show'
+              .col-lg-12
+                h1 = @article.title
+              .col-lg-12
+                ol.breadcrumb
+                  li
+                    = link_to 'Home', root_path
+                  li
+                    = link_to 'Blog', articles_path
+                  li.active
+                    = @article.title
+          - elsif params[:controller] == 'pages'
+            .col-lg-12
+              h1 = @page.slug.titleize
+            .col-lg-12
+              ol.breadcrumb
+                li
+                  = link_to 'Home', root_path
+                li.active
+                  = @page.slug.titleize
+          - elsif params[:controller] == 'portfolio/projects'
+            - if params[:action] == 'index'
+              .col-lg-12
+                h1 Portfolio
+              .col-lg-12
+                ol.breadcrumb
+                  li
+                    = link_to 'Home', root_path
+                  li.active
+                    | Portfolio
+            - elsif params[:action] == 'show'
+              .col-lg-12
+                h1 = @project.title
+              .col-lg-12
+                ol.breadcrumb
+                  li
+                    = link_to 'Home', root_path
+                  li
+                    = link_to 'Portfolio', portfolio_root_path
+                  li.active
+                    = @project.title

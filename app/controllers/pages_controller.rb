@@ -30,5 +30,6 @@ class PagesController < ApplicationController
   
   # GET /services
   def services
+    @page = Page.find_by!(slug: 'services')
   end
 end

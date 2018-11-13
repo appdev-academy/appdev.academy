@@ -1,75 +1,66 @@
+- @projects = Project.where(is_hidden: false).order('position DESC').limit(5)
+
 footer
   .container
     .row
       .col-lg-5.col-md-12.col-sm-12
         = image_tag image_url('logos/dark.svg'), alt: 'App Dev Academy dark logo', height: '48px'
-        .text Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.
+        .text We develop native apps for iOS, macOS, watchOS, tvOS, Android, Android TV and websites with Ruby on Rails and React.js.
       .col-lg-2.col-md-4.col-sm-6.col-6
         h5 Helpful Links
         ul.footer-nav
           li
-            a href="#"
+            = link_to portfolio_root_path
               i.fa.fa-angle-right
-              span Our Work
+              span Portfolio
           li
-            a href="#"
+            = link_to about_path
               i.fa.fa-angle-right
               span About Us
           li
-            a href="#"
+            = link_to services_path
               i.fa.fa-angle-right
               span Services
           li
-            a href="#"
+            = link_to articles_path
               i.fa.fa-angle-right
               span Blog
           li
-            a href="#"
+            = link_to contacts_path
               i.fa.fa-angle-right
               span Contact
       .col-lg-2.col-md-4.col-sm-6.col-6
         h5 Latest Apps
         ul.footer-nav
-          li
-            a href="#"
-              i.fa.fa-angle-right
-              span Dance School
-          li
-            a href="#"
-              i.fa.fa-angle-right
-              span Coiner
-          li
-            a href="#"
-              i.fa.fa-angle-right
-              span Cloud Manager
-          li
-            a href="#"
-              i.fa.fa-angle-right
-              span Coding Life
-          li
-            a href="#"
-              i.fa.fa-angle-right
-              span Smart Office
+          - @projects.each do |project|
+            li
+              = link_to portfolio_project_path(project)
+                i.fa.fa-angle-right
+                span = project.title
       .col-lg-3.col-md-4.col-sm-12
         h5 Contact Us
         .address
-          p 455 West Orchard Street<br>Kings Mountain, NC 28086
-          p Phone: (272) 211-7370
           p
-            span E-Mail:
-            a href="#" support@yourbrand.com
+            | 2B, Kozats'kyi Val
+            br
+            | Sumy, Ukraine 40000
+          p
+            | Phone:
+            '
+            = link_to '+380(97) 741-10-62', 'tel:+380977411062'
+          p
+            span Email:
+            '
+            = mail_to 'hello@appdev.academy'
           ul.social
             li
-              a href="#"
+              a href='https://www.facebook.com/appdev.academy' target='_blank'
                 i.fa.fa-facebook-square
             li
-              a href="#"
+              a href='https://twitter.com/appdev_academy' target='_blank'
                 i.fa.fa-twitter-square
             li
-              a href="#"
-                i.fa.fa-google-plus-square
-            li
-              a href="#"
+              a href='https://github.com/appdev-academy' target='_blank'
                 i.fa.fa-github-square
     .row
       .col-lg-12

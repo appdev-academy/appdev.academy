@@ -1,23 +1,7 @@
 //= require jquery
 //= require jquery_ujs
-//= require photoswipe/photoswipe
-//= require photoswipe/photoswipe-ui-default
 //= require social-share-button
 //= require_tree .
-
-var openPhotoSwipe = function(projectID, index) {
-  var pswpElement = document.querySelectorAll('.pswp')[0];
-  
-  $.get(`/portfolio/projects/${projectID}.json`, function(data) {
-    var options = {
-      index: index,
-      history: false
-    };
-    
-    var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, data, options);
-    gallery.init();
-  });
-}
 
 // Main menu on mobile devices
 function toggleMenu() {

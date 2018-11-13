@@ -3,11 +3,12 @@
 //= require beapp/popper
 //= require beapp/scrollreveal
 //= require beapp/parallax
+//= require beapp/waypoints
+//= require beapp/jquery.counterup
 //= require beapp/jquery.magnific-popup
 //= require beapp/imgfix
 
 (function ($) {
-  
   "use strict";
   
   // Page Ready
@@ -51,7 +52,6 @@
     });
   }
   
-  
   // Page standard gallery
   if($('.page-gallery').length && $('.page-gallery-wrapper').length){
     $('.page-gallery').imgfix({
@@ -71,13 +71,10 @@
     });
   }
   
-  
   // Blog cover image
   if($('.blog-post-thumb').length){
     $('.blog-post-thumb .img').imgfix();
   }
-  
-  
   
   // Page loading animation
   $(window).on('load', function() {
@@ -95,7 +92,7 @@
         // Parallax init
         if($('.parallax').length){
           $('.parallax').parallax({
-            imageSrc: image-url('photos/parallax.jpg'),
+            imageSrc: "<%= image_url 'photos/parallax.jpg' %>",
             zIndex: '1'
           });
         }

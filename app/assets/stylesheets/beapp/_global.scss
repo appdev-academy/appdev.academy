@@ -36,7 +36,7 @@ global styles
   }
   
   &.background {
-    background: #F4F8FB url(../images/bg-top.svg) center top no-repeat;
+    background: #F4F8FB image-url('hovers/bg-top.svg') center top no-repeat;
     background-size: contain;
   }
 }

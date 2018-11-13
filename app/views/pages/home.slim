@@ -20,6 +20,71 @@ section.welcome-area
                       .icon
                         = image_tag project.app_icon.regular, alt: "#{project.title} app icon", class: 'img-fluid', width: '75px'
                         
+section.section.services-section.pbottom-70
+  .container
+    .row
+      .col-lg-5.col-md-12.col-sm-12.align-self-bottom
+        .left-heading
+          h2.section-title Start-to-end app development agency
+        .left-text
+          p.dark Pellentesque posuere vestibulum lorem, ut efficitur erat tristique sed. Ut vitae tincidunt ante.
+          p Donec vulputate urna sed rutrum venenatis. Cras consequat magna quis arcu elementum, quis congue risus volutpat. Praesent tortor nulla, ullamcorper.
+        = link_to 'SERVICES', services_path, class: 'btn-primary-line'
+        
+      .offset-lg-1.col-lg-6.col-md-12.col-sm-12.align-self-bottom
+        .row
+          .col-lg-6.col-md-6.col-sm-12.col-xs-12
+            = link_to services_path, class: 'home-services-item mtop-70', data: { 'scroll-reveal': 'enter bottom move 30px over 0.6s after 0.2s' }
+              i.fa.fa-clone
+              h5.services-title Native App Development
+              p Native iOS and Android applications development is main focus at App Dev Academy. We can develop everything you've seen in other apps and even more.
+            = link_to services_path, class: 'home-services-item', data: { 'scroll-reveal': 'enter bottom move 30px over 0.6s after 0.2s' }
+              i.fa.fa-clone
+              h5.services-title Web Development - Ruby on Rails
+              p You’ve probably already used many of the websites that were built with Ruby on Rails: Basecamp, GitHub, Shopify, Airbnb, Twitch, SoundCloud, Hulu, Zendesk.
+          .col-lg-6.col-md-6.col-sm-12.col-xs-12
+            = link_to services_path, class: 'home-services-item active', data: { 'scroll-reveal': 'enter bottom move 30px over 0.6s after 0.3s' }
+              i.fa.fa-clone
+              h5.services-title Back-End and API Development
+              p Ruby on Rails comes handy here as well. Mature, secure and robust framework - it keeps prototyping fast, testing easy, development simple and developers happy.
+            = link_to services_path, class: 'home-services-item', data: { 'scroll-reveal': 'enter bottom move 30px over 0.6s after 0.3s' }
+              i.fa.fa-clone
+              h5.services-title Database Solutions - PostgreSQL
+              p Powerful, open source object-relational database system with over 30 years of active development known for its reliability, feature robustness, and performance.
+              
+section.section.background
+  .container
+    .row
+      .col-lg-5.col-md-12.col-sm-12.col-xs-12.align-self-center
+        = image_tag image_url('mockup/home-mockup.png'), alt: '', class: 'img-fluid d-block mx-auto'
+        
+      .col-lg-7.col-md-12.col-sm-12.col-xs-12.align-self-center
+        ul.features
+          li data-scroll-reveal='enter bottom move 30px over 0.6s after 0.2s'
+            .count
+              span 1
+            .text
+              h5.title Design and UX that ensures your app will be loved and used
+              p Quisque nec consectetur arcu. Duis tellus ante, sodales sed molestie at, sagittis id neque. Quisque condimentum libero arcu. Mauris tellus sem, ultrices varius nisl at.
+          li data-scroll-reveal='enter bottom move 30px over 0.6s after 0.3s'
+            .count
+              span 2
+            .text
+              h5.title Enterprise-grade development secures reliability and quality
+              p Praesent tortor nulla, ullamcorper vel ante at, varius tincidunt augue. Cras vitae consectetur arcu. Proin at velit vel risus elementum accumsan sed non neque. Aenean risus.
+          li data-scroll-reveal='enter bottom move 30px over 0.6s after 0.4s'
+            .count
+              span 3
+            .text
+              h5.title A proven and tested process guarantees your success
+              p Aliquam bibendum velit ut ante cursus, et efficitur lectus rutrum. Maecenas ac convallis lorem, non ultricies sem. Duis elit metus, ullamcorper sed ante sed, viverra bibendum neque.
+          li data-scroll-reveal='enter bottom move 30px over 0.6s after 0.5s'
+            .count
+              span 4
+            .text
+              h5.title Start-to-end app development agency
+              p Cras imperdiet faucibus sem, a dignissim urna feugiat sed. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque posuere vestibulum lorem.
+              
 section.section.pbottom-70
   .container
     .row
@@ -57,3 +122,59 @@ section.section.pbottom-70
                 li
                   = link_to employee.github_url, target: '_blank'
                     i.fa.fa-github
+                    
+section.parallax
+  .parallax-content
+    .container
+      .row
+        .col-lg-3.col-md-6.col-sm-12
+          .count-item
+            strong 126
+            span
+              | Mobile App
+              br
+              | Complate
+        .col-lg-3.col-md-6.col-sm-12
+          .count-item
+            strong 98
+            span
+              | Happy
+              br
+              |Customer
+        .col-lg-3.col-md-6.col-sm-12
+          .count-item
+            strong 176
+            span
+              | App
+              br
+              | Version
+        .col-lg-3.col-md-6.col-sm-12
+          .count-item
+            strong 16
+            span
+              | Award
+              br
+              | Win
+              
+section.section.pbottom-70
+  .container
+    .row
+      .col-lg-12
+        .center-heading
+          h2.section-title Latest Blog Posts
+      .offset-lg-3.col-lg-6
+        .center-text
+          p Fusce placerat pretium mauris, vel sollicitudin elit lacinia vitae. Quisque sit amet nisi erat.
+    .row
+      - @articles.each do |article|
+        .col-lg-4.col-md-6.col-sm-12
+          .blog-post-thumb
+            .img
+              = image_tag article.image_url, alt: "#{article.title} main picture"
+              
+            h3
+              = link_to article.title, article_path(article)
+            .text
+              = article.html_preview.html_safe
+            = link_to 'Read More', article_path(article), class: 'btn-primary-line'
+            

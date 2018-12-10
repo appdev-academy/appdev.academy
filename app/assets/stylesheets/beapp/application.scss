@@ -22,8 +22,6 @@ Table of contents
 --------------------------------------------- */
 
 @import 'bootstrap';
-@import 'font-awesome-sprockets';
-@import 'font-awesome';
 
 @import '_mixins';
 
@@ -56,6 +54,8 @@ Table of contents
 // Custom CSS
 
 @import 'magnific-popup';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 .ptop-50 {
   padding-top: 50px !important;
@@ -68,5 +68,31 @@ Table of contents
 .team-item {
   img {
     width: 75px;
+  }
+}
+
+p {
+  code {
+    display: inline-block;
+    background-color: #f0f0f0;
+    border-radius: 2px;
+    border: 1px solid #c0c0c0;
+    padding: 0 5px;
+    margin: 2px 0;
+  }
+}
+
+.blog-post-thumb pre {
+  $padding: 20px;
+  $border-width: 1px;
+  padding: $padding;
+  margin: 20px 0;
+  width: calc(100% - 2*#{$padding} - 2*#{$border-width});
+  border: $border-width dashed #2f6fab;
+  background-color: #f9f9f9;
+  overflow-x: scroll;
+  
+  code {
+    padding-right: 20px;
   }
 }

@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
+ruby '2.6.3'
+
 # Rails
-gem 'rails', '5.1.6'
+gem 'rails', '5.2.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -66,7 +68,7 @@ end
 
 group :test do
   # Fixture replacement
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   # Fake data generator
   gem 'faker'
   # RSpec one-line tests

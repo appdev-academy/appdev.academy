@@ -9,7 +9,7 @@
             .row
               .col-lg-1.col-md-2.col-sm-12
                 .icon
-                  = image_tag @project.app_icon.regular, alt: "#{@project.title} app icon", class: 'img-fluid', width: '75px'
+                  = image_tag @project.app_icon.regular.url, alt: "#{@project.title} app icon", class: 'img-fluid', width: '75px'
               .col-lg-5.col-md-4.col-sm-12
                 .title
                   h2 = @project.title

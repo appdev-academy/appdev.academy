@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Screencast, type: :model do
   before :all do
-    @topic = FactoryGirl.create(:topic)
+    @topic = FactoryBot.create(:topic)
   end
   
   it 'should have a valid factory' do
-    expect(FactoryGirl.create(:screencast, topic: @topic)).to be_valid
+    expect(FactoryBot.create(:screencast, topic: @topic)).to be_valid
   end
   
   context 'relationships' do
@@ -19,7 +19,7 @@ RSpec.describe Screencast, type: :model do
       it { should validate_presence_of(:topic) }
     end
     context 'fields' do
-      subject { FactoryGirl.create(:screencast, topic: @topic) }
+      subject { FactoryBot.create(:screencast, topic: @topic) }
       it { should validate_presence_of(:content) }
       it { should validate_presence_of(:html_content) }
       it { should validate_presence_of(:html_preview) }
@@ -34,9 +34,9 @@ RSpec.describe Screencast, type: :model do
   context 'set default position on create' do
     it 'should set position to be last' do
       Screencast.destroy_all
-      screencast1 = FactoryGirl.create(:screencast, topic: @topic)
-      screencast2 = FactoryGirl.create(:screencast, topic: @topic)
-      screencast3 = FactoryGirl.create(:screencast, topic: @topic)
+      screencast1 = FactoryBot.create(:screencast, topic: @topic)
+      screencast2 = FactoryBot.create(:screencast, topic: @topic)
+      screencast3 = FactoryBot.create(:screencast, topic: @topic)
       
       expect(screencast1.position).to eq(1)
       expect(screencast2.position).to eq(2)

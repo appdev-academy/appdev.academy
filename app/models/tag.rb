@@ -14,6 +14,8 @@ class Tag < ApplicationRecord
   
   private
     def set_slug
+      return unless self.title
+      
       newSlug = self.title.parameterize
       if self.slug != newSlug
         self.slug = newSlug

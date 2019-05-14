@@ -68,7 +68,7 @@ end
 
 group :test do
   # Fixture replacement
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   # Fake data generator
   gem 'faker'
   # RSpec one-line tests

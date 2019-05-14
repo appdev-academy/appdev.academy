@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :project do
     content { Faker::Lorem.paragraphs(5).join('\n') }
     html_content { "<p>#{content}</p>" }

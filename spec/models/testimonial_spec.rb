@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Testimonial, type: :model do
   it 'should have a valid factory' do
-    expect(FactoryGirl.build(:testimonial)).to be_valid
+    expect(FactoryBot.build(:testimonial)).to be_valid
   end
   
   context 'validations' do

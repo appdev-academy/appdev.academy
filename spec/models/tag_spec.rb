@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Tag, type: :model do
   it 'should have a valid factory' do
-    expect(FactoryGirl.create(:tag)).to be_valid
+    expect(FactoryBot.create(:tag)).to be_valid
   end
   
   context 'associations' do
@@ -13,7 +13,7 @@ RSpec.describe Tag, type: :model do
     context 'associations' do
     end
     context 'fields' do
-      subject { FactoryGirl.build(:tag) }
+      subject { FactoryBot.build(:tag) }
       it { should validate_presence_of(:title) }
       it { should validate_uniqueness_of(:title).case_insensitive }
     end

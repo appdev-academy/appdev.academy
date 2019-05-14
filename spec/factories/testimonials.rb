@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :testimonial do
     body { Faker::Lorem.paragraph }
     company { Faker::Company.name }

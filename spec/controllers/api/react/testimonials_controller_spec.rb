@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe Api::React::TestimonialsController, type: :controller do
   before :all do
     Testimonial.destroy_all
-    @user = FactoryGirl.create(:user)
-    @session = FactoryGirl.create(:session, user: @user)
-    @published_testimonial = FactoryGirl.create(:testimonial, published: true)
-    @unpublished_testimonial = FactoryGirl.create(:testimonial)
-    FactoryGirl.create_list(:testimonial, 2)
+    @user = FactoryBot.create(:user)
+    @session = FactoryBot.create(:session, user: @user)
+    @published_testimonial = FactoryBot.create(:testimonial, published: true)
+    @unpublished_testimonial = FactoryBot.create(:testimonial)
+    FactoryBot.create_list(:testimonial, 2)
   end
   
   describe 'GET #index' do
@@ -182,7 +182,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
       context 'with valid params' do
         before :each do
           request.headers['X-Access-Token'] = @session.access_token
-          testimonial_params = FactoryGirl.attributes_for(:testimonial)
+          testimonial_params = FactoryBot.attributes_for(:testimonial)
           @testimonial_count = Testimonial.count
           post :create, params: { testimonial: testimonial_params }
         end
@@ -214,7 +214,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT body params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, body: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, body: nil)
             @testimonial_count = Testimonial.count
             post :create, params: { testimonial: testimonial_params }
           end
@@ -241,7 +241,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT company params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, company: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, company: nil)
             @testimonial_count = Testimonial.count
             post :create, params: { testimonial: testimonial_params }
           end
@@ -268,7 +268,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT first_name params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, first_name: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, first_name: nil)
             @testimonial_count = Testimonial.count
             post :create, params: { testimonial: testimonial_params }
           end
@@ -295,7 +295,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT html_body params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, html_body: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, html_body: nil)
             @testimonial_count = Testimonial.count
             post :create, params: { testimonial: testimonial_params }
           end
@@ -322,7 +322,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT last_name params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, last_name: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, last_name: nil)
             @testimonial_count = Testimonial.count
             post :create, params: { testimonial: testimonial_params }
           end
@@ -349,7 +349,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT profile_picture params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, profile_picture: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, profile_picture: nil)
             @testimonial_count = Testimonial.count
             post :create, params: { testimonial: testimonial_params }
           end
@@ -376,7 +376,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT title params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, title: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, title: nil)
             @testimonial_count = Testimonial.count
             post :create, params: { testimonial: testimonial_params }
           end
@@ -406,7 +406,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
       context 'INVALID Access token' do
         before :each do
           request.headers['X-Access-Token'] = SecureRandom.hex(16) + 'invalid'
-          testimonial_params = FactoryGirl.attributes_for(:testimonial)
+          testimonial_params = FactoryBot.attributes_for(:testimonial)
           post :create, params: { testimonial: testimonial_params }
         end
         
@@ -426,7 +426,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
       
       context 'WITHOUT Access token' do
         before :each do
-          testimonial_params = FactoryGirl.attributes_for(:testimonial)
+          testimonial_params = FactoryBot.attributes_for(:testimonial)
           post :create, params: { testimonial: testimonial_params }
         end
         
@@ -451,7 +451,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
       context 'with valid params' do
         before :each do
           request.headers['X-Access-Token'] = @session.access_token
-          testimonial_params = FactoryGirl.attributes_for(:testimonial)
+          testimonial_params = FactoryBot.attributes_for(:testimonial)
           patch :update, params: { id: @published_testimonial.id, testimonial: testimonial_params }
           @updated_testimonial = Testimonial.find_by(id: @published_testimonial.id)
         end
@@ -483,7 +483,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'with NOT existing Testimonial' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial)
+            testimonial_params = FactoryBot.attributes_for(:testimonial)
             patch :update, params: { id: @published_testimonial.id + 100, testimonial: testimonial_params }
           end
           
@@ -504,7 +504,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT body params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, body: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, body: nil)
             patch :update, params: { id: @published_testimonial.id, testimonial: testimonial_params }
             @not_updated_testimonial = Testimonial.find_by(id: @published_testimonial.id)
           end
@@ -531,7 +531,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT company params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, company: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, company: nil)
             patch :update, params: { id: @published_testimonial.id, testimonial: testimonial_params }
             @not_updated_testimonial = Testimonial.find_by(id: @published_testimonial.id)
           end
@@ -558,7 +558,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT first_name params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, first_name: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, first_name: nil)
             patch :update, params: { id: @published_testimonial.id, testimonial: testimonial_params }
             @not_updated_testimonial = Testimonial.find_by(id: @published_testimonial.id)
           end
@@ -585,7 +585,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT html_body params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, html_body: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, html_body: nil)
             patch :update, params: { id: @published_testimonial.id, testimonial: testimonial_params }
             @not_updated_testimonial = Testimonial.find_by(id: @published_testimonial.id)
           end
@@ -612,7 +612,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT last_name params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, last_name: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, last_name: nil)
             patch :update, params: { id: @published_testimonial.id, testimonial: testimonial_params }
             @not_updated_testimonial = Testimonial.find_by(id: @published_testimonial.id)
           end
@@ -639,7 +639,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT profile_picture params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, profile_picture: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, profile_picture: nil)
             patch :update, params: { id: @published_testimonial.id, testimonial: testimonial_params }
             @not_updated_testimonial = Testimonial.find_by(id: @published_testimonial.id)
           end
@@ -666,7 +666,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
         context 'WITHOUT title params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            testimonial_params = FactoryGirl.attributes_for(:testimonial, title: nil)
+            testimonial_params = FactoryBot.attributes_for(:testimonial, title: nil)
             patch :update, params: { id: @published_testimonial.id, testimonial: testimonial_params }
             @not_updated_testimonial = Testimonial.find_by(id: @published_testimonial.id)
           end
@@ -737,7 +737,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
   describe 'DELETE #destroy' do
     context 'User is authorized' do
       before :context do
-        @destroy_testimonial = FactoryGirl.create(:testimonial)
+        @destroy_testimonial = FactoryBot.create(:testimonial)
       end
       
       context 'with valid params' do
@@ -787,7 +787,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
     
     context 'User is NOT authorized' do
       before :context do
-        @destroy_testimonial = FactoryGirl.create(:testimonial)
+        @destroy_testimonial = FactoryBot.create(:testimonial)
       end
       
       context 'INVALID Access token' do
@@ -930,7 +930,7 @@ RSpec.describe Api::React::TestimonialsController, type: :controller do
       context 'with valid params' do
         before :each do
           request.headers['X-Access-Token'] = @session.access_token
-          pub = FactoryGirl.create(:testimonial, published: true)
+          pub = FactoryBot.create(:testimonial, published: true)
           post :hide, params: { id: @published_testimonial.reload.id }
         end
         

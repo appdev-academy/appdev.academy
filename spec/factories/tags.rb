@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :tag do
     title { Faker::Lorem.characters(8) }
   end

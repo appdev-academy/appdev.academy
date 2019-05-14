@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Api::React::ArticlesController, type: :controller do
   before :all do
-    @user = FactoryGirl.create(:user)
-    @session = FactoryGirl.create(:session, user: @user)
-    @published_article = FactoryGirl.create(:article, author: @user, published_at: Time.current)
-    @article2 = FactoryGirl.create(:article, author: @user)
-    @article3 = FactoryGirl.create(:article, author: @user)
+    @user = FactoryBot.create(:user)
+    @session = FactoryBot.create(:session, user: @user)
+    @published_article = FactoryBot.create(:article, author: @user, published_at: Time.current)
+    @article2 = FactoryBot.create(:article, author: @user)
+    @article3 = FactoryBot.create(:article, author: @user)
   end
   
   context 'user is signed in' do

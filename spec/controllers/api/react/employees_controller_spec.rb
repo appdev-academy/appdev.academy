@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe Api::React::EmployeesController, type: :controller do
   before :all do
     Employee.destroy_all
-    @user = FactoryGirl.create(:user)
-    @session = FactoryGirl.create(:session, user: @user)
-    @published_employee = FactoryGirl.create(:employee, published: true)
-    @unpublished_employee = FactoryGirl.create(:employee)
-    FactoryGirl.create_list(:employee, 2)
+    @user = FactoryBot.create(:user)
+    @session = FactoryBot.create(:session, user: @user)
+    @published_employee = FactoryBot.create(:employee, published: true)
+    @unpublished_employee = FactoryBot.create(:employee)
+    FactoryBot.create_list(:employee, 2)
   end
   
   describe 'GET #index' do
@@ -182,7 +182,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
       context 'with valid params' do
         before :each do
           request.headers['X-Access-Token'] = @session.access_token
-          employee_params = FactoryGirl.attributes_for(:employee)
+          employee_params = FactoryBot.attributes_for(:employee)
           @employee_count = Employee.count
           post :create, params: { employee: employee_params }
         end
@@ -214,7 +214,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
         context 'WITHOUT first_name params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee, first_name: nil)
+            employee_params = FactoryBot.attributes_for(:employee, first_name: nil)
             @employee_count = Employee.count
             post :create, params: { employee: employee_params }
           end
@@ -241,7 +241,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
         context 'WITHOUT last_name params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee, last_name: nil)
+            employee_params = FactoryBot.attributes_for(:employee, last_name: nil)
             @employee_count = Employee.count
             post :create, params: { employee: employee_params }
           end
@@ -268,7 +268,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
         context 'WITHOUT profile_picture params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee, profile_picture: nil)
+            employee_params = FactoryBot.attributes_for(:employee, profile_picture: nil)
             @employee_count = Employee.count
             post :create, params: { employee: employee_params }
           end
@@ -295,7 +295,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
         context 'WITHOUT title params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee, title: nil)
+            employee_params = FactoryBot.attributes_for(:employee, title: nil)
             @employee_count = Employee.count
             post :create, params: { employee: employee_params }
           end
@@ -325,7 +325,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
       context 'INVALID Access token' do
         before :each do
           request.headers['X-Access-Token'] = SecureRandom.hex(16) + 'invalid'
-          employee_params = FactoryGirl.attributes_for(:employee)
+          employee_params = FactoryBot.attributes_for(:employee)
           post :create, params: { employee: employee_params }
         end
         
@@ -345,7 +345,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
       
       context 'WITHOUT Access token' do
         before :each do
-          employee_params = FactoryGirl.attributes_for(:employee)
+          employee_params = FactoryBot.attributes_for(:employee)
           post :create, params: { employee: employee_params }
         end
         
@@ -370,7 +370,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
       context 'with valid params' do
         before :each do
           request.headers['X-Access-Token'] = @session.access_token
-          employee_params = FactoryGirl.attributes_for(:employee)
+          employee_params = FactoryBot.attributes_for(:employee)
           patch :update, params: { id: @published_employee.id, employee: employee_params }
           @updated_employee = Employee.find_by(id: @published_employee.id)
         end
@@ -402,7 +402,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
         context 'with NOT existing Employee' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee)
+            employee_params = FactoryBot.attributes_for(:employee)
             patch :update, params: { id: @published_employee.id + 100, employee: employee_params }
           end
           
@@ -423,7 +423,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
         context 'WITHOUT first_name params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee, first_name: nil)
+            employee_params = FactoryBot.attributes_for(:employee, first_name: nil)
             patch :update, params: { id: @published_employee.id, employee: employee_params }
             @not_updated_employee = Employee.find_by(id: @published_employee.id)
           end
@@ -450,7 +450,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
         context 'WITHOUT last_name params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee, last_name: nil)
+            employee_params = FactoryBot.attributes_for(:employee, last_name: nil)
             patch :update, params: { id: @published_employee.id, employee: employee_params }
             @not_updated_employee = Employee.find_by(id: @published_employee.id)
           end
@@ -477,7 +477,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
         context 'WITHOUT profile_picture params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee, profile_picture: nil)
+            employee_params = FactoryBot.attributes_for(:employee, profile_picture: nil)
             patch :update, params: { id: @published_employee.id, employee: employee_params }
             @not_updated_employee = Employee.find_by(id: @published_employee.id)
           end
@@ -504,7 +504,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
         context 'WITHOUT title params' do
           before :each do
             request.headers['X-Access-Token'] = @session.access_token
-            employee_params = FactoryGirl.attributes_for(:employee, title: nil)
+            employee_params = FactoryBot.attributes_for(:employee, title: nil)
             patch :update, params: { id: @published_employee.id, employee: employee_params }
             @not_updated_employee = Employee.find_by(id: @published_employee.id)
           end
@@ -575,7 +575,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
   describe 'DELETE #destroy' do
     context 'User is authorized' do
       before :context do
-        @destroy_employee = FactoryGirl.create(:employee)
+        @destroy_employee = FactoryBot.create(:employee)
       end
       
       context 'with valid params' do
@@ -625,7 +625,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
     
     context 'User is NOT authorized' do
       before :context do
-        @destroy_employee = FactoryGirl.create(:employee)
+        @destroy_employee = FactoryBot.create(:employee)
       end
       
       context 'INVALID Access token' do
@@ -768,7 +768,7 @@ RSpec.describe Api::React::EmployeesController, type: :controller do
       context 'with valid params' do
         before :each do
           request.headers['X-Access-Token'] = @session.access_token
-          pub = FactoryGirl.create(:employee, published: true)
+          pub = FactoryBot.create(:employee, published: true)
           post :hide, params: { id: @published_employee.reload.id }
         end
         

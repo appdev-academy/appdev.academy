@@ -18,7 +18,7 @@ section.welcome-area
                   .col-lg-3.col-md-3.col-sm-3.col-3
                     = link_to portfolio_project_path(project), class: 'app-item'
                       .icon
-                        = image_tag project.app_icon.regular, alt: "#{project.title} app icon", class: 'img-fluid', width: '75px'
+                        = image_tag project.app_icon.regular.url, alt: "#{project.title} app icon", class: 'img-fluid', width: '75px'
                         
 section.section.services-section.pbottom-70
   .container
@@ -106,7 +106,7 @@ section.section.pbottom-70
           .team-item
             .header
               .img
-                = image_tag employee.profile_picture.rect_square, alt: "#{employee.full_name}, #{employee.title} at App Dev Academy Ltd."
+                = image_tag employee.profile_picture.rect_square.url, alt: "#{employee.full_name}, #{employee.title} at App Dev Academy Ltd."
               .info
                 strong = employee.full_name
                 span = employee.title

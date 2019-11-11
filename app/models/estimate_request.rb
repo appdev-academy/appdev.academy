@@ -1,2 +1,11 @@
 class EstimateRequest < ApplicationRecord
+  # Constants
+  EMAIL_FORMAT = /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+  
+  # Fields validations
+  validates :name, presence: true
+  validates :email, presence: true, format: { with: EMAIL_FORMAT, message: "address format is incorrect." }
+  validates :subject, presence: true
+  validates :budget, presence: true, numericality: { greater_than_or_equal_to: 0.0 }
+  validates :details, presence: true
 end

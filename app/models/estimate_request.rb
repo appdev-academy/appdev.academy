@@ -1,0 +1,2 @@
+class EstimateRequest < ApplicationRecord
+end

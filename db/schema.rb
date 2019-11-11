@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_31_230015) do
+ActiveRecord::Schema.define(version: 2019_11_11_143456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,26 @@ ActiveRecord::Schema.define(version: 2018_10_31_230015) do
     t.string "twitter_url"
     t.string "linkedin_url"
     t.string "github_url"
+  end
+
+  create_table "estimate_requests", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "company"
+    t.string "email", null: false
+    t.string "subject", null: false
+    t.date "deadline"
+    t.decimal "budget", precision: 15, scale: 2, null: false
+    t.text "details", null: false
+    t.boolean "is_ios", default: false
+    t.boolean "is_android", default: false
+    t.boolean "is_design", default: false
+    t.boolean "is_backend_api", default: false
+    t.boolean "is_admin_panel", default: false
+    t.boolean "is_other", default: false
+    t.string "document"
+    t.string "document_hex"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "gallery_images", id: :serial, force: :cascade do |t|

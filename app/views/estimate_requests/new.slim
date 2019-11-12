@@ -1,0 +1,50 @@
+.container
+  .row
+    .col-lg-4.col-md-6.col-sm-12
+      .estimate-request-text
+        h5.mbottom-30 Estimate Request
+        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam tempus magna vel turpis pharetra dictum. </p>
+        <p>Sed blandit tempus purus, sed sodales leo rutrum vel. Nam vulputate ipsum ac est congue, eget commodo magna lobortis.</p>
+      
+    .col-lg-8.col-md-6.col-sm-12
+      .estimate-request-form
+        .row
+          .col-lg-6.col-md-12.col-sm-12
+            = form_for @estimate_request, method: :post do |f|
+              = f.text_field :email, placeholder: 'Enter email ...', type: 'text', required: true
+              = f.text_field :name, placeholder: 'Enter name ...', type: 'text', required: true
+              = f.text_field :company, placeholder: 'Enter company name ...', type: 'text', required: false
+              = f.text_field :subject, placeholder: 'Enter subject ...', type: 'text', required: true
+              = f.date_field :deadline, placeholder: 'Enter deadline date ...', type: 'date', required: false
+              = f.number_field :budget, min: 0, step: 0.01, placeholder: 'Enter budget ...', type: 'number', required: true
+              
+              .field.form-group
+                .checkbox-inline
+                  = f.check_box :is_ios
+                  = f.label :is_ios, 'IOS App'
+                  
+                .checkbox-inline
+                  = f.check_box :is_android
+                  = f.label :is_android, 'Android App'
+                  
+                .checkbox-inline
+                  = f.check_box :is_design
+                  = f.label :is_design, 'UI/UX Design'
+                  
+                .checkbox-inline
+                  = f.check_box :is_backend_api
+                  = f.label :is_backend_api, 'Backend API'
+                  
+                .checkbox-inline
+                  = f.check_box :is_admin_panel
+                  = f.label :is_admin_panel, 'Admin Panel'
+                  
+                .checkbox-inline
+                  = f.check_box :is_other
+                  = f.label :is_other, 'other (type it in "Project Details")'
+                  
+              = f.text_area :details, placeholder: 'Enter details ...', type: 'text', required: true
+              
+              = f.file_field :document
+              
+              = f.submit 'SEND', class: 'btn-primary-line'

@@ -9,10 +9,14 @@ Rails.application.routes.draw do
   get '/guides', to: 'pages#guides'
   get '/open-source', to: 'pages#open_source'
   get '/services', to: 'pages#services'
+  get '/request-estimate', to: 'estimate_requests#new'
   
   # Blog
   resources :articles, only: [:index, :show], param: :slug
   get '/articles/tag/:tag_slug', to: 'articles#taged_index', as: 'articles_tag'
+  
+  # Estimate request
+  resources :estimate_requests, only: [:create]
   
   # RSS feed
   get '/feed', to: 'articles#feed', defaults: { format: 'rss' }

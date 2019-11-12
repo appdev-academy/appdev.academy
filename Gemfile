@@ -63,6 +63,9 @@ gem 'delayed_job_recurring'
 
 group :development do
   gem 'listen'
+  
+  # Mailer
+  gem 'letter_opener'
 end
 
 group :development, :test do

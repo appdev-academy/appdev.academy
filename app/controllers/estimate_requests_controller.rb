@@ -4,7 +4,7 @@ class EstimateRequestsController < ApplicationController
     @estimate_request = EstimateRequest.new
   end
   
-  # POST /request-estimate
+  # POST /estimate_requests
   def create
     @estimate_request = EstimateRequest.new(estimate_request_params)
     if @estimate_request.save
@@ -16,6 +16,6 @@ class EstimateRequestsController < ApplicationController
   
   private
     def estimate_request_params
-      params.require(:estimate_request).permit(:budget, :company, :deadline, :details, :documen, :email, :is_admin_panel, :is_android, :is_backend_api, :is_design, :is_ios, :is_other, :name, :subject)
+      params.require(:estimate_request).permit(:budget, :company, :deadline, :details, :document, :email, :is_admin_panel, :is_android, :is_backend_api, :is_design, :is_ios, :is_other, :name, :subject)
     end
 end

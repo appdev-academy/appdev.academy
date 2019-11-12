@@ -2,6 +2,9 @@ class EstimateRequest < ApplicationRecord
   # Constants
   EMAIL_FORMAT = /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   
+  # Callbacks
+  after_save :notify_admin
+  
   # Uploaders
   mount_uploader :document, DocumentUploader
   
@@ -11,4 +14,9 @@ class EstimateRequest < ApplicationRecord
   validates :subject, presence: true
   validates :budget, presence: true, numericality: { greater_than_or_equal_to: 0.0 }
   validates :details, presence: true
+  
+  private
+    def notify_admin
+      SendEstimateRequestJob.perform_later(self)
+    end
 end

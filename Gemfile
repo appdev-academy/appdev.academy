@@ -57,6 +57,15 @@ gem 'mini_magick'
 # AWS S3 adapter for Carrierwave
 gem 'fog-aws'
 
+# Background jobs
+gem 'delayed_job_active_record'
+gem 'delayed_job_recurring'
+
+# File uploading
+gem 'carrierwave'
+# AWS S3 adapter for Carrierwave
+gem 'fog-aws'
+
 group :development do
   gem 'listen'
 end

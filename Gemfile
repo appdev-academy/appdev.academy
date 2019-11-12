@@ -56,8 +56,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 # AWS S3 adapter for Carrierwave
 gem 'fog-aws'
-# File validations
-gem 'file_validators'
 
 # Background jobs
 gem 'delayed_job_active_record'

@@ -9,8 +9,4 @@ class DocumentUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore.pluralize}/#{model.id}/#{mounted_as}"
   end
-  
-  def extension_white_list
-    %w(xlsx)
-  end
 end

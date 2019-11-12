@@ -15,7 +15,6 @@ class CreateEstimateRequests < ActiveRecord::Migration[5.2]
       t.boolean :is_admin_panel, default: false
       t.boolean :is_other, default: false
       t.string :document
-      t.string :document_hex
       t.timestamps
     end
   end

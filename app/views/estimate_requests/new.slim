@@ -11,40 +11,62 @@
         .row
           .col-lg-6.col-md-12.col-sm-12
             = form_for @estimate_request, method: :post do |f|
+              - if @estimate_request.errors.any?
+                ul.error_explanation
+                  - @estimate_request.errors.full_messages.each do |message|
+                    li = message
+                br
+              
+              = f.label :email, 'Email'
               = f.text_field :email, placeholder: 'Enter email ...', type: 'text', required: true
+              
+              = f.label :name, 'Name'
               = f.text_field :name, placeholder: 'Enter name ...', type: 'text', required: true
-              = f.text_field :company, placeholder: 'Enter company name ...', type: 'text', required: false
+              
+              = f.label :company, 'Company'
+              = f.text_field :company, placeholder: 'Enter company ...', type: 'text', required: false
+              
+              = f.label :subject, 'Subject'
               = f.text_field :subject, placeholder: 'Enter subject ...', type: 'text', required: true
+              
+              = f.label :deadline, 'Deadline'
               = f.date_field :deadline, placeholder: 'Enter deadline date ...', type: 'date', required: false
+              
+              = f.label :budget, 'Budget'
               = f.number_field :budget, min: 0, step: 0.01, placeholder: 'Enter budget ...', type: 'number', required: true
               
               .field.form-group
+                p Services:
                 .checkbox-inline
-                  = f.check_box :is_ios
-                  = f.label :is_ios, 'IOS App'
+                  = f.check_box :is_ios, class: 'checkbox-custom'
+                  = f.label :is_ios, 'IOS App', class: 'checkbox-custom-label'
                   
                 .checkbox-inline
-                  = f.check_box :is_android
-                  = f.label :is_android, 'Android App'
+                  = f.check_box :is_android, class: 'checkbox-custom'
+                  = f.label :is_android, 'Android App', class: 'checkbox-custom-label'
                   
                 .checkbox-inline
-                  = f.check_box :is_design
-                  = f.label :is_design, 'UI/UX Design'
+                  = f.check_box :is_design, class: 'checkbox-custom'
+                  = f.label :is_design, 'UI/UX Design', class: 'checkbox-custom-label'
                   
                 .checkbox-inline
-                  = f.check_box :is_backend_api
-                  = f.label :is_backend_api, 'Backend API'
+                  = f.check_box :is_backend_api, class: 'checkbox-custom'
+                  = f.label :is_backend_api, 'Backend API', class: 'checkbox-custom-label'
                   
                 .checkbox-inline
-                  = f.check_box :is_admin_panel
-                  = f.label :is_admin_panel, 'Admin Panel'
+                  = f.check_box :is_admin_panel, class: 'checkbox-custom'
+                  = f.label :is_admin_panel, 'Admin Panel', class: 'checkbox-custom-label'
                   
                 .checkbox-inline
-                  = f.check_box :is_other
-                  = f.label :is_other, 'other (type it in "Project Details")'
+                  = f.check_box :is_other, class: 'checkbox-custom'
+                  = f.label :is_other, 'other (type it in "Project Details")', class: 'checkbox-custom-label'
                   
+              = f.label :details, 'Project Details'
               = f.text_area :details, placeholder: 'Enter details ...', type: 'text', required: true
               
-              = f.file_field :document
+              .file-field-area
+                = f.label :file_field, 'File' do
+                  #click-area Click to load your file ...
+                  = f.file_field :document, type: 'file'
               
               = f.submit 'SEND', class: 'btn-primary-line'

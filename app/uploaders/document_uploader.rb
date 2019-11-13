@@ -4,6 +4,7 @@ class DocumentUploader < CarrierWave::Uploader::Base
   def initialize(*)
     super
     self.fog_directory = ENV['AWS_S3_PRIVATE_BUCKET']
+    self.fog_public = false
   end
   
   def store_dir

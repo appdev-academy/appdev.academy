@@ -1,6 +1,4 @@
-import PropTypes from 'prop-types'
 import React from 'react'
-import { findDOMNode } from 'react-dom'
 import { Link } from 'react-router-dom'
 
 import ObjectPresence from './ObjectPresence'

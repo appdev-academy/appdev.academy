@@ -3,7 +3,7 @@ import { observable, action } from 'mobx'
 
 import { API_URL } from '../constants'
 
-export default class Articles {
+export default class EstimateRequests {
   sessionsStore
   
   @observable estimate_requests

@@ -4,7 +4,12 @@ class EstimateRequestIndexSerializer < ActiveModel::Serializer
   attributes :company
   attributes :deadline
   attributes :details
+  
   attributes :document
+  def document
+    object.document.url.present?
+  end
+  
   attributes :email
   attributes :is_admin_panel
   attributes :is_android

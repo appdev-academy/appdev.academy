@@ -51,6 +51,8 @@ Rails.application.routes.draw do
         post :sort, on: :collection
       end
       
+      resources :estimate_requests, only: [:index]
+      
       resources :gallery_images, only: [:destroy] do
         collection do
           post :sort

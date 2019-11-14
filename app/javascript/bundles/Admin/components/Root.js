@@ -28,6 +28,8 @@ import NewEmployee from './Employees/New'
 import EditEmployee from './Employees/Edit'
 import ShowEmployee from './Employees/Show'
 
+import EstimateRequests from './EstimateRequests/Index'
+
 import Images from './Images/Index'
 
 import Pages from './Pages/Index'
@@ -115,6 +117,7 @@ class Root extends React.Component {
           <NavLink to='/admin/topics' activeClassName='active'>Topics</NavLink>
           <NavLink to='/admin/employees' activeClassName='active'>Employees</NavLink>
           <NavLink to='/admin/testimonials' activeClassName='active'>Testimonials</NavLink>
+          <NavLink to='/admin/estimate_requests' activeClassName='active'>Estimate Requests</NavLink>
           <a href='#logout' onClick={ () => { this.signOut() } }>Sign Out</a>
         </div>
       )
@@ -135,6 +138,8 @@ class Root extends React.Component {
           <Route exact path='/admin/employees/new' component={NewEmployee} />
           <Route exact path='/admin/employees/:employeeID' component={ShowEmployee} />
           <Route exact path='/admin/employees/:employeeID/edit' component={EditEmployee} />
+          
+          <Route exact path='/admin/estimate_requests' component={EstimateRequests} />
           
           <Route exact path='/admin/images' component={Images} />
           

@@ -12,6 +12,7 @@ import { Provider } from 'mobx-react'
 import ArticlesStore from '../stores/Articles'
 import DashboardsStore from '../stores/Dashboards'
 import EmployeesStore from '../stores/Employees'
+import EstimateRequestsStore from '../stores/EstimateRequests'
 import GalleryImagesStore from '../stores/GalleryImages'
 import ImagesStore from '../stores/Images'
 import LessonsStore from '../stores/Lessons'
@@ -27,6 +28,7 @@ const sessionsStore = new SessionsStore()
 const articlesStore = new ArticlesStore(sessionsStore)
 const dashboardsStore = new DashboardsStore(sessionsStore)
 const employeesStore = new EmployeesStore(sessionsStore)
+const estimateRequestsStore = new EstimateRequestsStore(sessionsStore)
 const galleryImagesStore = new GalleryImagesStore(sessionsStore)
 const imagesStore = new ImagesStore(sessionsStore)
 const lessonsStore = new LessonsStore(sessionsStore)
@@ -46,6 +48,7 @@ export default class App extends React.Component {
       <Provider articlesStore={ articlesStore }
                 dashboardsStore={ dashboardsStore }
                 employeesStore={ employeesStore }
+                estimateRequestsStore={ estimateRequestsStore }
                 imagesStore={ imagesStore }
                 galleryImagesStore={ galleryImagesStore }
                 lessonsStore={ lessonsStore }

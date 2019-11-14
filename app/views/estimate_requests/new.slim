@@ -30,7 +30,7 @@
               = f.text_field :subject, placeholder: 'Enter subject ...', type: 'text', required: true
               
               = f.label :deadline, 'Deadline'
-              = f.text_field :deadline, placeholder: 'Enter deadline date ...', type: 'text', data: { provide: 'datepicker' }
+              = f.text_field :deadline, placeholder: 'Enter deadline date ...', id: 'date-picker', type: 'text', data: { provide: 'datepicker' }
               
               = f.label :budget, 'Budget'
               = f.number_field :budget, min: 0, step: 0.01, placeholder: 'Enter budget ...', type: 'number', required: true

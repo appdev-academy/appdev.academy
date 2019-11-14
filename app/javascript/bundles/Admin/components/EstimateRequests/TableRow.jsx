@@ -11,7 +11,8 @@ export default class TableRow extends React.Component {
     
     return (
       <tr key={ estimateRequest.id }>
-        <td>{ estimateRequest.id }</td>
+        <td><Link to={'/admin/estimate-requests/' + estimateRequest.id}>{estimateRequest.id}</Link></td>
+        <td>{ estimateRequest.created_at }</td>
         <td>{ estimateRequest.email }</td>
         <td>{ estimateRequest.name }</td>
         <td>{ estimateRequest.company }</td>

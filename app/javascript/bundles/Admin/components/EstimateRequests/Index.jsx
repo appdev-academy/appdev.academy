@@ -23,6 +23,7 @@ export default class Index extends React.Component {
           <thead>
             <tr>
               <td>ID</td>
+              <td>Created at</td>
               <td>Email</td>
               <td>Name</td>
               <td>Company</td>

@@ -1,4 +1,4 @@
-class SendEstimateRequestJob < ApplicationJob
+class NotifyAdminJob < ApplicationJob
   queue_as :emails
   
   def perform(estimate_request)

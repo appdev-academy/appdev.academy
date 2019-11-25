@@ -7,6 +7,8 @@
 //= require beapp/jquery.counterup
 //= require beapp/jquery.magnific-popup
 //= require beapp/imgfix
+//= require beapp/estimate_request
+//= require bootstrap-datepicker
 
 (function ($) {
   "use strict";
@@ -116,5 +118,10 @@
         $(".header-area .light-logo").css('display', 'block');
       }
     }
+  });
+  
+  // Date format for bootstrap datepicker
+  $('.estimate-request-form #date-picker').datepicker({
+    format: "dd/mm/yyyy"
   });
 })(window.jQuery);

@@ -18,8 +18,13 @@ Bundler.require(*Rails.groups)
 
 module AppDev
   class Application < Rails::Application
+    config.autoload_paths << Rails.root.join('app', 'jobs', 'recurring')
+    config.autoload_paths << Rails.root.join('app', 'jobs', 'users')
     # Use Google Analytics
     config.middleware.use Rack::GoogleAnalytics, tracker: Rails.application.secrets.google_analytics_tracking_id
+    
+    # Queue adapter for ActiveJobs
+    config.active_job.queue_adapter = :delayed_job
     
     # Disable automatic generation for TestUnit, JS, CSS files and helpers
     config.generators do |g|

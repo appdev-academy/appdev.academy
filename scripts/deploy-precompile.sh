@@ -24,17 +24,21 @@ ssh -p $SSH_PORT root@$HOST << SCRIPT
   RAILS_ENV=production yarn
   
   # Run migrations and seed database
-  RAILS_ENV=production rake db:migrate
-  RAILS_ENV=production rake db:seed
+  RAILS_ENV=production bundle exec rake db:migrate
+  RAILS_ENV=production bundle exec rake db:seed
   
   # Clear Rails app (logs, temp files, precompiled assets)
-  rake log:clear
-  rake tmp:clear
+  RAILS_ENV=production bundle exec rake log:clear
+  RAILS_ENV=production bundle exec rake tmp:clear
   rm -rf public/assets
   
   # Precompile assets
-  RAILS_ENV=production rake assets:precompile
+  RAILS_ENV=production bundle exec rake assets:precompile
   
   # Start Nginx server
   service nginx start
+  
+  # Restart Delayed::Job
+  RAILS_ENV=production bundle exec bin/delayed_job --pid-dir=$APP_DIRECTORY/tmp/pids -n 2 restart
+  RAILS_ENV=production bundle exec rake recurring_delayed_jobs:reschedule
 SCRIPT

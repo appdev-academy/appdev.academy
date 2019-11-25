@@ -18,10 +18,10 @@ class EstimateRequest < ApplicationRecord
   
   private
     def notify_admin
-      NotifyAdminJob.perform_later(self)
+      NotifyAdminJob.perform_later(self.id)
     end
     
     def notify_user
-      NotifyUserJob.perform_later(self)
+      NotifyUserJob.perform_later(self.id)
     end
 end

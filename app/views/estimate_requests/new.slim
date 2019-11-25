@@ -5,41 +5,47 @@
         h5.mbottom-30 Estimate Request
         <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam tempus magna vel turpis pharetra dictum. </p>
         <p>Sed blandit tempus purus, sed sodales leo rutrum vel. Nam vulputate ipsum ac est congue, eget commodo magna lobortis.</p>
-      
+        
     .col-lg-8.col-md-6.col-sm-12
-      .estimate-request-form
+      .estimate-request-form.contact-form
         .row
-          .col-lg-6.col-md-12.col-sm-12
+          .col-lg-12.col-md-12.col-sm-12
             = form_for @estimate_request, method: :post do |f|
               - if @estimate_request.errors.any?
                 ul.error_explanation
                   - @estimate_request.errors.full_messages.each do |message|
                     li = message
                 br
+                
+              .form-group
+                = f.label :email, '* Email'
+                = f.text_field :email, placeholder: 'Your email...', type: 'text', required: true
               
-              = f.label :email, 'Email'
-              = f.text_field :email, placeholder: 'Enter email ...', type: 'text', required: true
-              
-              = f.label :name, 'Name'
-              = f.text_field :name, placeholder: 'Enter name ...', type: 'text', required: true
-              
-              = f.label :company, 'Company'
-              = f.text_field :company, placeholder: 'Enter company ...', type: 'text', required: false
-              
-              = f.label :subject, 'Subject'
-              = f.text_field :subject, placeholder: 'Enter subject ...', type: 'text', required: true
-              
-              = f.label :deadline, 'Deadline'
-              = f.text_field :deadline, placeholder: 'Enter deadline date ...', id: 'date-picker', type: 'text', data: { provide: 'datepicker' }
-              
-              = f.label :budget, 'Budget'
-              = f.number_field :budget, min: 0, step: 0.01, placeholder: 'Enter budget ...', type: 'number', required: true
-              
-              .field.form-group
-                p Services:
+              .form-group
+                = f.label :name, '* Name'
+                = f.text_field :name, placeholder: 'Your full name...', type: 'text', required: true
+                
+              .form-group
+                = f.label :company, 'Company'
+                = f.text_field :company, placeholder: 'Your Company Name (optional)...', type: 'text', required: false
+                
+              .form-group
+                = f.label :subject, '* Subject'
+                = f.text_field :subject, placeholder: 'I want to develop an Uber-like app for pizza delivery...', type: 'text', required: true
+                
+              .form-group
+                = f.label :deadline, 'Deadline'
+                = f.text_field :deadline, placeholder: 'Deadline for this project is...', class: 'date-picker', type: 'text', data: { provide: 'datepicker' }
+                
+              .form-group
+                = f.label :budget, '* Budget'
+                = f.number_field :budget, min: 0, step: 0.01, placeholder: 'If not sure, enter 0...', type: 'number', required: true
+                
+              .form-group
+                p Services We Need
                 .checkbox-inline
                   = f.check_box :is_ios, class: 'checkbox-custom'
-                  = f.label :is_ios, 'IOS App', class: 'checkbox-custom-label'
+                  = f.label :is_ios, 'iOS App', class: 'checkbox-custom-label'
                   
                 .checkbox-inline
                   = f.check_box :is_android, class: 'checkbox-custom'
@@ -61,12 +67,14 @@
                   = f.check_box :is_other, class: 'checkbox-custom'
                   = f.label :is_other, 'other (type it in "Project Details")', class: 'checkbox-custom-label'
                   
-              = f.label :details, 'Project Details'
-              = f.text_area :details, placeholder: 'Enter details ...', type: 'text', required: true
-              
+              .form-group
+                = f.label :details, '* Project Details'
+                = f.text_area :details, placeholder: 'Enter details ...', type: 'text', required: true
+                
+              label Attach File
               .file-field-area
-                = f.label :file_field, 'File' do
+                = f.label :file_field do
                   #click-area Click to load your file ...
                   = f.file_field :document, type: 'file'
-              
+                  
               = f.submit 'SEND', class: 'btn-primary-line'

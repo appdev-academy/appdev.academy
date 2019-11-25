@@ -4,6 +4,7 @@ class EstimateRequest < ApplicationRecord
   
   # Callbacks
   after_save :notify_admin
+  after_save :notify_user
   
   # Uploaders
   mount_uploader :document, DocumentUploader
@@ -18,5 +19,9 @@ class EstimateRequest < ApplicationRecord
   private
     def notify_admin
       SendEstimateRequestJob.perform_later(self)
+    end
+    
+    def notify_user
+      NotifyUserJob.perform_later(self)
     end
 end

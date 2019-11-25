@@ -14,6 +14,6 @@ class AdminMailer < ApplicationMailer
   
   private
     def set_admin_email
-      @admin_email = 'maksym.skliarov@gmail.com'
+      @admin_email = 'maksym@appdev.academy'
     end
 end

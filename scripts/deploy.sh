@@ -31,6 +31,7 @@ ssh -p $SSH_PORT root@$HOST << SCRIPT
   service nginx start
   
   # Restart Delayed::Job
+  mkdir -p $APP_DIRECTORY/tmp/pids
   RAILS_ENV=production bundle exec bin/delayed_job --pid-dir=$APP_DIRECTORY/tmp/pids -n 2 restart
   RAILS_ENV=production bundle exec rake recurring_delayed_jobs:reschedule
 SCRIPT

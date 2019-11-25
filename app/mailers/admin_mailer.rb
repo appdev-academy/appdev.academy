@@ -3,7 +3,7 @@ class AdminMailer < ApplicationMailer
   
   # Send email to admin to notify that Delayed::Job is still working
   def beacon
-    mail to: @admin_email, subject: 'AppDev Academy is operating normally!'
+    mail to: @admin_email, subject: 'App Dev Academy is operating normally!'
   end
   
   # Send email to admin to notify about new Estimate Request

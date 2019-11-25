@@ -61,6 +61,7 @@ gem 'fog-aws'
 # Background jobs
 gem 'delayed_job_active_record'
 gem 'delayed_job_recurring'
+gem 'daemons'
 
 group :development do
   gem 'listen'

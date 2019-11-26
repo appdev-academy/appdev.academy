@@ -8,8 +8,10 @@ class EstimateRequestsController < ApplicationController
   def create
     @estimate_request = EstimateRequest.new(estimate_request_params)
     if @estimate_request.save
+      flash[:notice] = 'Your Estimation Request was successfully submitted, we will respond to your message soon :)'
       redirect_to root_path
     else
+      flash[:warning] = 'Something went wrong, please try again.'
       render 'new'
     end
   end

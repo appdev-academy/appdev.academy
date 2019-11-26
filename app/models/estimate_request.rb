@@ -4,7 +4,7 @@ class EstimateRequest < ApplicationRecord
   
   # Callbacks
   after_save :notify_admin
-  after_save :notify_user
+  after_save :notify_customer
   
   # Uploaders
   mount_uploader :document, DocumentUploader
@@ -18,10 +18,10 @@ class EstimateRequest < ApplicationRecord
   
   private
     def notify_admin
-      NotifyAdminJob.perform_later(self.id)
+      EstimateRequestNotifyAdminJob.perform_later(self.id)
     end
     
-    def notify_user
-      NotifyUserJob.perform_later(self.id)
+    def notify_customer
+      EstimateRequestNotifyCustomerJob.perform_later(self.id)
     end
 end

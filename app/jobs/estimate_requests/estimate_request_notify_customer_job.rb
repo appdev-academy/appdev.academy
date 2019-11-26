@@ -1,8 +1,8 @@
-class NotifyUserJob < ApplicationJob
+class EstimateRequestNotifyCustomerJob < ApplicationJob
   queue_as :emails
   
   def perform(estimate_request_id)
     estimate_request = EstimateRequest.find(estimate_request_id)
-    UserMailer.estimate_request(estimate_request).deliver_now
+    EstimateRequestMailer.notify_customer(estimate_request).deliver_now
   end
 end

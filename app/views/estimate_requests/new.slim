@@ -3,8 +3,7 @@
     .col-lg-4.col-md-6.col-sm-12
       .estimate-request-text
         h5.mbottom-30 Estimate Request
-        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam tempus magna vel turpis pharetra dictum. </p>
-        <p>Sed blandit tempus purus, sed sodales leo rutrum vel. Nam vulputate ipsum ac est congue, eget commodo magna lobortis.</p>
+        p If you want to get a quote for your project or just start a discussion of your idea - just fill in the form on this page and we will get in touch with you ASAP.
         
     .col-lg-8.col-md-6.col-sm-12
       .estimate-request-form.contact-form
@@ -20,7 +19,7 @@
               .form-group
                 = f.label :email, '* Email'
                 = f.text_field :email, placeholder: 'Your email...', type: 'text', required: true
-              
+                
               .form-group
                 = f.label :name, '* Name'
                 = f.text_field :name, placeholder: 'Your full name...', type: 'text', required: true
@@ -38,8 +37,8 @@
                 = f.text_field :deadline, placeholder: 'Deadline for this project is...', class: 'date-picker', type: 'text', data: { provide: 'datepicker' }
                 
               .form-group
-                = f.label :budget, '* Budget'
-                = f.number_field :budget, min: 0, step: 0.01, placeholder: 'If not sure, enter 0...', type: 'number', required: true
+                = f.label :budget, '* Budget, USD'
+                = f.number_field :budget, min: 0, max: 999999999, step: 1, placeholder: 'If not sure, enter 0...', type: 'number', required: true
                 
               .form-group
                 p Services We Need

@@ -3,7 +3,7 @@ class Api::React::GalleryImagesController < Api::React::ApiController
   # GET api/react/projects/:project_id/gallery_images
   def index
     project = Project.find(params[:project_id])
-    render json: project.gallery_images, each_serializer: GalleryImageSerializer, status: :ok
+    render json: project.gallery_images.order(:id), each_serializer: GalleryImageSerializer, status: :ok
   end
   
   # POST api/react/projects/:project_id/gallery_images

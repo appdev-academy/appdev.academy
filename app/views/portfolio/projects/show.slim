@@ -49,7 +49,7 @@
             .content
               h5.title Screenshots
               .row.gallery
-                - @project.gallery_images.each_with_index do |gallery_image, index|
+                - @project.gallery_images.order(:id).each_with_index do |gallery_image, index|
                   .col-lg-3.col-md-6.col-sm-6.col-xs-12
                     = link_to gallery_image.image.url, class: 'gallery-item', title: "#{@project.title} screenshot ##{index}"
                       = image_tag gallery_image.image.url, class: 'img-fluid', alt: "#{@project.title} screenshot ##{index}"

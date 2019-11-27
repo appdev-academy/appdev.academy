@@ -35,3 +35,11 @@ img.app-icon {
   width: 75px !important;
   height: 75px !important;
 }
+
+.app-single {
+  .content {
+    ul {
+      list-style: disc inside;
+    }
+  }
+}

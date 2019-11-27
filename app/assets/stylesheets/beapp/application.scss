@@ -132,3 +132,15 @@ p {
   }
 }
 // Video end
+
+.app-single {
+  .content {
+    ul {
+      list-style: disc inside;
+    }
+    
+    li {
+      list-style: inherit;
+    }
+  }
+}

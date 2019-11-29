@@ -1,0 +1,6 @@
+.mt-3
+  - flash.each do |key, message|
+    .alert.alert-dismissible.fade.show.rounded-0 class=(key == 'notice' ? 'alert-success' : 'alert-warning') role="alert"
+      p.text-center #{message}
+      button.close aria-label="Close" data-dismiss="alert" type="button"
+        span aria-hidden="true" &times;

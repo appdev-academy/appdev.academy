@@ -8,8 +8,11 @@
 .page-bottom.ptop-50.pbottom-70
   .container
     .row
-      .col-lg-12
+      .col-lg-8.col-md-8.col-sm-12
         = @portfolio_page.html_content.html_safe
+      .col-lg-4.col-md-4.col-sm-12
+        br
+        = link_to 'GET FREE ESTIMATE', request_estimate_path, class: 'btn-primary-line'
         
 .page-bottom.pbottom-70
   .container

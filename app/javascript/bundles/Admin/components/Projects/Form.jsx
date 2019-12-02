@@ -38,6 +38,8 @@ export default class Form extends React.Component {
   setProject(project) {
     if (project) {
       this.refs.title.value = project.title
+      this.refs.appStoreIpadURL.value = project.app_store_ipad_url
+      this.refs.appStoreMacosURL.value = project.app_store_macos_url
       this.refs.appStoreURL.value = project.app_store_url
       this.refs.googlePlayURL.value = project.google_play_url
       this.setState({
@@ -115,6 +117,8 @@ export default class Form extends React.Component {
     let formData = new FormData()
     
     formData.append('project[title]', this.refs.title.value)
+    formData.append('project[app_store_ipad_url]', this.refs.appStoreIpadURL.value)
+    formData.append('project[app_store_macos_url]', this.refs.appStoreMacosURL.value)
     formData.append('project[app_store_url]', this.refs.appStoreURL.value)
     formData.append('project[google_play_url]', this.refs.googlePlayURL.value)
     formData.append('project[preview]', this.state.preview)
@@ -186,6 +190,14 @@ export default class Form extends React.Component {
         <div className='form-group'>
           <label htmlFor='appStoreURL'>App Store URL</label>
           <input type='text' ref='appStoreURL' className='appStoreURL' />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='appStoreIpadURL'>App Store Ipad URL</label>
+          <input type='text' ref='appStoreIpadURL' className='appStoreIpadURL' />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='appStoreMacosURL'>App Store MacOS URL</label>
+          <input type='text' ref='appStoreMacosURL' className='appStoreMacosURL' />
         </div>
         <div className='form-group'>
           <label htmlFor='googlePlayURL'>Google Play URL</label>

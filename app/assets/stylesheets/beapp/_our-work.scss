@@ -119,11 +119,29 @@ our work
     
     .download-buttons {
       float: right;
-      text-align: right;
-      margin-top: 5px;
+      text-align: center;
+      
+      .extra-button {
+        display: inline-block;
+        
+        ul {
+          vertical-align: top;
+          text-align: center;
+          
+          a {
+            margin-bottom: 0px;
+          }
+        }
+        
+        span {
+          color: $textDark;
+        }
+      }
       
       a {
         display: inline-block;
+        vertical-align: top;
+        margin-top: 5px;
         margin-left: 10px;
         margin-bottom: 10px;
       }
@@ -237,7 +255,7 @@ our work
       
       .download-buttons {
         float: none;
-        text-align: right;
+        text-align: center;
         
         a {
           margin-left: 0px;

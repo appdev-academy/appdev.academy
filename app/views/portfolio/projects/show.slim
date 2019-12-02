@@ -10,7 +10,7 @@
               .col-lg-1.col-md-2.col-sm-12
                 .icon
                   = image_tag @project.app_icon.regular.url, alt: "#{@project.title} app icon", class: 'img-fluid', width: '75px'
-              .col-lg-5.col-md-4.col-sm-12
+              .col-lg-3.col-md-3.col-sm-12
                 .title
                   h2 = @project.title
                   /ul.stars
@@ -26,11 +26,32 @@
                       i.fa.fa-star
                     li
                       | (144)
-              .col-lg-6.col-md-6.col-sm-12
+              .col-lg-8.col-md-7.col-sm-12
                 .download-buttons
                   - if @project.app_store_url.present?
                     = link_to @project.app_store_url, target: '_blank'
                       = image_tag image_url('logos/download-apple-store.svg'), alt: 'Download on the Apple Store icon'
+                  
+                  - if @project.app_store_ipad_url.present?
+                    .extra-button
+                      ul
+                        li
+                          = link_to @project.app_store_ipad_url, target: '_blank'
+                            = image_tag image_url('logos/download-apple-store.svg'), alt: 'Download on the Apple Store icon'
+                        li
+                          span
+                            |*for iPad
+                            
+                  - if @project.app_store_macos_url.present?
+                    .extra-button
+                      ul
+                        li
+                          = link_to @project.app_store_macos_url, target: '_blank'
+                            = image_tag image_url('logos/download-apple-store.svg'), alt: 'Download on the Apple Store icon'
+                        li
+                          span
+                            |*for MacOS
+                      
                   - if @project.google_play_url.present?
                     = link_to @project.google_play_url, target: '_blank'
                       = image_tag image_url('logos/download-google-play.svg'), alt: 'Download on the Google Play icon'

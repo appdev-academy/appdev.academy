@@ -131,7 +131,7 @@ export default class Form extends React.Component {
     })
     
     return (
-      <div className='column'>
+      <div className='column blog-article'>
         <ErrorsList errors={this.props.errors} />
         <div className='form-group'>
           <input type='text' ref='title' className='title' autoFocus={true} />

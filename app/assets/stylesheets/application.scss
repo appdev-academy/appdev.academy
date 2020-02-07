@@ -35,3 +35,18 @@ img.app-icon {
   width: 75px !important;
   height: 75px !important;
 }
+
+// Fix list styles after use reset.scss
+.blog-article {
+  ul, ol {
+    padding-left: 20px;
+  }
+  
+  ul li {
+    list-style: disc;
+  }
+  
+  ol li {
+    list-style: decimal;
+  }
+}

@@ -4,6 +4,8 @@ class ProjectShowSerializer < ActiveModel::Serializer
     object.app_icon.regular.url
   end
   
+  attribute :app_store_ipad_url
+  attribute :app_store_macos_url
   attribute :app_store_url
   attribute :content
   attribute :google_play_url

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_073604) do
+ActiveRecord::Schema.define(version: 2019_12_02_124136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,6 +148,8 @@ ActiveRecord::Schema.define(version: 2019_11_12_073604) do
     t.string "app_icon"
     t.string "app_store_url"
     t.string "google_play_url"
+    t.string "app_store_ipad_url"
+    t.string "app_store_macos_url"
     t.index ["slug"], name: "index_projects_on_slug"
   end
 

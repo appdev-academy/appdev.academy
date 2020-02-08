@@ -1,22 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-import ClassNames from 'classnames'
-import MarkdownIt from 'markdown-it'
-import Textarea from 'react-textarea-autosize'
 import { WithContext as ReactTags } from 'react-tag-input'
-
-import videoPlugin from '../../plugins/video'
 import ErrorsList from '../ErrorsList'
-import BlueButton from '../Buttons/Blue'
 import GreenButton from '../Buttons/Green'
 
-// Setup MarkdownIt parser with videos plugin
-let markdown = new MarkdownIt()
-markdown.use(videoPlugin)
+// Import ReactSummernote and Bootstrap for him
+import 'bootstrap'
+import 'bootstrap/js/dist/modal'
+import 'bootstrap/js/dist/dropdown'
+import 'bootstrap/js/dist/tooltip'
+import ReactSummernote from 'react-summernote'
 
 export default class Form extends React.Component {
-  
   constructor(props) {
     super(props)
     this.state = {
@@ -40,29 +35,20 @@ export default class Form extends React.Component {
       this.refs.imageURL.value = article.image_url
       this.setState({
         preview: article.preview,
-        htmlPreview: markdown.render(article.preview),
+        htmlPreview: article.content,
         content: article.content,
-        htmlContent: markdown.render(article.content),
+        htmlContent: article.content,
         tags: article.tags
       })
     }
   }
   
-  previewChanged(event) {
-    // Get new Markdown text
-    let newText = event.target.value
-    // Update page
+  contentChanged(content) {
     this.setState({
-      preview: newText,
-      htmlPreview: markdown.render(newText)
-    })
-  }
-  
-  contentChanged(event) {
-    let newText = event.target.value
-    this.setState({
-      content: newText,
-      htmlContent: markdown.render(newText)
+      content: content,
+      htmlContent: content,
+      preview: content,
+      htmlPreview: content
     })
   }
   
@@ -106,43 +92,49 @@ export default class Form extends React.Component {
     this.props.handleSubmit(articleParams)
   }
   
-  clickEditor() {
-    this.setState({
-      showType: 'editor'
-    })
-  }
-  
-  clickPreview() {
-    this.setState({
-      showType: 'preview'
-    })
+  renderInsertVideo(context) {
+    let ui = $.summernote.ui;
+    let button = ui.button({
+      contents: '<i class="note-icon-video"/>',
+      tooltip: 'Video',
+      click: function() {
+        let div = document.createElement('div');
+        let iframe = document.createElement('iframe');
+        let videoID = prompt('Enter YouTube video ID:');
+        
+        // Do nothing if anything doesn't enter
+        if (videoID === null || videoID.length === 0) return;
+        
+        div.classList.add('video-wrapper');
+        iframe.src = `//www.youtube.com/embed/${videoID}`;
+        iframe.setAttribute('frameborder', 0);
+        iframe.setAttribute('width', '100%');
+        iframe.setAttribute('allowfullscreen', true);
+        iframe.setAttribute('mozallowfullscreen', true);
+        iframe.setAttribute('webkitallowfullscreen', true);
+        div.appendChild(iframe);
+        context.invoke('editor.insertNode', div);
+      }
+    });
+    
+    return button.render();
   }
   
   render () {
-    let editorClasses = ClassNames({
-      'hidden': this.state.showType == 'preview',
-      'half-width': this.state.showType == 'editor'
-    })
-    
-    let previewClasses = ClassNames({
-      'article-container': true,
-      'full-width': this.state.showType == 'preview',
-      'half-width': this.state.showType == 'editor'
-    })
-    
     // Normalize tags and suggestions
     let tags = this.state.tags.map(tag => {
       return { id: `${tag.id}`, title: tag.title }
     })
+    
     let suggestions = this.props.allTags.map(tag => {
       return { id: `${tag.id}`, title: tag.title }
     })
     
     return (
-      <div className='column'>
-        <ErrorsList errors={ this.props.errors } />
+      <div className='column blog-article'>
+        <ErrorsList errors={this.props.errors} />
         <div className='form-group'>
-          <input type='text' ref='title' className='title' autoFocus={ true } />
+          <input type='text' ref='title' className='title' autoFocus={true} />
         </div>
         <div className='form-group'>
           <label htmlFor='shortDescription'>Short description (for SEO and sharing to social networks)</label>
@@ -156,63 +148,48 @@ export default class Form extends React.Component {
           <label htmlFor='tags'>Tags</label>
           <ReactTags
             labelField='title'
-            autofocus={ false }
-            tags={ tags }
-            suggestions={ suggestions }
-            handleDelete={ this.deleteTag.bind(this) }
-            handleAddition={ this.addTag.bind(this) }
-            handleDrag={ this.dragTag.bind(this) }
+            autofocus={false}
+            tags={tags}
+            suggestions={suggestions}
+            handleDelete={this.deleteTag.bind(this)}
+            handleAddition={this.addTag.bind(this)}
+            handleDrag={this.dragTag.bind(this)}
           />
         </div>
         <div className='actions left'>
           <GreenButton
             title='Save'
-            onClick={ this.handleSubmit.bind(this) }
+            onClick={this.handleSubmit.bind(this)}
           />
           <Link className='button blue' to='/admin/articles'>Back to Articles</Link>
         </div>
-        <div className='buttons center'>
-          <BlueButton
-            title='Editor'
-            selected={ this.state.showType == 'editor' }
-            onClick={ this.clickEditor.bind(this) }
-          />
-          <BlueButton
-            title='Preview'
-            selected={ this.state.showType == 'preview' }
-            onClick={ this.clickPreview.bind(this) }
-          />
-        </div>
-        <div>
-          <h2 className='center'>Preview</h2>
-          <div>
-            <Textarea className={ editorClasses } value={ this.state.preview } onChange={ this.previewChanged.bind(this) } rows={ 5 }></Textarea>
-            <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlPreview }} />
-          </div>
-        </div>
-        <div className='buttons center'>
-          <BlueButton
-            title='Editor'
-            selected={ this.state.showType == 'editor' }
-            onClick={ this.clickEditor.bind(this) }
-          />
-          <BlueButton
-            title='Preview'
-            selected={ this.state.showType == 'preview' }
-            onClick={ this.clickPreview.bind(this) }
-          />
-        </div>
-        <div>
+        <div className='mb-3'>
           <h2 className='center'>Content</h2>
-          <div>
-            <Textarea className={ editorClasses } value={ this.state.content } onChange={ this.contentChanged.bind(this) } rows={ 10 }></Textarea>
-            <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
-          </div>
+          <ReactSummernote
+            value={this.state.content}
+            options={{
+              linkTargetBlank: true,
+              toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['insertVideo', ['insertVideo']],
+                ['view', ['fullscreen', 'codeview']]
+              ],
+              buttons: {
+                insertVideo: this.renderInsertVideo.bind(this)
+              }
+            }}
+            onChange={this.contentChanged.bind(this)}
+          />
         </div>
         <div className='actions left'>
           <GreenButton
             title='Save'
-            onClick={ this.handleSubmit.bind(this) }
+            onClick={this.handleSubmit.bind(this)}
           />
           <Link className='button blue' to='/admin/articles'>Back to Articles</Link>
         </div>

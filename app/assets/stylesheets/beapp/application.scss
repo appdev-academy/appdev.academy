@@ -145,12 +145,12 @@ p {
   }
 }
 
-.text.post-detail p {
-  margin: 10px 0px 10px 0px;
-}
-
 // Fix list styles after use reset.scss
 .text.post-detail {
+  .video-wrapper, h1, h2, h3, h4, h5, h6, p, ul, ol, img {
+    margin-bottom: 25px;
+  }
+  
   ul, ol {
     padding-left: 20px;
   }

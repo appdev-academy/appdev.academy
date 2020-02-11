@@ -19,7 +19,6 @@ export default class Form extends React.Component {
       htmlPreview: '',
       content: '',
       htmlContent: '',
-      showType: 'editor',
       tags: []
     }
   }
@@ -34,21 +33,26 @@ export default class Form extends React.Component {
       this.refs.shortDescription.value = article.short_description
       this.refs.imageURL.value = article.image_url
       this.setState({
-        preview: article.preview,
-        htmlPreview: article.content,
-        content: article.content,
-        htmlContent: article.content,
+        preview: article.html_preview,
+        htmlPreview: article.html_preview,
+        content: article.html_content,
+        htmlContent: article.html_content,
         tags: article.tags
       })
     }
+  }
+  
+  previewChanged(preview) {
+    this.setState({
+      preview: preview,
+      htmlPreview: preview,
+    })
   }
   
   contentChanged(content) {
     this.setState({
       content: content,
       htmlContent: content,
-      preview: content,
-      htmlPreview: content
     })
   }
   
@@ -83,9 +87,9 @@ export default class Form extends React.Component {
       title: this.refs.title.value,
       short_description: this.refs.shortDescription.value,
       image_url: this.refs.imageURL.value,
-      preview: this.state.preview,
+      preview: this.state.htmlPreview,
       html_preview: this.state.htmlPreview,
-      content: this.state.content,
+      content: this.state.htmlContent,
       html_content: this.state.htmlContent,
       tags_titles: this.state.tags.map(tag => tag.title).join(',')
     }
@@ -164,9 +168,9 @@ export default class Form extends React.Component {
           <Link className='button blue' to='/admin/articles'>Back to Articles</Link>
         </div>
         <div className='mb-3'>
-          <h2 className='center'>Content</h2>
+          <h2 className='center'>Preview</h2>
           <ReactSummernote
-            value={this.state.content}
+            value={ this.state.htmlPreview }
             options={{
               linkTargetBlank: true,
               toolbar: [
@@ -183,13 +187,36 @@ export default class Form extends React.Component {
                 insertVideo: this.renderInsertVideo.bind(this)
               }
             }}
-            onChange={this.contentChanged.bind(this)}
+            onChange={ this.previewChanged.bind(this) }
+          />
+        </div>
+        <div className='mb-3'>
+          <h2 className='center'>Content</h2>
+          <ReactSummernote
+            value={ this.state.htmlContent }
+            options={{
+              linkTargetBlank: true,
+              toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['insertVideo', ['insertVideo']],
+                ['view', ['fullscreen', 'codeview']]
+              ],
+              buttons: {
+                insertVideo: this.renderInsertVideo.bind(this)
+              }
+            }}
+            onChange={ this.contentChanged.bind(this) }
           />
         </div>
         <div className='actions left'>
           <GreenButton
             title='Save'
-            onClick={this.handleSubmit.bind(this)}
+            onClick={ this.handleSubmit.bind(this) }
           />
           <Link className='button blue' to='/admin/articles'>Back to Articles</Link>
         </div>

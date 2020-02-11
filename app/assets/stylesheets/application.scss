@@ -37,6 +37,12 @@ img.app-icon {
 }
 
 // Fix list styles after use reset.scss
+.blog-article, .article-container {
+  .video-wrapper, h1, h2, h3, h4, h5, h6, p, ul, ol, img {
+    margin-bottom: 25px;
+  }
+}
+
 .blog-article {
   ul, ol {
     padding-left: 20px;

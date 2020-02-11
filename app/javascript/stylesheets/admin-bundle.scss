@@ -3,3 +3,8 @@
 **************************************/
 @import '~bootstrap/scss/bootstrap'; // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import '~react-summernote/dist/react-summernote';
+
+// Set background for hiding top navigation bar in fullscreen mode for Summernote editor
+.note-editor.note-frame.panel.panel-default.fullscreen {
+  background: #fff;
+}

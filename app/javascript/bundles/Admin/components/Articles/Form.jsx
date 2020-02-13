@@ -173,6 +173,7 @@ export default class Form extends React.Component {
             value={ this.state.htmlPreview }
             options={{
               linkTargetBlank: true,
+              popover: false,
               toolbar: [
                 ['style', ['style']],
                 ['font', ['bold', 'italic', 'underline', 'clear']],
@@ -196,6 +197,7 @@ export default class Form extends React.Component {
             value={ this.state.htmlContent }
             options={{
               linkTargetBlank: true,
+              popover: false,
               toolbar: [
                 ['style', ['style']],
                 ['font', ['bold', 'italic', 'underline', 'clear']],

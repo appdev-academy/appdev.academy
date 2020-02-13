@@ -175,7 +175,7 @@ export default class Form extends React.Component {
               linkTargetBlank: true,
               toolbar: [
                 ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
                 ['fontname', ['fontname']],
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['table', ['table']],
@@ -198,7 +198,7 @@ export default class Form extends React.Component {
               linkTargetBlank: true,
               toolbar: [
                 ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
                 ['fontname', ['fontname']],
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['table', ['table']],

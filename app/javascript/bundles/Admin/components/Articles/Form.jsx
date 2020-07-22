@@ -4,11 +4,8 @@ import { WithContext as ReactTags } from 'react-tag-input'
 import ErrorsList from '../ErrorsList'
 import GreenButton from '../Buttons/Green'
 
-// Import ReactSummernote and Bootstrap for him
+// Import ReactSummernote editor
 import 'bootstrap'
-import 'bootstrap/js/dist/modal'
-import 'bootstrap/js/dist/dropdown'
-import 'bootstrap/js/dist/tooltip'
 import ReactSummernote from 'react-summernote'
 
 export default class Form extends React.Component {
@@ -177,11 +174,8 @@ export default class Form extends React.Component {
               toolbar: [
                 ['style', ['style']],
                 ['font', ['bold', 'italic', 'underline', 'clear']],
-                ['fontname', ['fontname']],
                 ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture']],
-                ['insertVideo', ['insertVideo']],
+                ['insert', ['link', 'picture', 'insertVideo']],
                 ['view', ['fullscreen', 'codeview']]
               ],
               buttons: {
@@ -201,11 +195,8 @@ export default class Form extends React.Component {
               toolbar: [
                 ['style', ['style']],
                 ['font', ['bold', 'italic', 'underline', 'clear']],
-                ['fontname', ['fontname']],
                 ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture']],
-                ['insertVideo', ['insertVideo']],
+                ['insert', ['link', 'picture', 'insertVideo']],
                 ['view', ['fullscreen', 'codeview']]
               ],
               buttons: {

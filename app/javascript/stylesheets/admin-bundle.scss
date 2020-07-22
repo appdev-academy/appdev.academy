@@ -1,7 +1,4 @@
-/**************************************
-* Import stylesheets from node modules:
-**************************************/
-@import '~bootstrap/scss/bootstrap'; // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import '~bootstrap/dist/css/bootstrap';
 @import '~react-summernote/dist/react-summernote';
 
 // Set background for hiding top navigation bar in fullscreen mode for Summernote editor

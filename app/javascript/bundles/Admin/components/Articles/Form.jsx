@@ -5,8 +5,13 @@ import ErrorsList from '../ErrorsList'
 import GreenButton from '../Buttons/Green'
 
 // Import ReactSummernote editor
-import 'bootstrap'
+import 'bootstrap/js/modal'
+import 'bootstrap/js/dropdown'
+import 'bootstrap/js/tooltip'
+import 'bootstrap/dist/css/bootstrap.css'
+
 import ReactSummernote from 'react-summernote'
+import 'react-summernote/dist/react-summernote.css'
 
 export default class Form extends React.Component {
   constructor(props) {
@@ -170,11 +175,13 @@ export default class Form extends React.Component {
             value={ this.state.htmlPreview }
             options={{
               linkTargetBlank: true,
-              popover: false,
+              dialogsInBody: true,
               toolbar: [
                 ['style', ['style']],
-                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+                ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
                 ['insert', ['link', 'picture', 'insertVideo']],
                 ['view', ['fullscreen', 'codeview']]
               ],
@@ -191,11 +198,13 @@ export default class Form extends React.Component {
             value={ this.state.htmlContent }
             options={{
               linkTargetBlank: true,
-              popover: false,
+              dialogsInBody: true,
               toolbar: [
                 ['style', ['style']],
-                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+                ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
                 ['insert', ['link', 'picture', 'insertVideo']],
                 ['view', ['fullscreen', 'codeview']]
               ],

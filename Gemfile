@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.6.3'
+ruby '2.7.1'
 
 # Rails
 gem 'rails', '5.2.3'
@@ -85,5 +85,3 @@ group :test do
   # Express expected outcomes for RSpec tests
   gem 'rspec-expectations'
 end
-
-gem 'mini_racer', platforms: :ruby

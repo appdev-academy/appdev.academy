@@ -20,8 +20,9 @@ module AppDev
   class Application < Rails::Application
     config.autoload_paths << Rails.root.join('app', 'jobs', 'estimate_requests')
     config.autoload_paths << Rails.root.join('app', 'jobs', 'recurring')
+    
     # Use Google Analytics
-    config.middleware.use Rack::GoogleAnalytics, tracker: Rails.application.secrets.google_analytics_tracking_id
+    config.middleware.use Rack::GoogleAnalytics, tracker: ENV['GOOGLE_ANALYTICS_TRACKING_ID']
     
     # Queue adapter for ActiveJobs
     config.active_job.queue_adapter = :delayed_job

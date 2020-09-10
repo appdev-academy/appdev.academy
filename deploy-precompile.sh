@@ -12,6 +12,7 @@ ssh -p $SSH_PORT $USER@$HOST << ONE
   /opt/nginx/sbin/nginx -s quit
   
   # Stop DelayedJob worker
+  cd $APP_DIRECTORY
   RAILS_ENV=production bundle exec bin/delayed_job --pid-dir=$APP_DIRECTORY/tmp/pids stop
 ONE
 

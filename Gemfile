@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.7.1'
 
 # Rails
-gem 'rails', '~> 5.2'
+gem 'rails', '~> 6.1.1'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -12,7 +12,7 @@ gem 'pg'
 gem 'puma'
 
 gem 'react_on_rails', '11.1.3' # Update to the current version
-gem 'webpacker', '~> 3' # Newer versions might be supported
+gem 'webpacker'
 
 gem 'bootstrap', '4.1.3'
 gem 'bootstrap-datepicker-rails'

@@ -13,6 +13,7 @@ class Api::React::TagsController < Api::React::ApiController
   
   # POST api/react/tags
   def create
+    tag = Tag.new(tag_params)
     if tag.save
       render json: tag, serializer: TagSerializer, status: :ok
     else

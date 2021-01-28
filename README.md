@@ -2,7 +2,7 @@
 
 Ruby and Rails versions:
 
-* Ruby version 2.7.1
-* Rails version 5.2.3
+* Ruby version 3.0.0
+* Rails version 6.1.1
 
 To run this thing, execute `foreman start -f Procfile.dev`
